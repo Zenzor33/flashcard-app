@@ -6,7 +6,7 @@ Simple UI.
 - Neither should require a full page reload.
 
 Model:
-- Flashcard with front:str, back:str, rank??
+- Flashcard with front:str, back:str
 
 Routes:
 Set index to flashcard
