@@ -1,5 +1,10 @@
 Version 1:
 
+Flashcard: 
+By default, display front. When clicked, display back. 
+Create entries into the flashcard database
+Update index.erbfile to display the text appropriately
+
 Simple UI. 
 - A flashcard that when clicked, "flips" and displays the "back."
 - Left and right arrows that when clicked, display the previous and next flashcards respectively.
