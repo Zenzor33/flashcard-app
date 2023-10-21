@@ -1,0 +1,12 @@
+Version 1:
+
+Simple UI. 
+- A flashcard that when clicked, "flips" and displays the "back."
+- Left and right arrows that when clicked, display the previous and next flashcards respectively.
+- Neither should require a full page reload.
+
+Model:
+- Flashcard with front:str, back:str, rank??
+
+Routes:
+Set index to flashcard
