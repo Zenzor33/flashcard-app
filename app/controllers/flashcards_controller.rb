@@ -3,8 +3,11 @@ class FlashcardsController < ApplicationController
   before_action :set_flashcard, only: [:show]
 
   def show
-    @prev_id = @flashcard.id - 1 unless @flashcard.id == 1
-    @next_id = @flashcard.id + 1 unless @flashcard.id == Flashcard.last.id
+    @all_ids = Flashcard.order(:id).pluck(:id)
+    current_position = @all_ids.index(@flashcard.id)
+
+    @prev_id = @all_ids[current_position - 1] if current_position && current_position > 0
+    @next_id = @all_ids[current_position + 1] if current_position && current_position < @all_ids.length - 1
   end
 
   private
