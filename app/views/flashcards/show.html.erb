@@ -1,7 +1,7 @@
 <!-- This is an example component -->
 <div class="flex">
   <a class="bg-gray-800 text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-red-700 hover:text-white px-3" 
-  href="<%= @prev_id ? flashcard_path(@prev_id) : '#' %>" >
+  href="<%= @prev_id ? flashcard_path(@prev_id) : '#' %>" data-turbo-frame="flashcardicon">
     <div>
       <div class="flex flex-row align-middle">
         <svg
@@ -22,6 +22,7 @@
     </div>
   </a>
 
+  <%= turbo_frame_tag 'flashcardicon'  do%>
   <section id="flashcardicon">
     <a
       href="#"
@@ -38,9 +39,10 @@
       </p>
     </a>
   </section>
+  <% end %>
 
   <a class="bg-gray-800 text-white rounded-r-md py-2 border-l border-gray-200 hover:bg-red-700 hover:text-white px-3"
-  href="<%= @next_id ? flashcard_path(@next_id) : '#' %>" >
+  href="<%= @next_id ? flashcard_path(@next_id) : '#' %>" data-turbo-frame="flashcardicon" >
     <div>
       <div class="flex flex-row align-middle">
         <span class="mr-2">Next</span>
