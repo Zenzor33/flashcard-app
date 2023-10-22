@@ -1,5 +1,7 @@
 Version 1:
 
+I want to create a button form submission in the turbo frame that updates a counter of some sort in order to test some concepts. I will create a button that says "Like" or "Unlike" and a text field that updates the number of likes. Since there is no user model, I can't create this in the traditional way. 
+
 Contact page: 
 - Does not require a resource. 
 
