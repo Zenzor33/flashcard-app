@@ -1,5 +1,8 @@
 Version 1:
 
+Contact page: 
+- Does not require a resource. 
+
 Flashcard: 
 By default, display front. When clicked, display back. 
 Create entries into the flashcard database
