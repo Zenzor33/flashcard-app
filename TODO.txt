@@ -6,6 +6,21 @@ I will add two buttons to the turboframe called "correct" and "incorrect," respe
 
 The UI will also display the statistics
 
+My previous idea regarding the model changes was incorrect. Since I want to keep track of individual user statistics, I need to createa join model between User and Flashcard called FlashcardStatistic. 
+
+FlashcardStatstic will have: 
+correct_count: int 
+incorrect_count: int 
+user:references
+flashcard:references 
+
+rails g migration CreateFlashcardStatistics correct_count:int:default=0 incorrect_count:int:default=0 user:references flashcard:references
+
+Model setup: 
+Flashcard has_many Users 
+Users has_many Flashcards
+Users has_many FlashcardStatistics
+
 Contact page: 
 - Does not require a resource. 
 
