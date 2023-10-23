@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_22_143752) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_23_110953) do
+  create_table "flashcard_statistics", force: :cascade do |t|
+    t.integer "correct_count", default: 0
+    t.integer "incorrect_count", default: 0
+    t.integer "user_id", null: false
+    t.integer "flashcard_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flashcard_id"], name: "index_flashcard_statistics_on_flashcard_id"
+    t.index ["user_id"], name: "index_flashcard_statistics_on_user_id"
+  end
+
   create_table "flashcards", force: :cascade do |t|
     t.string "front"
     t.string "back"
@@ -30,4 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_22_143752) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "flashcard_statistics", "flashcards"
+  add_foreign_key "flashcard_statistics", "users"
 end

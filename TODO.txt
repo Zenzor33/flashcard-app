@@ -14,7 +14,7 @@ incorrect_count: int
 user:references
 flashcard:references 
 
-rails g migration CreateFlashcardStatistics correct_count:int:default=0 incorrect_count:int:default=0 user:references flashcard:references
+rails g migration CreateFlashcardStatistics correct_count:integer:default=0 incorrect_count:integer:default=0 user:references flashcard:references
 
 Model setup: 
 Flashcard has_many Users 
