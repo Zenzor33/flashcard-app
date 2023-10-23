@@ -1,5 +1,51 @@
 Version 1:
 
+Logic changes: 
+
+- Change the routes file to support POST requests by the correct and incorrect button. 
+
+resources :flashcards do
+  member do
+    post :mark_correct
+    post :mark_incorrect
+  end
+end
+
+- The controller action handles the logic for when it receives the POST request of mark_correct vs mark_incorrect. 
+
+To do this, we create controller actions with the same name as the POST request 
+
+def mark_correct  
+update_statistic(true)
+render @flashcard
+end 
+
+def mark_incorrect 
+update_statistic(false)
+render @flashcard
+end  
+
+and a private method that handles the logic
+
+private  
+
+def update_statistic(is_correct) 
+  flashcard = flashcard.find(params[:id])
+  statistic = flashcard_statistic.find_or_initialize_by(user: current_user, flashcard: flashcard)
+
+  if is_correct 
+    statistic.correct_count += 1
+  else 
+    statistic.incorrect_count += 1
+  end 
+
+  statistic.save 
+end 
+
+Note that current_user is a helper method provided by devise. 
+
+button and database changes:
+
 I want to create a button form submission in the turbo frame that updates a counter of some sort in order to test some concepts. I will create a button that says "Like" or "Unlike" and a text field that updates the number of likes. Since there is no user model, I can't create this in the traditional way. 
 
 I will add two buttons to the turboframe called "correct" and "incorrect," respectively. I will add two columns of type integer to the Flashcard model named "correct_count" and "incorrect_count." The count for a flashcard increment according to which button the user clicks. 
