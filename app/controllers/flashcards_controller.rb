@@ -1,6 +1,6 @@
 class FlashcardsController < ApplicationController
 
-  before_action :set_flashcard, only: [:show]
+  before_action :set_flashcard, only: [:show, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
 
   def show
     @all_ids = Flashcard.order(:id).pluck(:id)
@@ -12,15 +12,15 @@ class FlashcardsController < ApplicationController
 
   def mark_correct  
     update_statistic(true)
-    # render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
-    render @flashcard
+    render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
+    # render @flashcard
 
   end 
     
   def mark_incorrect 
     update_statistic(false)
-    # render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
-    render @flashcard
+    render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
+    # render @flashcard
 
   end  
  
