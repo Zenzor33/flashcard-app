@@ -2,13 +2,13 @@
 #
 # Table name: flashcard_statistics
 #
-#  id              :integer          not null, primary key
+#  id              :bigint           not null, primary key
 #  correct_count   :integer          default(0)
 #  incorrect_count :integer          default(0)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  flashcard_id    :integer          not null
-#  user_id         :integer          not null
+#  flashcard_id    :bigint           not null
+#  user_id         :bigint           not null
 #
 # Indexes
 #
@@ -17,8 +17,8 @@
 #
 # Foreign Keys
 #
-#  flashcard_id  (flashcard_id => flashcards.id)
-#  user_id       (user_id => users.id)
+#  fk_rails_...  (flashcard_id => flashcards.id)
+#  fk_rails_...  (user_id => users.id)
 #
 class FlashcardStatistic < ApplicationRecord
   belongs_to :user 

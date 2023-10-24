@@ -2,7 +2,7 @@
 #
 # Table name: flashcards
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  back       :string
 #  front      :string
 #  created_at :datetime         not null

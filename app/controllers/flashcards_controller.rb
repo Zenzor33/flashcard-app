@@ -32,6 +32,9 @@ class FlashcardsController < ApplicationController
 
   def set_flashcard
     @flashcard = Flashcard.find_by(id: params[:id]) || Flashcard.first
+    unless @flashcard
+      redirect_to flashcards_path, alert: "Flashcard not found"
+    end
   end 
 
   def update_statistic(is_correct) 
