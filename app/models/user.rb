@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :flashcards
-  has_many :flashcardstatistics, through: :flashcardstatistics
+  has_many :flashcardstatistics
+  has_many :flashcards, through: :flashcardstatistics
 end
