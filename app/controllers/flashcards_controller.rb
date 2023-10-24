@@ -1,6 +1,6 @@
 class FlashcardsController < ApplicationController
 
-  before_action :set_flashcard, only: [:show, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
+  before_action :set_flashcard, only: [:show, :details, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
 
   def show
     @all_ids = Flashcard.order(:id).pluck(:id)
@@ -9,6 +9,9 @@ class FlashcardsController < ApplicationController
     @prev_id = @all_ids[current_position - 1] if current_position && current_position > 0
     @next_id = @all_ids[current_position + 1] if current_position && current_position < @all_ids.length - 1
   end
+
+  def details 
+  end 
 
   def mark_correct  
     update_statistic(true)
