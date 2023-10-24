@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       post :mark_correct
       post :mark_incorrect
+      get 'details'
     end
   end
 
