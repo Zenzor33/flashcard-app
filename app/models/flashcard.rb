@@ -1,5 +1,5 @@
 class Flashcard < ApplicationRecord
-  has_many :flashcardstatistics
-  has_many :users, through: :flashcardstatistics
+  has_many :flashcard_statistics
+  has_many :users, through: :flashcard_statistics
 
 end
