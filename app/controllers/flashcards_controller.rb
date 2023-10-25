@@ -2,6 +2,7 @@ class FlashcardsController < ApplicationController
 
   before_action :set_flashcard, only: [:show, :details, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
 
+
   def show
     @all_ids = Flashcard.order(:id).pluck(:id)
     current_position = @all_ids.index(@flashcard.id)
@@ -33,7 +34,7 @@ class FlashcardsController < ApplicationController
   def set_flashcard
     @flashcard = Flashcard.find_by(id: params[:id]) || Flashcard.first
     unless @flashcard
-      redirect_to flashcards_path, alert: "Flashcard not found"
+      redirect_to contact_path, alert: "Flashcard not found"
     end
   end 
 
