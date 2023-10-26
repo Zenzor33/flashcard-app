@@ -19,6 +19,10 @@ class FlashcardsController < ApplicationController
     update_statistic(true)
     # render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
     # render @flashcard
+    respond_to do |format|
+      format.turbo_stream 
+      format.html {redirect_to @flashcard}
+    end 
 
   end 
     
@@ -26,6 +30,10 @@ class FlashcardsController < ApplicationController
     update_statistic(false)
     # render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
     # render @flashcard
+    respond_to do |format|
+      format.turbo_stream 
+      format.html {redirect_to @flashcard}
+    end 
 
   end  
  
