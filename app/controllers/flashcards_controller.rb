@@ -1,6 +1,7 @@
 class FlashcardsController < ApplicationController
 
   before_action :set_flashcard, only: [:show, :details, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
+  before_action :set_flashcard_statistic
 
 
   def show
@@ -16,14 +17,14 @@ class FlashcardsController < ApplicationController
 
   def mark_correct  
     update_statistic(true)
-    render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
+    # render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
     # render @flashcard
 
   end 
     
   def mark_incorrect 
     update_statistic(false)
-    render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
+    # render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
     # render @flashcard
 
   end  
@@ -38,16 +39,18 @@ class FlashcardsController < ApplicationController
     end
   end 
 
+  def set_flashcard_statistic
+    @flashcard_statistic = FlashcardStatistic.find_or_initialize_by(user: current_user, flashcard: @flashcard)
+  end 
+
   def update_statistic(is_correct) 
     flashcard = Flashcard.find(params[:id])
-    statistic = FlashcardStatistic.find_or_initialize_by(user: current_user, flashcard: flashcard)
-  
     if is_correct 
-      statistic.correct_count += 1
+      @flashcard_statistic.correct_count += 1
     else 
-      statistic.incorrect_count += 1
+      @flashcard_statistic.incorrect_count += 1
     end 
   
-    statistic.save 
+    @flashcard_statistic.save 
   end 
 end
