@@ -1,7 +1,7 @@
 <div class="flex flex-col">
   <%= simple_form_for :search, url: flashcards_path, method: :get, wrapper: :default do |f| %>
     <div class="flex space-x-2">
-      <%= f.input :query, label: false, placeholder: 'Search flashcards...', input_html: { class: 'form-input' } %>
+      <%= f.input :front, name: 'front', label: false, placeholder: 'Search flashcards...', input_html: { class: 'form-input' } %>
       <%= f.input :sort_by, label: false, as: :select, collection: [['Highest Accuracy', 'highest_accuracy'], ['Lowest Accuracy', 'lowest_accuracy'], ['Name', 'name']], include_blank: 'Sort By', input_html: { class: 'form-select' } %>
       <%= f.button :submit, 'Search', class: 'px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600' %>
     </div>

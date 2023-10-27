@@ -4,8 +4,9 @@ class FlashcardsController < ApplicationController
   before_action :set_flashcard_statistic, except: [:index]
 
   def index  
-    @flashcards = Flashcard.all
+    @flashcards = Flashcard.search(params)
   end
+  
 
   def show
     @all_ids = Flashcard.order(:id).pluck(:id)
@@ -26,7 +27,6 @@ class FlashcardsController < ApplicationController
       format.turbo_stream 
       format.html {redirect_to @flashcard}
     end 
-
   end 
     
   def mark_incorrect 
@@ -37,7 +37,6 @@ class FlashcardsController < ApplicationController
       format.turbo_stream 
       format.html {redirect_to @flashcard}
     end 
-
   end  
  
 
@@ -61,7 +60,6 @@ class FlashcardsController < ApplicationController
     else 
       @flashcard_statistic.incorrect_count += 1
     end 
-  
     @flashcard_statistic.save 
   end 
 end
