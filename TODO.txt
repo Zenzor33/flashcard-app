@@ -1,5 +1,24 @@
 Version 1:
 
+Search field in flashcards/index . 
+
+The search field will start simple. The user can sort by typing the name. After that's working, i will add functionality for the user to select a predefined filter in the collection.
+
+First, I replace the @flashcards instance variable in the flashcards controller, which is defined as 
+@flashcards = Flashcard.all 
+with 
+@flashcards = Flashcard.search(params)
+
+This way, every time the index page loads, it calls the class method search on Flashcard model, which will store the flashcards with the appropriate filters.
+
+Better put: When the user clicks search, it sends a GET request to the server with the relevent data in the params hash. The server routes the request to the index action in the Flashcard controller, which invokes the class method "search" on the Flashcard model. The controller stores the response from search into the @flashcards instance variable and renders the appropriate view.  
+
+Second, I will create a "search" on the Flashcard model. 
+
+Without learning SQL, I'll just need to generate the query from GPT.
+
+
+
 flashcardsindex 
 
 The index page will display all the flashcards. Do not worry about the concern of excessive number of flashcards (the display can later be trimmed). Each flashcard will show the UI and the user's statistics. 

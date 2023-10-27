@@ -1,32 +1,43 @@
-<div class="flex gap-2">
-  <% @flashcards.each do |flashcard| %>
-    <div class="flex flex-col">
-      <a
-        href="<%= details_flashcard_path(flashcard) %>"
-        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-      >
-        <h5
-          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-        >
-        <%= flashcard.front %>
-        </h5>
-        <p class="font-normal text-gray-700 dark:text-gray-400">
-          Phonetics here
-        </p>
-      </a>
-      <div id="flashcard_statistics">
-        <div>Correct: <span><%= flashcard.flashcard_statistics.find_by(user: current_user).correct_count %></span></div>
-        <div>Incorrect <span><%= flashcard.flashcard_statistics.find_by(user: current_user).incorrect_count %></span>:</div>
-        <div>Accuracy: 
-        <%= 
-        stat = flashcard.flashcard_statistics.find_by(user: current_user)
-        if stat
-          "#{(stat.accuracy*100).round(0)}%"
-        else 
-          "N/A"
-        end
-        %></div>
-      </div>
+<div class="flex flex-col">
+  <%= simple_form_for :search, url: flashcards_path, method: :get, wrapper: :default do |f| %>
+    <div class="flex space-x-2">
+      <%= f.input :query, label: false, placeholder: 'Search flashcards...', input_html: { class: 'form-input' } %>
+      <%= f.input :sort_by, label: false, as: :select, collection: [['Highest Accuracy', 'highest_accuracy'], ['Lowest Accuracy', 'lowest_accuracy'], ['Name', 'name']], include_blank: 'Sort By', input_html: { class: 'form-select' } %>
+      <%= f.button :submit, 'Search', class: 'px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600' %>
     </div>
   <% end %>
+
+
+  <div class="flex gap-2">
+    <% @flashcards.each do |flashcard| %>
+      <div class="flex flex-col">
+        <a
+          href="<%= details_flashcard_path(flashcard) %>"
+          class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+        >
+          <h5
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
+          <%= flashcard.front %>
+          </h5>
+          <p class="font-normal text-gray-700 dark:text-gray-400">
+            Phonetics here
+          </p>
+        </a>
+        <div id="flashcard_statistics">
+          <div>Correct: <span><%= flashcard.flashcard_statistics.find_by(user: current_user).correct_count %></span></div>
+          <div>Incorrect <span><%= flashcard.flashcard_statistics.find_by(user: current_user).incorrect_count %></span>:</div>
+          <div>Accuracy: 
+          <%= 
+          stat = flashcard.flashcard_statistics.find_by(user: current_user)
+          if stat
+            "#{(stat.accuracy*100).round(0)}%"
+          else 
+            "N/A"
+          end
+          %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

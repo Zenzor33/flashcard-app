@@ -69,4 +69,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3100 }
+  config.log_level = :debug
+  config.logger = Logger.new(STDOUT)
+
 end

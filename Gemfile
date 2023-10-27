@@ -78,3 +78,6 @@ gem "tailwindcss-rails", "~> 2.0"
 gem "devise", "~> 4.9"
 
 gem "annotate", "~> 3.2", :group => :development
+gem 'simple_form'
+gem 'pry-rails', :group => :development
+
