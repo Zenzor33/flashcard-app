@@ -1,5 +1,14 @@
 Version 1:
 
+flashcardsindex 
+
+The index page will display all the flashcards. Do not worry about the concern of excessive number of flashcards (the display can later be trimmed). Each flashcard will show the UI and the user's statistics. 
+
+The index page will also feature a formfield to search and filter the flashcards. 
+
+Steps: 
+1. Build the UI on the index page for the flashcard display 
+
 Logic changes: 
 
 - Change the routes file to support POST requests by the correct and incorrect button. 

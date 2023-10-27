@@ -24,4 +24,8 @@ class FlashcardStatistic < ApplicationRecord
   belongs_to :user 
   belongs_to :flashcard  
 
+  def accuracy 
+    total = correct_count + incorrect_count
+    (correct_count.to_f / total)
+  end 
 end

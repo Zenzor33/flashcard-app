@@ -1,8 +1,11 @@
 class FlashcardsController < ApplicationController
 
   before_action :set_flashcard, only: [:show, :details, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
-  before_action :set_flashcard_statistic
+  before_action :set_flashcard_statistic, except: [:index]
 
+  def index  
+    @flashcards = Flashcard.all
+  end
 
   def show
     @all_ids = Flashcard.order(:id).pluck(:id)
