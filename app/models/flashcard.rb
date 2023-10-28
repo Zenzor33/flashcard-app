@@ -12,12 +12,14 @@ class Flashcard < ApplicationRecord
   has_many :flashcard_statistics
   has_many :users, through: :flashcard_statistics
 
-  def self.search(params)
-    if params && params[:search][:front].present?
-      search_term = params[:search][:front]
-      where("lower(front) LIKE ?", "%#{search_term.downcase}%")
+  def self.search(params={})
+    if params[:front]
+      search_term = params[:front].downcase
+      where("lower(front) LIKE ?", "%#{search_term}%")
     else
       all
     end
-  end  
+  end
+  
+  
 end
