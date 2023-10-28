@@ -1,5 +1,11 @@
  
-<%= form_with(url: flashcards_path, method: :get, data: {turbo_frame: "results", turbo_action:"advance"} ) do |f| %>
+<%= form_with(url: flashcards_path, method: :get, 
+  data: {
+    turbo_frame: "results", 
+    turbo_action:"advance",
+    controller: "form",
+    action: "input->form#submit"
+    } ) do |f| %>
   <div>
     <%= f.search_field :front, placeholder: 'front...',
           value: params[:front] %>
