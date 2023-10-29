@@ -1,24 +1,23 @@
- 
-<%= form_with(url: flashcards_path, method: :get, 
-  data: {
-    turbo_frame: "results", 
-    turbo_action:"advance",
-    controller: "form",
-    action: "input->form#submit"
-    } ) do |f| %>
+ <%= simple_form_for("", url: flashcards_path, method: :get, 
+    html: { 
+      "data-turbo-frame": "results", 
+      "data-turbo-action": "advance", 
+      "data-controller": "form", 
+      "data-action": "input->form#submit" }
+    ) do |f| %>
   <div>
-    <%= f.search_field :front, placeholder: 'front...',
-          value: params[:front] %>
+    <%= f.input :front, input_html: { placeholder: 'front...', value: params[:front] } %>
   </div>
   <div>
-    <%= f.select :sort_by,
-          [['Highest Accuracy', 'highest_accuracy'], ['Lowest Accuracy', 'lowest_accuracy'], ['Name', 'name']],
-          include_blank: "Sort By", selected: params[:sort_by] %>
+    <%= f.input :sort_by, as: :select, collection: [['Highest Accuracy', 'highest_accuracy'], ['Lowest Accuracy', 'lowest_accuracy'], ['Name', 'name']], prompt: "Sort By", selected: params[:sort_by] %>
   </div>
   <div>
-    <%= f.submit "Search" %>
+    <%= f.button :submit, "Search" %>
   </div>
 <% end %>
+
+
+
 
 
 <div class="flex gap-2">

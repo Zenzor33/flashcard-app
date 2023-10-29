@@ -1,0 +1,30 @@
+ 
+<%= form_with(url: flashcards_path, method: :get, 
+  data: {
+    turbo_frame: "results", 
+    turbo_action:"advance",
+    controller: "form",
+    action: "input->form#submit"
+    } ) do |f| %>
+  <div>
+    <%= f.search_field :front, placeholder: 'front...',
+          value: params[:front] %>
+  </div>
+  <div>
+    <%= f.select :sort_by,
+          [['Highest Accuracy', 'highest_accuracy'], ['Lowest Accuracy', 'lowest_accuracy'], ['Name', 'name']],
+          include_blank: "Sort By", selected: params[:sort_by] %>
+  </div>
+  <div>
+    <%= f.submit "Search" %>
+  </div>
+<% end %>
+
+
+
+
+<div class="flex gap-2">
+  <%= turbo_frame_tag 'results'  do%>
+    <%= render partial: 'flashcards/search_results', locals: { flashcard: @flashcards } %>
+  <% end %>
+</div>
