@@ -1,5 +1,18 @@
 Version 1:
 
+The lab 
+
+First, update the navbar. Replace 'Projects' with 'My Cards'. 
+
+1. Next to 'My Cards', add a counter.
+
+Index section redesign
+- Render add/remove buttons beneath the statistics. 
+- Add/remove buttons update the counter next to 'My Cards'
+
+'My Cards'
+- Work on this later.
+
 Search field in flashcards/index . 
 
 The search field will start simple. The user can sort by typing the name. After that's working, i will add functionality for the user to select a predefined filter in the collection.
@@ -8,7 +21,7 @@ When the user clicks search, it sends a GET request to the server with the relev
 
 1. Edit the form in view template to pass the appropiate data to the server in the params hash.
 2. Update the index action in the Flashcard controller. The index action will assign Flashcard.search to the instance variable @flashcards. 
-3. Update the Flashcard.rb model. Create a class method named "search" that finds all the Flashcard names (defined by Flashcard.front) that match the search query. 
+3. Update the Flashcard.rb model. Create a class method named "search" that finds all the Flashcard names (defined by Flashcard.front) that match the search query.
 
 Without learning SQL, I'll just need to generate the query from GPT.
 
