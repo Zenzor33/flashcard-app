@@ -7,11 +7,23 @@ First, update the navbar. Replace 'Projects' with 'My Cards'.
 1. Next to 'My Cards', add a counter.
 
 Index section redesign
-- Render add/remove buttons beneath the statistics. 
-- Add/remove buttons update the counter next to 'My Cards'
+- Render add/remove buttons beneath the statistics. z
+- Add/remove buttons update the counter next to 'My Cards' x
 
 'My Cards'
-- Work on this later.
+- The index page 'Home' will display all flashcards 
+- The 'my cards' page will display only the cards that the user selected from the index page. 
+
+The my cards section will be organized based on the users memory level*: 
+- New Word
+- Learning 
+- Progressing  
+- Mastered
+
+*The memory level logic will be written later. 
+
+1. Create a member route in routes.rb for my-cards 
+2. Create a my-cards view templates 
 
 Search field in flashcards/index . 
 
