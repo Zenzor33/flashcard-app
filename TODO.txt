@@ -22,7 +22,8 @@ The my cards section will be organized based on the users memory level*:
 
 *The memory level logic will be written later. 
 
-1. Create a member route in routes.rb for my-cards 
+1. Create a member route in routes.rb for my-cards x 
+  - This is correct. The member route wold be nested under Flashcards. A new controller and view template is necessary. Perhaps a new model? 
 2. Create a my-cards view templates 
 
 Search field in flashcards/index . 
