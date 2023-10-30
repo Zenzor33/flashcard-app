@@ -1,3 +1,4 @@
+
  <%= simple_form_for("", url: flashcards_path, method: :get, 
     html: { 
       "data-turbo-frame": "results", 
@@ -5,23 +6,21 @@
       "data-controller": "form", 
       "data-action": "input->form#submit" }
     ) do |f| %>
-  <div>
-    <%= f.input :front, input_html: { placeholder: 'front...', value: params[:front] } %>
-  </div>
-  <div>
-    <%= f.input :sort_by, as: :select, collection: [['Highest Accuracy', 'highest_accuracy'], ['Lowest Accuracy', 'lowest_accuracy'], ['Name', 'name']], prompt: "Sort By", selected: params[:sort_by] %>
-  </div>
-  <div>
-    <%= f.button :submit, "Search" %>
+  <div class="flex justify-center gap-2">
+    <div>
+      <%= f.input :front, label: false, input_html: { placeholder: 'Name...', value: params[:front] } %>
+    </div>
+    <div>
+      <%= f.input :sort_by, label: false, as: :select, collection: [['Highest Accuracy', 'highest_accuracy'], ['Lowest Accuracy', 'lowest_accuracy'], ['Name', 'name']], prompt: "Sort By", selected: params[:sort_by] %>
+    </div>
+    <div class="flex align-center">
+      <%= f.button :submit, "Search" %>
+    </div>
   </div>
 <% end %>
 
-
-
-
-
-<div class="flex gap-2">
-  <%= turbo_frame_tag 'results'  do%>
+<%= turbo_frame_tag 'results'  do%>
+  <div class="flex gap-2 mt-8 justify-center">
     <%= render partial: 'flashcards/search_results', locals: { flashcard: @flashcards } %>
-  <% end %>
-</div>
+  </div>
+<% end %>
