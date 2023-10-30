@@ -26,6 +26,12 @@ The my cards section will be organized based on the users memory level*:
   - This is correct. The member route wold be nested under Flashcards. A new controller and view template is necessary. Perhaps a new model? 
 2. Create a my-cards view templates 
 
+Adjusted plan: 
+
+1. Create a new resource called deck and nest it as a resource of user. 
+2. Deck will have a belongs_to has_one relationship with User. 
+2. Create the UI
+
 Search field in flashcards/index . 
 
 The search field will start simple. The user can sort by typing the name. After that's working, i will add functionality for the user to select a predefined filter in the collection.
