@@ -2,10 +2,11 @@
 #
 # Table name: decks
 #
-#  id         :bigint           not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id            :bigint           not null, primary key
+#  flashcard_ids :integer          default([]), is an Array
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :bigint           not null
 #
 # Indexes
 #
@@ -17,4 +18,8 @@
 #
 class Deck < ApplicationRecord
   belongs_to :user
+
+  def add_flashcard_to_deck(id)
+    self.flashcard_ids << id
+  end 
 end
