@@ -1,6 +1,6 @@
 class FlashcardsController < ApplicationController
 
-  before_action :set_flashcard, only: [:index, :show, :details, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
+  before_action :set_flashcard, only: [:show, :details, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
   before_action :set_flashcard_statistic, except: [:index]
 
   def index  

@@ -1,3 +1,31 @@
+Version 2:
+
+Refactor.
+
+Controllers: 
+flashcards
+flashcard_statistics 
+users
+decks
+
+
+Flashcards:
+
+The homepage will render the flashcards index page. It will display a (cut off) list of all the available flashcards.
+
+The flashcards show page should render the details of individual flashcards. 
+
+Decks: 
+
+Deck will be an independent resource.
+Deck belongs_to User 
+User has_one deck  
+User can add cards to its deck. 
+Link to "my-deck" will render the deck show page.
+
+
+
+
 Version 1:
 
 The lab 
