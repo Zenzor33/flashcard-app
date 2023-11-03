@@ -1,48 +1,50 @@
 <% @flashcards.each do |flashcard| %>
-  <div class="flex-col">
-    <a
-      data-turbo-frame = "_top"
-      class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-    >
-      <h5
-        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+  <%= turbo_frame_tag dom_id(flashcard) do%>
+    <div id="search_results" class="flex-col">
+      <a
+        data-turbo-frame = "_top"
+        class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
       >
-      <%= flashcard.front %>
-      </h5>
-      <p class="font-normal text-gray-700 dark:text-gray-400">
-        Phonetics here
-      </p>
-    </a>
-    
-    <% if current_user && flashcard.flashcard_statistics.exists?(user: current_user) %>
-        <div class="flashcard_statistics">
-          <div>Correct: <span><%= flashcard.flashcard_statistics.find_by(user: current_user).correct_count %></span></div>
-          <div>Incorrect <span><%= flashcard.flashcard_statistics.find_by(user: current_user).incorrect_count %></span>:</div>
-          <div>Accuracy: 
-          <%= 
-          
-          stat = flashcard.flashcard_statistics.find_by(user: current_user)
-          "#{(stat.accuracy*100).round(0)}%"
-          %>
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+        <%= flashcard.front %>
+        </h5>
+        <p class="font-normal text-gray-700 dark:text-gray-400">
+          Phonetics here
+        </p>
+      </a>
+      
+      <% if current_user && flashcard.flashcard_statistics.exists?(user: current_user) %>
+          <div class="flashcard_statistics">
+            <div>Correct: <span><%= flashcard.flashcard_statistics.find_by(user: current_user).correct_count %></span></div>
+            <div>Incorrect <span><%= flashcard.flashcard_statistics.find_by(user: current_user).incorrect_count %></span>:</div>
+            <div>Accuracy: 
+            <%= 
+            
+            stat = flashcard.flashcard_statistics.find_by(user: current_user)
+            "#{(stat.accuracy*100).round(0)}%"
+            %>
+            </div>
           </div>
-        </div>
-      <% else %>
-        <div class="flashcard_statistics">
-          <div>Correct: N/A</div>
-          <div>Incorrect: N/A</div>
-          <div>Accuracy: N/A
+        <% else %>
+          <div class="flashcard_statistics">
+            <div>Correct: N/A</div>
+            <div>Incorrect: N/A</div>
+            <div>Accuracy: N/A
+            </div>
           </div>
-        </div>
-    <% end %>
-
-    <% if current_user %>
-      <% if current_user.deck.flashcard_ids.include?(flashcard.id) %>
-        <%= button_to 'Remove from Deck', remove_flashcard_user_deck_path(current_user.id, @deck, id:flashcard.id), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete %>
-      <% else %>
-        <%= button_to 'Add to Deck', add_flashcard_user_deck_path(current_user.id, @deck, id:flashcard.id), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :post %>
       <% end %>
-    <% end %>
 
-    <%= link_to "Flashcard Details", details_flashcard_path(flashcard), data: {turbo_frame: "_top"} %>
-  </div>
+      <% if current_user %>
+        <% if current_user.deck.flashcard_ids.include?(flashcard.id) %>
+          <%= button_to 'Remove from Deck', remove_flashcard_user_deck_path(current_user.id, @deck, id:flashcard.id), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete %>
+        <% else %>
+          <%= button_to 'Add to Deck', add_flashcard_user_deck_path(current_user.id, @deck, id:flashcard.id), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :post %>
+        <% end %>
+      <% end %>
+
+      <%= link_to "Flashcard Details", details_flashcard_path(flashcard), data: {turbo_frame: "_top"} %>
+    </div>
+  <% end %>
 <% end %>

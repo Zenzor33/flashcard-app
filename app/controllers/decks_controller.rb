@@ -5,7 +5,12 @@ class DecksController < ApplicationController
   def add_flashcard 
     @deck = current_user.deck
     @deck.add_flashcard_to_deck(params[:id])
-    redirect_back(fallback_location: flashcards_path)
+    # redirect_back(fallback_location: flashcards_path)
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
   end 
 
   def remove_flashcard
