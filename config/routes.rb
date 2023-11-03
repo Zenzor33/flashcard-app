@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :user do 
-    resources :decks 
+    resources :decks do 
+      member do 
+        post 'add_flashcard'
+        delete 'remove_flashcard'
+      end 
+    end
   end
 
   resources :flashcards do

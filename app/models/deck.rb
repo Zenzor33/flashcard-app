@@ -19,7 +19,8 @@
 class Deck < ApplicationRecord
   belongs_to :user
 
-  def add_flashcard_to_deck(id)
-    self.flashcard_ids << id
+  def add_flashcard_to_deck(flashcard_id)
+    self.flashcard_ids << flashcard_id
+    save
   end 
 end

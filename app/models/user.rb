@@ -25,4 +25,12 @@ class User < ApplicationRecord
   has_many :flashcard_statistics
   has_many :flashcards, through: :flashcard_statistics
   has_one :deck
+
+  after_create :assign_default_deck 
+
+  private
+
+  def assign_default_deck
+    build_deck.save
+  end 
 end
