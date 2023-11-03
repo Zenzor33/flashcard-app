@@ -18,6 +18,12 @@ class DecksController < ApplicationController
   def remove_flashcard
     @deck = current_user.deck 
     @deck.remove_flashcard_from_deck(params[:flashcard_id].to_i)
-    redirect_back(fallback_location: flashcards_path)
+    
+    @flashcard = Flashcard.find(params[:flashcard_id])
+
+    respond_to do |format|
+      format.turbo_stream {render :create}
+      format.html
+    end
   end
 end
