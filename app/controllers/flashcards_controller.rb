@@ -2,6 +2,7 @@ class FlashcardsController < ApplicationController
 
   before_action :set_flashcard, only: [:show, :details, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
   before_action :set_flashcard_statistic, except: [:index]
+  before_action :set_deck
 
   def index  
     @flashcards = Flashcard.search(params)
@@ -41,6 +42,12 @@ class FlashcardsController < ApplicationController
  
 
   private
+
+  def set_deck 
+    if current_user 
+      @deck = User.find(current_user.id).deck 
+    end
+  end 
 
   def set_flashcard
     @flashcard = Flashcard.find_by(id: params[:id]) || Flashcard.first
