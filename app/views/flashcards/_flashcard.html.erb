@@ -1,3 +1,4 @@
+<%= turbo_frame_tag dom_id(flashcard) do%>
 <div id="search_results" class="flex-col">
       <a
         data-turbo-frame = "_top"
@@ -44,3 +45,4 @@
 
       <%= link_to "Flashcard Details", details_flashcard_path(flashcard), data: {turbo_frame: "_top"} %>
     </div>
+      <% end %>
