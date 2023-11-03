@@ -23,4 +23,9 @@ class Deck < ApplicationRecord
     self.flashcard_ids << flashcard_id
     save
   end 
+
+  def remove_flashcard_from_deck(flashcard_id)
+    self.flashcard_ids.delete(flashcard_id)
+    save
+  end 
 end
