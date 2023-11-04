@@ -1,5 +1,13 @@
 Version 2:
 
+Profile dropdown: 
+
+menu = document.querySelector('#user-dropdown-menu')
+button = document.querySelector('#user-menu-button')
+button.addEventListener('click', () => {
+  menu.classList.toggle('hidden');
+});
+
 Refactor.
 
 Controllers: 
