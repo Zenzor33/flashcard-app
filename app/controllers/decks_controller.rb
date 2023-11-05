@@ -3,8 +3,12 @@ class DecksController < ApplicationController
   # before_action :authenticate_user!
   # before_action :set_flashcard
 
+  def show 
+    @deck = current_user.deck
+  end
+
   def show_category
-    
+    @deck = current_user.deck
   end
 
   def add_flashcard 
