@@ -22,7 +22,11 @@ class Deck < ApplicationRecord
   has_many :flashcards, through: :deck_flashcards
 
   def get_flashcards_by_category(category)
-    Flashcard.where(category: category)
+    if category == 'all'
+      self.flashcards
+    else 
+      self.flashcards.where(category: category)
+    end
   end 
 
   def add_flashcard_to_deck(flashcard_id)
