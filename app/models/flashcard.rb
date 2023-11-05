@@ -12,7 +12,7 @@
 class Flashcard < ApplicationRecord
   has_many :flashcard_statistics
   has_many :users, through: :flashcard_statistics
-  has_many :deck_flashcards
+  has_many :decks, through: :deck_flashcards
 
   def self.search(params={})
     if params[:front]
