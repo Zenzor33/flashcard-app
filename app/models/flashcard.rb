@@ -4,6 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  back       :string
+#  category   :string           default("new"), not null
 #  front      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
