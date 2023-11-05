@@ -29,13 +29,13 @@ class Deck < ApplicationRecord
     end
   end 
 
-  def add_flashcard_to_deck(flashcard_id)
-    self.flashcard_ids << flashcard_id
+  def add_flashcard_to_deck(flashcard)
+    self.flashcards.push(flashcard)
     save
   end 
 
-  def remove_flashcard_from_deck(flashcard_id)
-    self.flashcard_ids.delete(flashcard_id)
+  def remove_flashcard_from_deck(flashcard)
+    self.flashcards.delete(flashcard)
     save
   end 
 end

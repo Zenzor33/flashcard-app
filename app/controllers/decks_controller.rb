@@ -11,7 +11,8 @@ class DecksController < ApplicationController
 
   def add_flashcard 
     @deck = current_user.deck
-    @deck.add_flashcard_to_deck(params[:flashcard_id])
+    flashcard = Flashcard.find(params[:flashcard_id].to_i)
+    @deck.add_flashcard_to_deck(flashcard)
 
     @flashcard = Flashcard.find(params[:flashcard_id])
 
@@ -23,7 +24,8 @@ class DecksController < ApplicationController
 
   def remove_flashcard
     @deck = current_user.deck 
-    @deck.remove_flashcard_from_deck(params[:flashcard_id].to_i)
+    flashcard = Flashcard.find(params[:flashcard_id].to_i)
+    @deck.remove_flashcard_from_deck(flashcard)
     
     @flashcard = Flashcard.find(params[:flashcard_id])
 
