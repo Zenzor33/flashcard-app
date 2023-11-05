@@ -9,6 +9,8 @@ class DecksController < ApplicationController
 
   def show_category
     @deck = current_user.deck
+    @category = params[:category]
+    @categorized_flashcards = get_flashcards_by_category(@category)
   end
 
   def add_flashcard 

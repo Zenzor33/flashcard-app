@@ -19,6 +19,10 @@
 class Deck < ApplicationRecord
   belongs_to :user
 
+  def get_flashcards_by_category(category)
+    Flashcard.where(id: deck.flashcard_ids, category: category)
+  end 
+
   def add_flashcard_to_deck(flashcard_id)
     self.flashcard_ids << flashcard_id
     save
