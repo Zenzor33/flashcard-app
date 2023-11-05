@@ -18,6 +18,7 @@
 #
 class Deck < ApplicationRecord
   belongs_to :user
+  has_many :deck_flashcards
 
   def get_flashcards_by_category(category)
     Flashcard.where(category: category)
