@@ -11,7 +11,6 @@ Rails.application.routes.draw do
       member do 
         post 'add_flashcard'
         delete 'remove_flashcard'
-        get 'category/:category', action: :show_category, as: 'category'
       end 
     end
   end
