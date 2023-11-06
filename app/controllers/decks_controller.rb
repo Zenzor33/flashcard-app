@@ -8,8 +8,8 @@ class DecksController < ApplicationController
     @category = params[:category] || 'all'
     @categorized_flashcards = @deck.get_flashcards_by_category(current_user, @category)
     @flashcard_statistics = @deck.flashcard_statistics_for_user(current_user)
-    @correct_count = @deck.correct_count_sum(current_user)
-    @incorrect_count = @deck.incorrect_count_sum(current_user)
+    @correct_count = @deck.correct_count_sum(current_user, @category)
+    @incorrect_count = @deck.incorrect_count_sum(current_user, @category)
     @accuracy = @deck.accuracy(@correct_count, @incorrect_count)
   end
 
