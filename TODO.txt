@@ -1,6 +1,14 @@
 Version 2:
 
+Database: 
+- The category column in Flashcard should be removed. We can not store the category in the Flashcard table because that category is supposed to be user dependent. 
+- Where should the category column be?
+
 Decks page.
+
+In order to retrieve flashcard_statistics from the decks page, what are the options?
+- create an association between decks, flashcards, and flashcard_statistics?
+- run a query
 
 Highight buttons on deck page based on current page 
 

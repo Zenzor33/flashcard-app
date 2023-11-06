@@ -21,6 +21,24 @@ class Deck < ApplicationRecord
   has_many :deck_flashcards
   has_many :flashcards, through: :deck_flashcards
 
+  def flashcard_statistics_for_user(user)
+    FlashcardStatistic
+      .joins(:flashcard)
+      .where(flashcards: { id: flashcard_ids }, user: user)
+  end
+
+  def correct_count_sum(user)
+    flashcard_statistics_for_user(user).sum(:correct_count)
+  end 
+
+  def incorrect_count_sum(user)
+    flashcard_statistics_for_user(user).sum(:incorrect_count)
+  end 
+
+  def accuracy(correct_count, incorrect_count)
+    ((correct_count.to_f / (correct_count + incorrect_count)) * 100).round(0)
+  end 
+
   def get_flashcards_by_category(category)
     if category == 'all'
       self.flashcards
