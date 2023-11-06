@@ -39,12 +39,14 @@ class Deck < ApplicationRecord
   end 
 
   def incorrect_count_sum(user, category)
-    category == 'all' ? flashcard_statistics_for_user(user).sum(:correct_count) : flashcard_statistics_for_user(user).where(category: category).sum(:incorrect_count)
+    category == 'all' ? flashcard_statistics_for_user(user).sum(:incorrect_count) : flashcard_statistics_for_user(user).where(category: category).sum(:incorrect_count)
   end 
 
   def accuracy(correct_count, incorrect_count)
-    ((correct_count.to_f / (correct_count + incorrect_count)) * 100).round(0)
-  end 
+    total = correct_count + incorrect_count
+    return 0 if total.zero?
+    ((correct_count.to_f / total) * 100).round(0)
+  end
 
 
 
