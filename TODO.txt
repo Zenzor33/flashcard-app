@@ -2,6 +2,8 @@ Version 2:
 
 Decks page.
 
+Highight buttons on deck page based on current page 
+
 When the user clicks a button, I want to update the decks stats and decks flashcard stats to display the fitered stats by category. When the user clicks the button, it can send a post request to the server with the action labelled by the name of the filter. 
 
 Profile dropdown: 
