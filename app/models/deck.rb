@@ -39,11 +39,11 @@ class Deck < ApplicationRecord
     ((correct_count.to_f / (correct_count + incorrect_count)) * 100).round(0)
   end 
 
-  def get_flashcards_by_category(category)
+  def get_flashcards_by_category(user, category)
     if category == 'all'
       self.flashcards
     else 
-      self.flashcards.where(category: category)
+      self.flashcard_statistics_for_user(user).where(category: category)
     end
   end 
 

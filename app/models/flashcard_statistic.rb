@@ -3,6 +3,7 @@
 # Table name: flashcard_statistics
 #
 #  id              :bigint           not null, primary key
+#  category        :string           default("new")
 #  correct_count   :integer          default(0)
 #  incorrect_count :integer          default(0)
 #  created_at      :datetime         not null
