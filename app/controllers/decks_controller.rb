@@ -11,6 +11,11 @@ class DecksController < ApplicationController
     @correct_count = @deck.correct_count_sum(current_user, @category)
     @incorrect_count = @deck.incorrect_count_sum(current_user, @category)
     @accuracy = @deck.accuracy(@correct_count, @incorrect_count)
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html 
+    end
   end
 
   def add_flashcard 
