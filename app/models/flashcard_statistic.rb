@@ -3,6 +3,7 @@
 # Table name: flashcard_statistics
 #
 #  id              :bigint           not null, primary key
+#  accuracy        :float            default(0.0)
 #  category        :string           default("new")
 #  correct_count   :integer          default(0)
 #  incorrect_count :integer          default(0)
@@ -25,8 +26,18 @@ class FlashcardStatistic < ApplicationRecord
   belongs_to :user 
   belongs_to :flashcard  
 
+  before_save :update_accuracy
+
   def accuracy 
     total = correct_count + incorrect_count
     (correct_count.to_f / total)
   end 
+
+  private
+
+  def update_accuracy
+    total = correct_count + incorrect_count
+    self.accuracy = total.zero? ? 0.0 : (correct_count.to_f / total * 100)
+  end
+
 end
