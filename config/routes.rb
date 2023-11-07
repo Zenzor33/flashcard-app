@@ -2,6 +2,8 @@
 #
 
 Rails.application.routes.draw do
+  get 'studies/show'
+  get 'studies/update'
   # resources :decks
 
   devise_for :users
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
       member do 
         post 'add_flashcard'
         delete 'remove_flashcard'
+        resources :study, only: [:show, :update], controller: 'studies'
       end 
     end
   end

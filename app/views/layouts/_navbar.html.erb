@@ -31,14 +31,12 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-           <%= link_to "Home", flashcards_path, class: "#{current_or_default(flashcards_path)} rounded-md px-3 py-2 text-sm font-medium", aria_current: ('page' if current_page?(flashcards_path)) %>
+            <%= link_to "Home", flashcards_path, class: "#{current_or_default(flashcards_path)} rounded-md px-3 py-2 text-sm font-medium", aria_current: ('page' if current_page?(flashcards_path)) %>
 
-
-
-            <% if @flashcard.present? %>
-            <a href="<%= flashcard_path(@flashcard) %> "class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study</a>
-            <% else %>
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study</a>
+            <% if current_user %>
+              <a href="<%= user_study_path(current_user, current_user.deck) %> "class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study</a>
+              <% else %>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study</a>
             <% end %>
 
             <% if current_user %>
