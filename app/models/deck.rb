@@ -44,15 +44,6 @@ class Deck < ApplicationRecord
     end 
   end 
 
-  # def get_flashcard_accuracy(user, flashcard)
-  #   flashcard_statistics = self.flashcard_statistics_for_user(user).find_by(flashcard_id: flashcard)
-  #   correct_count = flashcard_statistics.correct_count
-  #   incorrect_count = flashcard_statistics.incorrect_count
-  #   total_count = correct_count + incorrect_count
-  #   return 0 if total.zero?
-  #   ((correct_count.to_f / total) * 100).round(0)
-  # end 
-
   def correct_count_sum(user, category)
     category == 'all' ? flashcard_statistics_for_user(user).sum(:correct_count) : flashcard_statistics_for_user(user).where(category: category).sum(:correct_count) 
   end 
