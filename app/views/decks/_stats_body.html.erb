@@ -1,0 +1,43 @@
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="mt-1 flow-root">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <div class="table min-w-full divide-y divide-gray-300">
+          <!-- Mimic THEAD -->
+          <div class="table-header-group">
+            <div class="table-row">
+              <!-- Mimic TH -->
+              <div class="table-cell py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Front</div>
+              <div class="table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Back</div>
+              <div class="table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Correct</div>
+              <div class="table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Incorrect</div>
+              <div class="table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Accuracy</div>
+              <div class="table-cell relative py-3.5 pl-3 pr-4 sm:pr-0">
+                <span class="sr-only">Edit</span>
+              </div>
+            </div>
+          </div>
+          <!-- Mimic TBODY -->
+          <div class="table-row-group divide-y divide-gray-200">
+          <% @categorized_flashcards.each do |flashcard|%>
+            <!-- Mimic TR -->
+            <div class="table-row">
+              <!-- Mimic TD -->
+              <div class="table-cell whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= flashcard.front %></div>
+              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= flashcard.back %></div>
+              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= @flashcard_statistics.find_by(flashcard_id: flashcard).correct_count %></div>
+              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= @flashcard_statistics.find_by(flashcard_id: flashcard).incorrect_count %></div>
+              <div class="table-cell relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
+              </div>
+              
+            </div>
+            <!-- Repeat for more "rows" -->
+            <!-- ...More people... -->
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

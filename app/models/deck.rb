@@ -26,12 +26,22 @@ class Deck < ApplicationRecord
       .where(flashcards: { id: flashcard_ids }, user: user)
   end
 
-  def get_flashcards_by_category(user, category)
+  def get_flashcard_statistics_by_category(user, category)
     if category == 'all'
-      self.flashcards
+      self.flashcard_statistics_for_user(user)
     else 
       self.flashcard_statistics_for_user(user).where(category: category)
     end
+  end 
+
+  def get_flashcards_by_category(user, category)
+    if category == 'all'
+      self.flashcards 
+    else  
+      statistics = self.get_flashcard_statistics_by_category(user, category)
+      flashcard_ids = statistics.map(&:flashcard_id)
+      Flashcard.where(id: flashcard_ids)
+    end 
   end 
 
   def correct_count_sum(user, category)
