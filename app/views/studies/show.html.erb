@@ -74,16 +74,16 @@
   <div class="flex flex-col items-center justify-center pt-6 gap-2">
     <h2>Stats</h2>
     <div class="flex">
-      <div>Correct: <%= @flashcard_statistics.correct_count %></div>
-      <p id="correct_count"> </p>
+      <div>Correct:</div>
+      <p id="correct_count"><%= @flashcard_statistics.correct_count %> </p>
     </div>
     <div class="flex">
-      <div>Incorrect:<%= @flashcard_statistics.incorrect_count %></div>
-      <p id="incorrect_count"> </p>
+      <div>Incorrect:</div>
+      <p id="incorrect_count"> <%= @flashcard_statistics.incorrect_count %> </p>
     </div>
     <div class="flex">
-      <div>Accuracy:<%= @flashcard_statistics.accuracy %></div>
-      <p id="incorrect_count"> </p>
+      <div>Accuracy: </div>
+      <p id="incorrect_count"> <%= @flashcard_statistics.accuracy %> </p>
     </div>
   </div>
   <% end %>

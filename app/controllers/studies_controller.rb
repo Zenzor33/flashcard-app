@@ -16,8 +16,23 @@ class StudiesController < ApplicationController
   end 
 
   def mark_correct
-    @flashcard.flachard_statistics.first.correct_count += 1
-    render :show
+    @flashcard_statistics.correct_count += 1
+    @flashcard_statistics.save
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html 
+    end
+  end 
+
+  def mark_incorrect
+    @flashcard_statistics.incorrect_count += 1
+    @flashcard_statistics.save
+
+    respond_to do|format|
+      format.turbo_stream
+      format.html 
+    end
   end 
 
   def update
