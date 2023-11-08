@@ -14,10 +14,12 @@ Rails.application.routes.draw do
         post 'add_flashcard'
         delete 'remove_flashcard'
       end 
-        resource :study, only: [:show, :update], controller: 'studies' do
+        resources :study, only: [:show, :update], controller: 'studies' do
           member do
             post :mark_correct
             delete :mark_incorrect
+            get :next_flashcard
+            get :previous_flashcard
           end
         end
     end
