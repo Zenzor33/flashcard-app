@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         post 'add_flashcard'
         delete 'remove_flashcard'
       end 
-        resources :study, only: [:show, :update], controller: 'studies' do
+        resource :study, only: [:show, :update], controller: 'studies' do
           member do
             post :mark_correct
             delete :mark_incorrect
