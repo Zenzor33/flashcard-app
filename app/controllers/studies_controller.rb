@@ -1,7 +1,7 @@
 class StudiesController < ApplicationController
 
   before_action :set_deck_and_flashcards
-  before_action :set_flashcard
+  before_action :set_flashcard_and_flashcard_statistics
   before_action :set_next_and_previous_flashcards
 
   def show
@@ -15,6 +15,11 @@ class StudiesController < ApplicationController
     render :show
   end 
 
+  def mark_correct
+    @flashcard.flachard_statistics.first.correct_count += 1
+    render :show
+  end 
+
   def update
   end
 
@@ -25,8 +30,9 @@ class StudiesController < ApplicationController
     @flashcards = @deck.flashcards
   end 
 
-  def set_flashcard 
+  def set_flashcard_and_flashcard_statistics 
     @flashcard = @flashcards.find(params[:id]) || @flashcards.first
+    @flashcard_statistics = @flashcard.flashcard_statistics.first
   end 
 
   def set_next_and_previous_flashcards
