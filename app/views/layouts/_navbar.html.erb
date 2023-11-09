@@ -31,7 +31,12 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <%= link_to "Home", flashcards_path, class: navbar_link_class(flashcards_path), aria_current: 'page' %>
+            <% if current_user %>
+              <% path = flashcards_path %>
+              <%= link_to "Home", path, class: navbar_link_class(path), aria_current: get_navbar_aria(path) %>
+            <% else %>
+              <%= link_to "Home", flashcards_path, class: navbar_link_class(flashcards_path), aria_current: 'page' %>
+            <% end %>
 
             <% if current_user %>
               <%  path = user_deck_study_path(current_user, current_user.deck, 1) %>
