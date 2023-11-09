@@ -1,7 +1,7 @@
 <%= turbo_frame_tag 'flashcard' do%>
   <div class="flex">
     <a class="bg-gray-800 text-white rounded-l-md border-r border-gray-100 py-2 hover:bg-red-700 hover:text-white px-3" 
-    href="<%= @previous_flashcard ? previous_flashcard_user_deck_study_path(current_user, @deck, @previous_flashcard, current_flashcard: @flashcard) : "#" %>" data-turbo-frame="flashcard">
+    href="<%= @previous_flashcard ? previous_flashcard_user_deck_study_path(current_user, @deck, @previous_flashcard, current_flashcard: @flashcard) : "#" %>" data-turbo-frame="flashcard", data-turbo-action="advance">
       <div>
         <div class="flex flex-row align-middle">
           <svg
@@ -41,7 +41,7 @@
   
 
     <a class="bg-gray-800 text-white rounded-r-md py-2 border-l border-gray-200 hover:bg-red-700 hover:text-white px-3"
-    href="<%= next_flashcard_user_deck_study_path(current_user, @deck, @next_flashcard, current_flashcard: @flashcard) %>", data-turbo-frame="flashcard"  > 
+    href="<%= next_flashcard_user_deck_study_path(current_user, @deck, @next_flashcard, current_flashcard: @flashcard) %>", data-turbo-frame="flashcard", data-turbo-action="advance"  > 
     
       <div>
         <div class="flex flex-row align-middle">
