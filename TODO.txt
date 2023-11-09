@@ -1,7 +1,10 @@
 Version 2:
 
 Updates:
+  - General 
+    - GuestUser functionality.
   - Homepage: 
+    - Temporary: require login. autofill guest account
     - change buttons & statistics for unregistered users. make them 'greyed out' so its like a preview.
     - Click flashcard to show back of flashcard 
     - Fill in the flashcard details page. 
