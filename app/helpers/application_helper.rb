@@ -8,4 +8,8 @@ module ApplicationHelper
   def navbar_link_class(path)
     "#{current_or_default(path)} rounded-md px-3 py-2 text-sm font-medium"
   end 
+
+  def get_navbar_aria(path)
+    current_page?(path) ? 'page' : nil
+  end
 end
