@@ -31,12 +31,12 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <%= link_to "Home", flashcards_path, class: "#{current_or_default(flashcards_path)} rounded-md px-3 py-2 text-sm font-medium", aria_current: ('page' if current_page?(flashcards_path)) %>
+            <%= link_to "Home", flashcards_path, class: navbar_link_class(flashcards_path), aria_current: 'page' %>
 
             <% if current_user %>
-              <a href="<%= user_deck_study_path(current_user, current_user.deck, 1) %> "class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study</a> <!-- dont know how to handle this situation -->
+              <%= link_to "Study 2", user_deck_study_path(current_user, current_user.deck, 1), class: navbar_link_class(user_deck_study_path(current_user, current_user.deck, 1)), aria_current: 'page'  %>
               <% else %>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study bad</a>
             <% end %>
 
             <% if current_user %>
