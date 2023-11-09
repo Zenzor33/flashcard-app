@@ -1,5 +1,17 @@
 Version 2:
 
+Updates:
+  - Homepage: 
+    - change buttons & statistics for unregistered users. make them 'greyed out' so its like a preview.
+    - Click flashcard to show back of flashcard 
+    - Fill in the flashcard details page. 
+  - Decks: 
+    - Create logic to set and update accuracy automatically 
+    - Do something with the search form 
+  - Study: 
+    - "Paginate" the flashcards with a progress bar 
+    - 
+
 Database: 
 - The category column in Flashcard should be removed. We can not store the category in the Flashcard table because that category is supposed to be user dependent. 
 - Where should the category column be?
