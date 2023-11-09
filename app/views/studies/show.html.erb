@@ -81,7 +81,7 @@
       <div>Incorrect:<span id="incorrect_count"> <%= @flashcard_statistics.incorrect_count %> </span> </div>
     </div>
     <div class="flex">
-      <div>Accuracy: <span id="incorrect_count"> <%= ((@flashcard_statistics.accuracy)*100).round(0) %>% </span></div>  
+      <div>Accuracy: <span id="accuracy"> <%= ((@flashcard_statistics.accuracy)*100).round(0) %>% </span></div>  
     </div>
   </div>
   <% end %>

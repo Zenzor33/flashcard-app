@@ -17,7 +17,7 @@ Rails.application.routes.draw do
         resources :study, only: [:show, :update], controller: 'studies' do
           member do
             post :mark_correct
-            delete :mark_incorrect
+            post :mark_incorrect
             get :next_flashcard
             get :previous_flashcard
           end
