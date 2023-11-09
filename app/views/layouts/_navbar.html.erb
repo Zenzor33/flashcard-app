@@ -32,30 +32,30 @@
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <% if current_user %>
-              <% path = flashcards_path %>
-              <%= link_to "Home", path, class: navbar_link_class(path), aria_current: get_navbar_aria(path) %>
+              <% home_path = flashcards_path %>
+              <% study_path = user_deck_study_path(current_user, current_user.deck, 1) %>
+              <% deck_path = user_deck_path(current_user, current_user.deck, category: 'all') %>
+
+              <%= link_to "Home", home_path, class: navbar_link_class(home_path), aria_current: get_navbar_aria(home_path) %>
+
+              <%= link_to "Study", study_path, class: navbar_link_class(study_path), aria_current: get_navbar_aria(study_path)  %>
+
+              <%= link_to deck_path, class: navbar_link_class(deck_path), id: "navbar-my-cards", aria_current: get_navbar_aria(deck_path) do%>
+                My Cards <span id='deck-cards-counter' class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20"><%= current_user.deck.flashcard_ids.count %></span>
+              <% end %>
+
+              <%= link_to "Contact", contact_path, class: navbar_link_class(contact_path), aria_current: get_navbar_aria(contact_path) %>
+
+
             <% else %>
               <%= link_to "Home", flashcards_path, class: navbar_link_class(flashcards_path), aria_current: 'page' %>
-            <% end %>
 
-            <% if current_user %>
-              <%  path = user_deck_study_path(current_user, current_user.deck, 1) %>
-              <%= link_to "Study", path, class: navbar_link_class(path), aria_current: get_navbar_aria(path)  %>
-              <% else %>
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study</a>
-            <% end %>
 
-            <% if current_user %>
-              <% path = user_deck_path(current_user, current_user.deck, category: 'all') %>
-              <%= link_to path, class: navbar_link_class(path), id: "navbar-my-cards", aria_current: get_navbar_aria(path) do%>
-              My Cards 
-              <span id='deck-cards-counter' class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20"><%= current_user.deck.flashcard_ids.count %></span>
-            <% end %>
-            <% else %>
-              <a href="<%= new_user_session_path %>" id="navbar-my-cards" class="<%= current_or_default(new_user_session_path) %>% text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My Cards  <span class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">0</span></a>
-            <% end %>
+              <a href="<%= new_user_session_path %>" id="navbar-my-cards" class="<%= navbar_link_class(flashcards_path) %>">My Cards  <span class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">0</span></a>
 
-            <a href="<%= contact_path %>" class="<%= current_or_default(contact_path) %>  text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+              <a href="<%= contact_path %>" class="<%= current_or_default(contact_path) %>  text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+            <% end %>
           </div>
         </div>
       </div>

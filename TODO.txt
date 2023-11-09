@@ -2,10 +2,11 @@ Version 2:
 
 Updates:
   - General 
-    - GuestUser functionality.
+    - GuestUser functionality (incapable)
+    - Navbar changes based on Guest clicks (incapable)
   - Homepage: 
-    - Temporary: require login. autofill guest account
-    - change buttons & statistics for unregistered users. make them 'greyed out' so its like a preview.
+    - Temporary: require login. autofill guest account (incapable)
+    - change buttons & statistics for unregistered users. make them 'greyed out' so its like a preview. (needs GuestUser functionality)
     - Click flashcard to show back of flashcard 
     - Fill in the flashcard details page. 
   - Decks: 
@@ -13,7 +14,8 @@ Updates:
     - Do something with the search form 
   - Study: 
     - "Paginate" the flashcards with a progress bar 
-    - 
+  - Sign-in page 
+    - Build UI 
 
 Database: 
 - The category column in Flashcard should be removed. We can not store the category in the Flashcard table because that category is supposed to be user dependent. 
