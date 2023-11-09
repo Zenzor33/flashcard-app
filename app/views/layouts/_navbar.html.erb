@@ -34,13 +34,16 @@
             <%= link_to "Home", flashcards_path, class: navbar_link_class(flashcards_path), aria_current: 'page' %>
 
             <% if current_user %>
-              <%= link_to "Study 2", user_deck_study_path(current_user, current_user.deck, 1), class: navbar_link_class(user_deck_study_path(current_user, current_user.deck, 1)), aria_current: 'page'  %>
+              <%= link_to "Study", user_deck_study_path(current_user, current_user.deck, 1), class: navbar_link_class(user_deck_study_path(current_user, current_user.deck, 1)), aria_current: 'page'  %>
               <% else %>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study bad</a>
+              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study</a>
             <% end %>
 
             <% if current_user %>
-            <a href="<%= user_deck_path(current_user, current_user.deck, category: 'all') %>" id="navbar-my-cards" class="<%= current_or_default(user_deck_path(current_user, current_user.deck)) %> text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My Cards  <span id='deck-cards-counter' class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20"> <%= current_user.deck.flashcard_ids.count %></span></a>
+            <%= link_to user_deck_path(current_user, current_user.deck, category: 'all'), class: navbar_link_class(user_deck_path(current_user, current_user.deck)), id: "navbar-my-cards", aria_current: 'page' do%>
+            My Cards 
+            <span id='deck-cards-counter' class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20"><%= current_user.deck.flashcard_ids.count %></span>
+            <% end %>
             <% else %>
             <a href="<%= new_user_session_path %>" id="navbar-my-cards" class="<%= current_or_default(new_user_session_path) %>% text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">My Cards  <span class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">0</span>
             <% end %>
