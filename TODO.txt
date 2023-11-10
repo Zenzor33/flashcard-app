@@ -15,6 +15,7 @@ Updates:
     - Do something with the search form 
   - Study: 
     - "Paginate" the flashcards with a progress bar 
+    - Center the study cards
   - Sign-in page 
     - Build UI 
 
