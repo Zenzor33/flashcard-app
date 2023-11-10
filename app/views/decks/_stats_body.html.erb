@@ -26,9 +26,15 @@
               <!-- Mimic TD -->
               <div class="table-cell whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= flashcard.front %></div>
               <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= flashcard.back %></div>
-              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= @flashcard_statistics.find_by(flashcard_id: flashcard).correct_count %></div>
-              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= @flashcard_statistics.find_by(flashcard_id: flashcard).incorrect_count %></div>
-              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= ((@flashcard_statistics.find_by(flashcard_id: flashcard).accuracy)*100).round(0) %>%</div>
+              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+              
+              
+              <%= @flashcard_statistics.exists? ? @flashcard_statistics.find_by(flashcard_id: flashcard).correct_count : 0 %></div>
+              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= 
+              @flashcard_statistics.exists? ? @flashcard_statistics.find_by(flashcard_id: flashcard).incorrect_count : 0 %></div>
+              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= 
+              
+              @flashcard_statistics.exists? ? ((@flashcard_statistics.find_by(flashcard_id: flashcard).accuracy)*100).round(0) : 0 %>%</div>
               <div class="table-cell relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                 <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
               </div>

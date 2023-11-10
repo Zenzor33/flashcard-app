@@ -5,6 +5,7 @@ class StudiesController < ApplicationController
   before_action :set_next_and_previous_flashcards
 
   def show
+    binding.pry
   end
 
   def next_flashcard

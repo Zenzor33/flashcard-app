@@ -27,8 +27,7 @@ class FlashcardStatistic < ApplicationRecord
   belongs_to :user 
   belongs_to :flashcard  
 
-  before_save :update_total_count
-  before_save :update_accuracy
+  before_save :update_total_count, :update_accuracy
 
   def accuracy 
     total = correct_count + incorrect_count
@@ -46,10 +45,14 @@ class FlashcardStatistic < ApplicationRecord
     self.total_count = correct_count.to_i + incorrect_count.to_i
   end 
 
+  def update_category 
+    
+  end 
+
   # add total_count to database
   # rails g migration AddTotalCountToFlashcard_Statistics total_count:int # default 0, null false
-  # create method to update_total_count
-  # execute update_total_count before_save
+  # create method to update_total_count x
+  # execute update_total_count before_save x
   # create method to update_category
   # execute update_category before_save
 
