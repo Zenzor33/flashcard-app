@@ -27,8 +27,6 @@ Rails.application.routes.draw do
 
   resources :flashcards do
     member do
-      post :mark_correct
-      post :mark_incorrect
       get 'details'
     end
   end

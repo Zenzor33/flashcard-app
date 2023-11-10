@@ -20,25 +20,6 @@ class FlashcardsController < ApplicationController
   def details 
   end 
 
-  def mark_correct  
-    update_statistic(true)
-
-    respond_to do |format|
-      format.turbo_stream 
-      format.html {redirect_to @flashcard}
-    end 
-  end 
-    
-  def mark_incorrect 
-    update_statistic(false)
-
-    respond_to do |format|
-      format.turbo_stream 
-      format.html {redirect_to @flashcard}
-    end 
-  end  
- 
-
   private
 
   def set_deck 
