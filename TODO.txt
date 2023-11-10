@@ -8,6 +8,7 @@ Updates:
     - Temporary: require login. autofill guest account (incapable)
     - change buttons & statistics for unregistered users. make them 'greyed out' so its like a preview. (needs GuestUser functionality)
     - Click flashcard to show back of flashcard 
+    -- https://medium.com/@grahamflas/how-to-implement-a-card-flip-with-html-and-css-222db9b0476c
     - Fill in the flashcard details page. 
   - Decks: 
     - Create logic to set and update accuracy automatically 
