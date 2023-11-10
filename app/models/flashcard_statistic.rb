@@ -40,4 +40,20 @@ class FlashcardStatistic < ApplicationRecord
     self.accuracy = total.zero? ? 0.0 : (correct_count.to_f / total * 100)
   end
 
+  # add total_count to database
+  # create method to update_total_count
+  # execute update_total_count before_save
+  # create method to update_category
+  # execute update_category before_save
+
+  # update_category
+  # Accuracy condition | Category
+  # There are 4 categories: new, learning, progressing mastered
+  # New is a card with total_count of < 6
+  # Learning is a card with total_count > 5 && accuracy < 75%
+  # Progressing is a card with total_count > 5 && accuracy > 75%
+  # Mastered is a card with total_count > 5 && accuracy > 95%
+
+
+
 end
