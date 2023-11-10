@@ -11,14 +11,14 @@ Updates:
     -- https://medium.com/@grahamflas/how-to-implement-a-card-flip-with-html-and-css-222db9b0476c
     - Fill in the flashcard details page. 
   - Decks: 
-    - Create logic to set and update accuracy automatically 
+    - Create logic to set and update accuracy automatically  x
     - Do something with the search form 
   - Study: 
     - "Paginate" the flashcards with a progress bar 
     - Center the study cards
   - Sign-in page 
-    - Build UI 
-  - remove unused mark_correct and mark_incorrect from flashcards and routes  
+    - Build UI x
+    - remove unused mark_correct and mark_incorrect from flashcards and routes  
 
 Database: 
 - The category column in Flashcard should be removed. We can not store the category in the Flashcard table because that category is supposed to be user dependent. 
