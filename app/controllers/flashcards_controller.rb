@@ -22,8 +22,7 @@ class FlashcardsController < ApplicationController
 
   def mark_correct  
     update_statistic(true)
-    # render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
-    # render @flashcard
+
     respond_to do |format|
       format.turbo_stream 
       format.html {redirect_to @flashcard}
@@ -32,8 +31,7 @@ class FlashcardsController < ApplicationController
     
   def mark_incorrect 
     update_statistic(false)
-    # render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard }
-    # render @flashcard
+
     respond_to do |format|
       format.turbo_stream 
       format.html {redirect_to @flashcard}

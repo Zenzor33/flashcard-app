@@ -18,6 +18,7 @@ Updates:
     - Center the study cards
   - Sign-in page 
     - Build UI 
+  - remove unused mark_correct and mark_incorrect from flashcards and routes  
 
 Database: 
 - The category column in Flashcard should be removed. We can not store the category in the Flashcard table because that category is supposed to be user dependent. 
