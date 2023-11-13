@@ -22,9 +22,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :flashcard_statistics
-  has_many :flashcards, through: :flashcard_statistics
+
   has_one :deck
+  has_many :flashcard_statistics
+  
 
   after_create :assign_default_deck 
 
