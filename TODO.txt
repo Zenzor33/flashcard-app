@@ -1,5 +1,28 @@
 Version 2:
 
+Models: 
+
+User {
+  has_one :deck 
+  has_many :flashcard_statistics
+}
+
+Deck {
+  belongs_to :user
+  has many :flashcards
+}
+
+Flashcard {
+  belongs_to :deck 
+  has_many :flashcard_statistics
+}
+
+Flashcard_Statistic {
+  belongs_to :user
+  belongs_to :flashcard
+
+}
+
 Updates:
   - General 
     - GuestUser functionality (incapable)

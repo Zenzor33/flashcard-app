@@ -1,11 +1,8 @@
 class StudiesController < ApplicationController
 
-  before_action :set_deck_and_flashcards
-  before_action :set_flashcard_and_flashcard_statistics
-  before_action :set_next_and_previous_flashcards
+  before_action :set_deck_and_flashcards, :set_flashcard_and_flashcard_statistics, :set_next_and_previous_flashcards
 
   def show
-    binding.pry
   end
 
   def next_flashcard
