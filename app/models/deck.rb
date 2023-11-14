@@ -66,8 +66,8 @@ class Deck < ApplicationRecord
   end 
 
   def remove_flashcard_from_deck(flashcard)
-    self.deck_flashcards.delete(flashcard)
-    save
+    deck_flashcard = self.deck_flashcards.find_by(flashcard: flashcard)
+    deck_flashcard.destroy
   end 
 
   private 
