@@ -15,7 +15,7 @@
     </a>
 
   <% if current_user %>
-    <% if current_user.deck.deck_flashcards.include?(flashcard) %>
+    <% if current_user.deck.deck_flashcards.exists?(flashcard_id: flashcard.id) %>
       <%= button_to 'Remove from Deck', remove_flashcard_user_deck_path(current_user.id, @deck, flashcard_id: flashcard.id), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete %>
     <% else %>
       <%= button_to 'Add to Deck', add_flashcard_user_deck_path(current_user.id, @deck, flashcard_id: flashcard.id), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :post %>

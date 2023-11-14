@@ -14,8 +14,9 @@
 #
 # Indexes
 #
-#  index_deck_flashcards_on_deck_id       (deck_id)
-#  index_deck_flashcards_on_flashcard_id  (flashcard_id)
+#  index_deck_flashcards_on_deck_id                   (deck_id)
+#  index_deck_flashcards_on_deck_id_and_flashcard_id  (deck_id,flashcard_id) UNIQUE
+#  index_deck_flashcards_on_flashcard_id              (flashcard_id)
 #
 # Foreign Keys
 #

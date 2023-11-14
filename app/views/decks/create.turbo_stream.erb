@@ -3,5 +3,5 @@
 <% end %>
 
 <%= turbo_stream.update('deck-cards-counter') do%>
-  <%= current_user.deck.flashcard_ids.count %>
+  <%= current_user.deck.deck_flashcards.size %>
 <% end %>
