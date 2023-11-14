@@ -9,10 +9,8 @@
 #  updated_at :datetime         not null
 #
 class Flashcard < ApplicationRecord
-  belongs_to :deck 
-  has_many :flashcard_statistics
+  has_many :deck_flashcards
   
-
   def self.search(params={})
     if params[:front]
       search_term = params[:front].downcase

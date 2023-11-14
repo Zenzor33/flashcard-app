@@ -1,27 +1,43 @@
 Version 2:
 
-Models: 
+Associations: 
+
+Flashcard {
+  has_many: deck_flashcards
+}
 
 User {
   has_one :deck 
-  has_many :flashcard_statistics
 }
 
 Deck {
   belongs_to :user
-  has many :flashcards
+  has_many :deck_flashcards
+  has_one :deck_statistics
 }
 
-Flashcard {
+Deck_Statistics {
   belongs_to :deck 
-  has_many :flashcard_statistics
+}
+
+Deck_Flashcards {
+  belongs_to :deck 
+  belongs_to :flashcard
 }
 
 Flashcard_Statistic {
-  belongs_to :user
-  belongs_to :flashcard
-
+  delete?
 }
+
+Schema: 
+
+table 'flashcards': id, front: 'string', back: 'string'
+table 'user': id, deck_id
+table 'decks': id, user_id 
+table 'deck_statistics': id, deck_id, correct_count, incorrect_count, total_count, accuracy
+table 'deck_flashcards': id, deck_id, flashcard_id, correct_count, incorrect_count, total_count, accuracy 
+
+
 
 Updates:
   - General 

@@ -17,7 +17,10 @@
 #
 class Deck < ApplicationRecord
   belongs_to :user
-  has_many :flashcards
+  has_many :deck_flashcards
+  has_one :deck_statistic
+
+  after_create :assign_default_deck_statistic 
 
   def flashcard_statistics_for_user(user)
     FlashcardStatistic
@@ -33,13 +36,11 @@ class Deck < ApplicationRecord
     end
   end 
 
-  def get_flashcards_by_category(user, category)
+  def get_deck_flashcards_by_category(user, category)
     if category == 'all'
-      self.flashcards 
+      self.deck_flashcards 
     else  
-      statistics = self.get_flashcard_statistics_by_category(user, category)
-      flashcard_ids = statistics.map(&:flashcard_id)
-      Flashcard.where(id: flashcard_ids)
+      self.deck_flashcards.where(category: category)
     end 
   end 
 
@@ -60,12 +61,18 @@ class Deck < ApplicationRecord
 
 
   def add_flashcard_to_deck(flashcard)
-    self.flashcards.push(flashcard)
+    self.deck_flashcards.create(flashcard_id: flashcard.id)
     save
   end 
 
   def remove_flashcard_from_deck(flashcard)
-    self.flashcards.delete(flashcard)
+    self.deck_flashcards.delete(flashcard)
     save
   end 
+
+  private 
+
+  def assign_default_deck_statistic 
+   build_deck_statistic.save 
+  end
 end

@@ -24,9 +24,6 @@ class User < ApplicationRecord
 
 
   has_one :deck
-  has_many :flashcard_statistics
-  
-
   after_create :assign_default_deck 
 
   private

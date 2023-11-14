@@ -2,11 +2,15 @@
 #
 # Table name: deck_flashcards
 #
-#  id           :bigint           not null, primary key
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  deck_id      :bigint           not null
-#  flashcard_id :bigint           not null
+#  id              :bigint           not null, primary key
+#  accuracy        :float            default(0.0)
+#  category        :string           default("new")
+#  correct_count   :integer          default(0)
+#  incorrect_count :integer          default(0)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  deck_id         :bigint           not null
+#  flashcard_id    :bigint           not null
 #
 # Indexes
 #
@@ -21,5 +25,4 @@
 class DeckFlashcard < ApplicationRecord
   belongs_to :deck
   belongs_to :flashcard
-
 end

@@ -1,7 +1,7 @@
 class FlashcardsController < ApplicationController
 
   before_action :set_flashcard, only: [:show, :details, :edit, :update, :destroy, :mark_correct, :mark_incorrect]
-  before_action :set_flashcard_statistic, except: [:index]
+  # before_action :set_flashcard_statistic, except: [:index]
   before_action :set_deck
 
   def index  
@@ -35,17 +35,17 @@ class FlashcardsController < ApplicationController
     end
   end 
 
-  def set_flashcard_statistic
-    @flashcard_statistic = FlashcardStatistic.find_or_initialize_by(user: current_user, flashcard: @flashcard)
-  end 
+  # def set_flashcard_statistic
+  #   @flashcard_statistic = FlashcardStatistic.find_or_initialize_by(user: current_user, flashcard: @flashcard)
+  # end 
 
-  def update_statistic(is_correct) 
-    flashcard = Flashcard.find(params[:id])
-    if is_correct 
-      @flashcard_statistic.correct_count += 1
-    else 
-      @flashcard_statistic.incorrect_count += 1
-    end 
-    @flashcard_statistic.save 
-  end 
+  # def update_statistic(is_correct) 
+  #   flashcard = Flashcard.find(params[:id])
+  #   if is_correct 
+  #     @flashcard_statistic.correct_count += 1
+  #   else 
+  #     @flashcard_statistic.incorrect_count += 1
+  #   end 
+  #   @flashcard_statistic.save 
+  # end 
 end

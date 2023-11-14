@@ -6,8 +6,8 @@ class DecksController < ApplicationController
   def show 
     @deck = current_user.deck
     @category = params[:category] || 'all'
-    @categorized_flashcards = @deck.get_flashcards_by_category(current_user, @category)
-    @flashcard_statistics = @deck.flashcard_statistics_for_user(current_user)
+    @categorized_flashcards = @deck.get_deck_flashcards_by_category(current_user, @category)
+    @flashcard_statistics = @deck.get_deck_flashcards_by_category(current_user, @category)
     @correct_count = @deck.correct_count_sum(current_user, @category)
     @incorrect_count = @deck.incorrect_count_sum(current_user, @category)
     @accuracy = @deck.accuracy(@correct_count, @incorrect_count)
@@ -19,6 +19,7 @@ class DecksController < ApplicationController
   end
 
   def add_flashcard 
+    #Add flashcard to current_user.deck.deck_flashcards
     @deck = current_user.deck
     flashcard = Flashcard.find(params[:flashcard_id].to_i)
     @deck.add_flashcard_to_deck(flashcard)
