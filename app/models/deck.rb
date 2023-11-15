@@ -22,11 +22,11 @@ class Deck < ApplicationRecord
 
   after_create :assign_default_deck_statistic 
 
-  def flashcard_statistics_for_user(user)
-    FlashcardStatistic
-      .joins(:flashcard)
-      .where(flashcards: { id: flashcard_ids }, user: user)
-  end
+  # def flashcard_statistics_for_user(user)
+  #   FlashcardStatistic
+  #     .joins(:flashcard)
+  #     .where(flashcards: { id: flashcard_ids }, user: user)
+  # end
 
   def get_flashcard_statistics_by_category(user, category)
     if category == 'all'
@@ -44,12 +44,13 @@ class Deck < ApplicationRecord
     end 
   end 
 
+
   def correct_count_sum(user, category)
-    category == 'all' ? flashcard_statistics_for_user(user).sum(:correct_count) : flashcard_statistics_for_user(user).where(category: category).sum(:correct_count) 
+    category == 'all' ? self.deck_statistic.correct_count : self.deck_statistic.correct_count
   end 
 
   def incorrect_count_sum(user, category)
-    category == 'all' ? flashcard_statistics_for_user(user).sum(:incorrect_count) : flashcard_statistics_for_user(user).where(category: category).sum(:incorrect_count)
+    category == 'all' ? self.deck_statistic.incorrect_count : self.deck_statistic.incorrect_count
   end 
 
   def accuracy(correct_count, incorrect_count)
