@@ -14,8 +14,8 @@ class StudiesController < ApplicationController
   end 
 
   def mark_correct
-    @flashcard_statistics.correct_count += 1
-    @flashcard_statistics.save
+    @deck_flashcard_statistics.correct_count += 1
+    @deck_flashcard_statistics.save
 
     respond_to do |format|
       format.turbo_stream
@@ -24,10 +24,10 @@ class StudiesController < ApplicationController
   end 
 
   def mark_incorrect
-    @flashcard_statistics.incorrect_count += 1
-    @flashcard_statistics.save
+    @deck_flashcard_statistics.incorrect_count += 1
+    @deck_flashcard_statistics.save
 
-    respond_to do|format|
+    respond_to do |format|
       format.turbo_stream
       format.html 
     end
@@ -42,11 +42,13 @@ class StudiesController < ApplicationController
     @deck = Deck.find_by(user_id: params[:user_id])
     @deck_flashcards = @deck.deck_flashcards.order(id: :asc)
     @deck_flashcard = @deck_flashcards.find_by(id: params[:deck_flashcard]) || @deck_flashcards.find_by(id: params[:format])
+
     @flashcard = Flashcard.find(@deck_flashcard.flashcard_id) 
   end 
 
   def set_flashcard_and_flashcard_statistics 
-    @flashcard_statistics = FlashcardStatistic.find_by(user_id: current_user, flashcard_id: @flashcard)
+    @deck_flashcard_statistics = @deck_flashcard.deck_flashcard_statistic
+    # @flashcard_statistics = FlashcardStatistic.find_by(user_id: current_user, flashcard_id: @flashcard)
   end 
 
   def set_next_and_previous_flashcards
