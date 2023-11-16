@@ -26,4 +26,13 @@
 class DeckFlashcard < ApplicationRecord
   belongs_to :deck
   belongs_to :flashcard
+  has_one :deck_flashcard_statistic, dependent: :destroy
+
+  after_create :create_deck_flashcard_statistic
+
+  private
+
+  def create_deck_flashcard_statistic
+    DeckFlashcardStatistic.create(deck_flashcard: self)
+  end
 end
