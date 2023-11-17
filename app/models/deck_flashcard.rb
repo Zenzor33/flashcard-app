@@ -7,6 +7,7 @@
 #  category        :string           default("new")
 #  correct_count   :integer          default(0)
 #  incorrect_count :integer          default(0)
+#  total_count     :integer          default(0), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  deck_id         :bigint           not null
@@ -28,11 +29,21 @@ class DeckFlashcard < ApplicationRecord
   belongs_to :flashcard
   has_one :deck_flashcard_statistic, dependent: :destroy
 
-  after_create :create_deck_flashcard_statistic
+  before_save :update_total_count, :update_accuracy
+
+  # def accuracy 
+  #   total = correct_count + incorrect_count
+  #   (correct_count.to_f / total)
+  # end 
 
   private
 
-  def create_deck_flashcard_statistic
-    DeckFlashcardStatistic.create(deck_flashcard: self)
+  def update_accuracy
+    total = correct_count + incorrect_count
+    self.accuracy = total.zero? ? 0.0 : (correct_count.to_f / total * 100)
   end
+
+  def update_total_count
+    self.total_count = correct_count.to_i + incorrect_count.to_i
+  end 
 end

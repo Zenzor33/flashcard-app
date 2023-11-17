@@ -14,6 +14,8 @@ move all logic from the studies controller
 update the routes in the view 
 move the turbo_stream files 
 
+DELETE DECK_FLASHCARD_STATISTICS
+
 Associations: 
 
 Flashcard {
