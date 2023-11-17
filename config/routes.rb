@@ -21,6 +21,7 @@ Rails.application.routes.draw do
             get :next_flashcard
             get :previous_flashcard
           end
+          resources :deck_flashcards, only: [:show, :update]
         end
     end
   end
