@@ -1,5 +1,19 @@
 Version 2:
 
+Routing refactor:
+
+Goal is to cleanup the routing in the studies resource. I want the URL for the study flashcard page to be 
+user/user_id/deck/deck_id/study/deck_flashcards/:id 
+
+The ID is determined by the current deck_flashcard displayed on the page. 
+
+rails g resource deck_flashcards
+nest the route under study 
+
+move all logic from the studies controller 
+update the routes in the view 
+move the turbo_stream files 
+
 Associations: 
 
 Flashcard {
