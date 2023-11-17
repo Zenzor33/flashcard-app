@@ -21,4 +21,22 @@
 #
 class DeckFlashcardStatistic < ApplicationRecord
   belongs_to :deck_flashcard, dependent: :destroy
+
+  before_save :update_total_count, :update_accuracy
+
+  def accuracy 
+    total = correct_count + incorrect_count
+    (correct_count.to_f / total)
+  end 
+
+  private
+
+  def update_accuracy
+    total = correct_count + incorrect_count
+    self.accuracy = total.zero? ? 0.0 : (correct_count.to_f / total * 100)
+  end
+
+  def update_total_count
+    self.total_count = correct_count.to_i + incorrect_count.to_i
+  end 
 end

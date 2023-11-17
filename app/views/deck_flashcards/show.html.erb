@@ -66,8 +66,8 @@
 
 
   <div class="flex justify-center pt-6 gap-2">
-    <%= button_to 'Correct', mark_correct_user_deck_study_path(current_user, @deck, deck_flashcard: @deck_flashcard.id), data: {turbo_stream: true}, method: :post, class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
-    <%= button_to 'Incorrect', mark_incorrect_user_deck_study_path(current_user, @deck, @flashcard), method: :post, class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <%= button_to 'Correct', mark_correct_user_deck_study_deck_flashcard_path(current_user, @deck, @deck_flashcard.id), data: {turbo_stream: true}, method: :post, class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <%= button_to 'Incorrect', mark_incorrect_user_deck_study_deck_flashcard_path(current_user, @deck, @deck_flashcard.id), method: :post, class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
   </div>
 
   <!-- UPDATE LATER -->

@@ -1,4 +1,0 @@
-<%= turbo_stream.update "correct_count", @deck_flashcard_statistics.correct_count %>
-<%= turbo_stream.replace "accuracy" do%>
-<span id="accuracy"> <%= ((@deck_flashcard_statistics.accuracy)*100).round(0) %>% </span>
-<% end %>
