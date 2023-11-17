@@ -33,7 +33,7 @@
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <% if current_user %>
               <% home_path = flashcards_path %>
-              <% study_path = user_deck_study_deck_flashcard_path(current_user, current_user.deck, @first_deck_flashcard_id) %>
+              <% study_path = @first_deck_flashcard_id ? user_deck_study_deck_flashcard_path(current_user, current_user.deck, @first_deck_flashcard_id) : '#' %>
               <% deck_path = user_deck_path(current_user, current_user.deck, category: 'all') %>
 
               <%= link_to "Home", home_path, class: navbar_link_class(home_path), aria_current: get_navbar_aria(home_path) %>

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def set_first_deck_flashcard_id
     if current_user
-      @first_deck_flashcard_id = current_user.deck.deck_flashcards.order(id: :asc).first.id
+      @first_deck_flashcard_id = current_user.deck.deck_flashcards.order(id: :asc).first.id unless current_user.deck.deck_flashcards.empty?
     end
   end 
 end
