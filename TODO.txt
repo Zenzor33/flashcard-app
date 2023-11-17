@@ -5,7 +5,8 @@ Current refactor:
 - Delete deck_flashcard_statistics. The data is now stored in deck_flashcard x 
 - Handle the study link in navbar for new user or user without deck_flashcards.
 -- Solution is likely to have a placeholder deck_flashcard in each deck that renders when the deck is empty
-- Show username in profile when logged in 
+-- The above solution is possible but unnecessarily complicated. A better solution is to conditionally render the study link. If deck_flashcards is empty, render the Flashcard page with alert that says "Please add flashcards before proceeding to study "
+- Show username in profile when logged in x
 - BUG: When user removes deck_flashcard that is the first deck_flashcard and clicks 'study', page breaks.
 
 
