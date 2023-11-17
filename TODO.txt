@@ -1,5 +1,13 @@
 Version 2:
 
+Next refactor: 
+- clean github branches
+- Delete deck_flashcard_statistics. The data is now stored in deck_flashcard 
+- Handle the study link in navbar for new user or user without deck_flashcards.
+-- Solution is likely to have a placeholder deck_flashcard in each deck that renders when the deck is empty
+- Show username in profile when logged in 
+
+
 Routing refactor:
 
 Goal is to cleanup the routing in the studies resource. I want the URL for the study flashcard page to be 
