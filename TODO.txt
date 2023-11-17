@@ -1,13 +1,14 @@
 Version 2:
 
 Current refactor: 
-- clean github branches x
-- Delete deck_flashcard_statistics. The data is now stored in deck_flashcard x 
 - Handle the study link in navbar for new user or user without deck_flashcards.
 -- Solution is likely to have a placeholder deck_flashcard in each deck that renders when the deck is empty
 -- The above solution is possible but unnecessarily complicated. A better solution is to conditionally render the study link. If deck_flashcards is empty, render the Flashcard page with alert that says "Please add flashcards before proceeding to study "
-- Show username in profile when logged in x
 - BUG: When user removes deck_flashcard that is the first deck_flashcard and clicks 'study', page breaks.
+
+- clean github branches x
+- Show username in profile when logged in x
+- Delete deck_flashcard_statistics. The data is now stored in deck_flashcard x 
 
 
 Routing refactor:
