@@ -14,6 +14,11 @@ Rails.application.routes.draw do
         post 'add_flashcard'
         delete 'remove_flashcard'
       end 
+
+      collection do 
+        get 'check_deck_flashcards'
+      end 
+      
         resource :study, controller: 'studies' do
           resources :deck_flashcards, only: [:show, :update] do 
             member do
