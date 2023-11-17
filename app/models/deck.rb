@@ -28,14 +28,6 @@ class Deck < ApplicationRecord
   #     .where(flashcards: { id: flashcard_ids }, user: user)
   # end
 
-  def get_flashcard_statistics_by_category(user, category)
-    if category == 'all'
-      self.flashcard_statistics_for_user(user)
-    else 
-      self.flashcard_statistics_for_user(user).where(category: category)
-    end
-  end 
-
   def get_deck_flashcards_by_category(user, category)
     if category == 'all'
       self.deck_flashcards 

@@ -1,5 +1,5 @@
 class DeckFlashcardsController < ApplicationController
-  before_action :set_deck_and_deck_flashcards, :set_flashcard_and_flashcard_statistics, :set_next_and_previous_flashcards
+  before_action :set_deck_and_deck_flashcards, :set_next_and_previous_flashcards
 
   def show
   end
@@ -43,10 +43,6 @@ class DeckFlashcardsController < ApplicationController
     @deck_flashcard = @deck_flashcards.find_by(id: params[:id]) || @deck_flashcards.find_by(id: params[:format])
 
     @flashcard = Flashcard.find(@deck_flashcard.flashcard_id) 
-  end 
-
-  def set_flashcard_and_flashcard_statistics 
-    @deck_flashcard_statistics = @deck_flashcard.deck_flashcard_statistic
   end 
 
   def set_next_and_previous_flashcards

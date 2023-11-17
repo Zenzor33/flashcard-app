@@ -27,7 +27,6 @@
 class DeckFlashcard < ApplicationRecord
   belongs_to :deck
   belongs_to :flashcard
-  has_one :deck_flashcard_statistic, dependent: :destroy
 
   before_save :update_total_count, :update_accuracy
 
