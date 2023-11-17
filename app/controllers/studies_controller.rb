@@ -48,7 +48,6 @@ class StudiesController < ApplicationController
 
   def set_flashcard_and_flashcard_statistics 
     @deck_flashcard_statistics = @deck_flashcard.deck_flashcard_statistic
-    # @flashcard_statistics = FlashcardStatistic.find_by(user_id: current_user, flashcard_id: @flashcard)
   end 
 
   def set_next_and_previous_flashcards
