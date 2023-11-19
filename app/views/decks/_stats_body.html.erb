@@ -20,7 +20,7 @@
           </div>
           <!-- Mimic TBODY -->
           <div class="table-row-group divide-y divide-gray-200">
-          <% @categorized_flashcards.each do |deck_flashcard|%>
+          <% @categorized_deck_flashcards.each do |deck_flashcard|%>
             <% flashcard = Flashcard.find(deck_flashcard.flashcard_id)%>
             <!-- Mimic TR -->
             <div class="table-row">

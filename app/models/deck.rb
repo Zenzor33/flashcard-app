@@ -23,13 +23,8 @@ class Deck < ApplicationRecord
   after_create :assign_default_deck_statistic 
 
   def get_deck_flashcards_by_category(user, category)
-    if category == 'all'
-      self.deck_flashcards 
-    else  
-      self.deck_flashcards.where(category: category)
-    end 
+    category == 'all' ? self.deck_flashcards : self.deck_flashcards.where(category: category)
   end 
-
 
   def correct_count_sum(user, category)
     category == 'all' ? self.deck_statistic.correct_count : self.deck_statistic.correct_count
