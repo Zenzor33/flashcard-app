@@ -1,6 +1,7 @@
 Version 2:
 
-
+current refactor: 
+- refactor controllers
 
 refactor: 
 - Handle the study link in navbar for new user or user without deck_flashcards.
