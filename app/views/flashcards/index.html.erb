@@ -21,6 +21,6 @@
 
 <%= turbo_frame_tag 'results'  do%>
   <div class="flex gap-2 mt-8 justify-center">
-    <%= render partial: 'flashcards/search_results', locals: { flashcard: @flashcards } %>
+    <%= render 'flashcards/search_results' %>
   </div>
 <% end %>
