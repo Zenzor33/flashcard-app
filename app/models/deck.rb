@@ -22,12 +22,6 @@ class Deck < ApplicationRecord
 
   after_create :assign_default_deck_statistic 
 
-  # def flashcard_statistics_for_user(user)
-  #   FlashcardStatistic
-  #     .joins(:flashcard)
-  #     .where(flashcards: { id: flashcard_ids }, user: user)
-  # end
-
   def get_deck_flashcards_by_category(user, category)
     if category == 'all'
       self.deck_flashcards 
