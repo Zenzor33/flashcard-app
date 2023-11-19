@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :flashcards
+
   resources :user do 
     resources :decks do 
       member do 
@@ -30,11 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :flashcards do
-    member do
-      get 'details'
-    end
-  end
+  
 
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

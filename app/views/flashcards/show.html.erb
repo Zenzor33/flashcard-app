@@ -1,1 +1,5 @@
-<%= render partial: 'flashcards/flashcard', locals: { flashcard: @flashcard } %>
+<div class="flex-col">
+<div>THis is the cards details page for <%= @flashcard.front %></div>
+<br>
+<div><%= link_to "Return to Flashcards", flashcards_path %></div>
+</div>

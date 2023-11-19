@@ -19,6 +19,4 @@ class Flashcard < ApplicationRecord
       all
     end
   end
-  
-  
 end
