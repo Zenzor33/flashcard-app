@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_17_114421) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_20_104732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,17 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_114421) do
     t.index ["deck_id", "flashcard_id"], name: "index_deck_flashcards_on_deck_id_and_flashcard_id", unique: true
     t.index ["deck_id"], name: "index_deck_flashcards_on_deck_id"
     t.index ["flashcard_id"], name: "index_deck_flashcards_on_flashcard_id"
-  end
-
-  create_table "deck_statistics", force: :cascade do |t|
-    t.bigint "deck_id", null: false
-    t.integer "correct_count", default: 0, null: false
-    t.integer "incorrect_count", default: 0, null: false
-    t.integer "total_count", default: 0, null: false
-    t.float "accuracy", default: 0.0, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["deck_id"], name: "index_deck_statistics_on_deck_id"
   end
 
   create_table "decks", force: :cascade do |t|
@@ -82,7 +71,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_17_114421) do
 
   add_foreign_key "deck_flashcards", "decks"
   add_foreign_key "deck_flashcards", "flashcards"
-  add_foreign_key "deck_statistics", "decks"
   add_foreign_key "decks", "users"
   add_foreign_key "flashcard_statistics", "flashcards"
   add_foreign_key "flashcard_statistics", "users"

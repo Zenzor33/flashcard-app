@@ -18,8 +18,7 @@
 class Deck < ApplicationRecord
   belongs_to :user
   has_many :deck_flashcards
-  has_one :deck_statistic
-
+  
   after_create :assign_default_deck_statistic 
 
   def get_deck_flashcards_by_category(user, category)
