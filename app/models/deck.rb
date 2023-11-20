@@ -2,10 +2,14 @@
 #
 # Table name: decks
 #
-#  id         :bigint           not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id                    :bigint           not null, primary key
+#  average_accuracy      :float            default(0.0), not null
+#  total_attempts        :integer          default(0), not null
+#  total_correct_count   :integer          default(0), not null
+#  total_incorrect_count :integer          default(0), not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  user_id               :bigint           not null
 #
 # Indexes
 #
@@ -18,8 +22,6 @@
 class Deck < ApplicationRecord
   belongs_to :user
   has_many :deck_flashcards
-  
-  after_create :assign_default_deck_statistic 
 
   def get_deck_flashcards_by_category(user, category)
     category == 'all' ? self.deck_flashcards : self.deck_flashcards.where(category: category)
@@ -29,17 +31,15 @@ class Deck < ApplicationRecord
   # This method sums the correct_count of the decks deck_flashcards. 
   # Should be a hook / callback
   def correct_count_sum(user, category)
-    category == 'all' ? self.deck_statistic.correct_count : self.deck_statistic.correct_count
+    category == 'all' ? self.total_correct_count : self.total_correct_count
   end 
 
   def incorrect_count_sum(user, category)
-    category == 'all' ? self.deck_statistic.incorrect_count : self.deck_statistic.incorrect_count
+    category == 'all' ? self.total_incorrect_count : self.total_incorrect_count
   end 
 
   def accuracy(correct_count, incorrect_count)
-    total = correct_count + incorrect_count
-    return 0 if total.zero?
-    ((correct_count.to_f / total) * 100).round(0)
+    self.average_accuracy
   end
 
 
@@ -54,9 +54,10 @@ class Deck < ApplicationRecord
     deck_flashcard.destroy
   end 
 
-  private 
-
-  def assign_default_deck_statistic 
-   build_deck_statistic.save 
-  end
+  def update_statistics
+    self.total_correct_count = self.deck_flashcards.sum(:correct_count)
+    self.total_incorrect_count = self.deck_flashcards.sum(:incorrect_count)
+    self.average_accuracy = self.deck_flashcards.average(:accuracy)
+    save
+  end 
 end

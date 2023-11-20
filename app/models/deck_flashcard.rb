@@ -30,11 +30,6 @@ class DeckFlashcard < ApplicationRecord
 
   before_save :update_total_count, :update_accuracy
 
-  # def accuracy 
-  #   total = correct_count + incorrect_count
-  #   (correct_count.to_f / total)
-  # end 
-
   private
 
   def update_accuracy

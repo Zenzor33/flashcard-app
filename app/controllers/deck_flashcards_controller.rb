@@ -15,6 +15,7 @@ class DeckFlashcardsController < ApplicationController
   def mark_correct
     @deck_flashcard.correct_count += 1
     @deck_flashcard.save
+    @deck.update_statistics
 
     respond_to do |format|
       format.turbo_stream
@@ -25,6 +26,7 @@ class DeckFlashcardsController < ApplicationController
   def mark_incorrect
     @deck_flashcard.incorrect_count += 1
     @deck_flashcard.save
+    @deck.update_statistics
 
     respond_to do |format|
       format.turbo_stream
