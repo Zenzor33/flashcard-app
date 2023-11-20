@@ -26,6 +26,9 @@ class Deck < ApplicationRecord
     category == 'all' ? self.deck_flashcards : self.deck_flashcards.where(category: category)
   end 
 
+  # Requires update. 
+  # This method sums the correct_count of the decks deck_flashcards. 
+  # Should be a hook / callback
   def correct_count_sum(user, category)
     category == 'all' ? self.deck_statistic.correct_count : self.deck_statistic.correct_count
   end 
