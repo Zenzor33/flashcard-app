@@ -46,18 +46,27 @@ class Deck < ApplicationRecord
 
   def add_flashcard_to_deck(flashcard)
     self.deck_flashcards.create(flashcard_id: flashcard.id)
+    self.update_statistics
     save
   end 
 
   def remove_flashcard_from_deck(flashcard)
     deck_flashcard = self.deck_flashcards.find_by(flashcard: flashcard)
     deck_flashcard.destroy
+    self.update_statistics
   end 
 
   def update_statistics
-    self.total_correct_count = self.deck_flashcards.sum(:correct_count)
-    self.total_incorrect_count = self.deck_flashcards.sum(:incorrect_count)
-    self.average_accuracy = self.deck_flashcards.average(:accuracy)
-    save
-  end 
+    if self.deck_flashcards.exists?
+      self.total_correct_count = self.deck_flashcards.sum(:correct_count)
+      self.total_incorrect_count = self.deck_flashcards.sum(:incorrect_count)
+      self.average_accuracy = self.deck_flashcards.average(:accuracy)
+      save
+    else  
+      self.total_correct_count = 0
+      self.total_incorrect_count = 0
+      self.average_accuracy = 0.0
+      save
+    end 
+  end
 end
