@@ -32,7 +32,7 @@
       <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 bg-white px-4 py-10 sm:px-6 xl:px-8">
         <dt class="text-sm font-medium leading-6 text-gray-500">Accuracy</dt>
         <dd class="text-xs font-medium text-rose-600"></dd>
-        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900"><%= @accuracy.round(0) %>%</dd>
+        <dd class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900"><%= (@accuracy * 100).round(0) %>%</dd>
       </div>
     </dl>
   </div>

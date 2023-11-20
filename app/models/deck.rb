@@ -60,7 +60,7 @@ class Deck < ApplicationRecord
     if self.deck_flashcards.exists?
       self.total_correct_count = self.deck_flashcards.sum(:correct_count)
       self.total_incorrect_count = self.deck_flashcards.sum(:incorrect_count)
-      self.average_accuracy = self.deck_flashcards.average(:accuracy)
+      self.average_accuracy = self.total_correct_count / (self.total_correct_count.to_f + self.total_incorrect_count )
       save
     else  
       self.total_correct_count = 0
