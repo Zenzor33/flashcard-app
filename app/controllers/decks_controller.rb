@@ -14,7 +14,7 @@ class DecksController < ApplicationController
     @categorized_deck_flashcards = @deck.get_deck_flashcards_by_category(@category)
 
     #Deck Statistics
-    @accuracy = @deck.accuracy
+    @accuracy = @category == 'all' ? @deck.average_accuracy : @deck.get_category_accuracy(@category)
 
     respond_to do |format|
       format.turbo_stream

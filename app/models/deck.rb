@@ -27,22 +27,21 @@ class Deck < ApplicationRecord
     category == 'all' ? self.deck_flashcards : self.deck_flashcards.where(category: category)
   end 
 
-  # Requires update. 
-  # This method sums the correct_count of the decks deck_flashcards. 
-  # Should be a hook / callback
-  # def correct_count_sum(user, category)
-  #   category == 'all' ? self.total_correct_count : self.deck_flashcards.where(category: category).sum(:correct_count)
-  # end 
+  def get_category_accuracy(category)
+    if category == 'all' 
+      return self.average_accuracy
+    end 
 
-  # def incorrect_count_sum(user, category)
-  #   category == 'all' ? self.total_incorrect_count : self.deck_flashcards.where(category: category).sum(:incorrect_count)
-  # end 
-
-  def accuracy
-    self.average_accuracy
-  end
-
-
+    if self.deck_flashcards.where(category:category).exists?
+      correct_count = self.deck_flashcards.where(category: category).sum(:correct_count)
+      incorrect_count = self.deck_flashcards.where(category: category).sum(:incorrect_count)
+      total_count = correct_count + incorrect_count
+      accuracy = correct_count.to_f / total_count.to_f
+      accuracy.nan? ? 0 : accuracy
+    else  
+      0.0
+    end
+  end 
 
   def add_flashcard_to_deck(flashcard)
     self.deck_flashcards.create(flashcard_id: flashcard.id)
@@ -60,7 +59,8 @@ class Deck < ApplicationRecord
     if self.deck_flashcards.exists?
       self.total_correct_count = self.deck_flashcards.sum(:correct_count)
       self.total_incorrect_count = self.deck_flashcards.sum(:incorrect_count)
-      self.average_accuracy = self.total_correct_count / (self.total_correct_count.to_f + self.total_incorrect_count )
+      average_accuracy = self.total_correct_count / (self.total_correct_count.to_f + self.total_incorrect_count )
+      self.average_accuracy = average_accuracy.nan? ? 0 : average_accuracy
       save
     else  
       self.total_correct_count = 0
