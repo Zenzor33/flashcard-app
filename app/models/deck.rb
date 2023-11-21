@@ -51,8 +51,8 @@ class Deck < ApplicationRecord
 
   def update_statistics
     if self.deck_flashcards.exists?
-      self.total_correct_count = self.deck_flashcards.sum(:correct_count)
-      self.total_incorrect_count = self.deck_flashcards.sum(:incorrect_count)
+      self.total_correct_count = self.deck_flashcards.total_correct_count
+      self.total_incorrect_count = self.deck_flashcards.total_incorrect_count
       average_accuracy = self.total_correct_count / (self.total_correct_count.to_f + self.total_incorrect_count )
       self.average_accuracy = average_accuracy.nan? ? 0 : average_accuracy
       save

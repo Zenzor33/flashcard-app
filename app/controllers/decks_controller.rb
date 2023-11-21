@@ -18,10 +18,10 @@ class DecksController < ApplicationController
       @categorized_total_count = @categorized_correct_count + @categorized_incorrect_count
       @categorized_accuracy = @deck.average_accuracy
     else   
-      @categorized_correct_count = @deck.deck_flashcards.where(category: @category).sum(:correct_count)
-      @categorized_incorrect_count = @deck.deck_flashcards.where(category: @category).sum(:incorrect_count)
+      @categorized_correct_count = @categorized_deck_flashcards.total_correct_count
+      @categorized_incorrect_count = @categorized_deck_flashcards.total_incorrect_count
       @categorized_total_count = @categorized_correct_count + @categorized_incorrect_count
-      @categorized_accuracy = @deck.get_category_accuracy(@category, @categorized_correct_count, @categorized_incorrect_count)
+      @categorized_accuracy = @categorized_deck_flashcards.average_accuracy
     end 
 
     respond_to do |format|
