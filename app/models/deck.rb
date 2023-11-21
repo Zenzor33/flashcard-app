@@ -23,7 +23,7 @@ class Deck < ApplicationRecord
   belongs_to :user
   has_many :deck_flashcards
 
-  def get_deck_flashcards_by_category(user, category)
+  def get_deck_flashcards_by_category(category)
     category == 'all' ? self.deck_flashcards : self.deck_flashcards.where(category: category)
   end 
 
