@@ -27,17 +27,15 @@ class Deck < ApplicationRecord
     category == 'all' ? self.deck_flashcards : self.deck_flashcards.where(category: category)
   end 
 
-  def get_category_accuracy(category)
+  def get_category_accuracy(category, correct_count, incorrect_count)
     if category == 'all' 
       return self.average_accuracy
     end 
 
     if self.deck_flashcards.where(category:category).exists?
-      correct_count = self.deck_flashcards.where(category: category).sum(:correct_count)
-      incorrect_count = self.deck_flashcards.where(category: category).sum(:incorrect_count)
-      total_count = correct_count + incorrect_count
+      total_count = correct_count + incorrect_count 
       accuracy = correct_count.to_f / total_count.to_f
-      accuracy.nan? ? 0 : accuracy
+      accuracy.nan? ? 0 : accuracy.to_f
     else  
       0.0
     end

@@ -12,9 +12,15 @@ class DecksController < ApplicationController
     @deck = current_user.deck
     @category = params[:category] || 'all'
     @categorized_deck_flashcards = @deck.get_deck_flashcards_by_category(@category)
-
-    #Deck Statistics
-    @accuracy = @category == 'all' ? @deck.average_accuracy : @deck.get_category_accuracy(@category)
+    if @category == 'all'
+      @categorized_correct_count = @deck.total_correct_count
+      @categorized_incorrect_count = @deck.total_incorrect_count
+      @categorized_accuracy = @deck.average_accuracy
+    else   
+      @categorized_correct_count = @deck.deck_flashcards.where(category: @category).sum(:correct_count)
+      @categorized_incorrect_count = @deck.deck_flashcards.where(category: @category).sum(:incorrect_count)
+      @categorized_accuracy = @deck.get_category_accuracy(@category, @categorized_correct_count, @categorized_incorrect_count)
+    end 
 
     respond_to do |format|
       format.turbo_stream
