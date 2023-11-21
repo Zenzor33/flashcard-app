@@ -28,10 +28,6 @@ class Deck < ApplicationRecord
   end 
 
   def get_category_accuracy(category, correct_count, incorrect_count)
-    if category == 'all' 
-      return self.average_accuracy
-    end 
-
     if self.deck_flashcards.where(category:category).exists?
       total_count = correct_count + incorrect_count 
       accuracy = correct_count.to_f / total_count.to_f
