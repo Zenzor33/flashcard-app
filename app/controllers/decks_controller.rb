@@ -1,8 +1,5 @@
 class DecksController < ApplicationController
 
-  # before_action :authenticate_user!
-  # before_action :set_flashcard
-
   def check_deck_flashcards
     if current_user.deck.deck_flashcards.empty?
       redirect_to root_path, alert: "Please add flashcards to your deck to start studying."
@@ -15,9 +12,9 @@ class DecksController < ApplicationController
     @deck = current_user.deck
     @category = params[:category] || 'all'
     @categorized_deck_flashcards = @deck.get_deck_flashcards_by_category(@category)
-    @correct_count = @deck.correct_count_sum(current_user, @category)
-    @incorrect_count = @deck.incorrect_count_sum(current_user, @category)
-    @accuracy = @deck.accuracy(@correct_count, @incorrect_count)
+
+    #Deck Statistics
+    @accuracy = @deck.accuracy
 
     respond_to do |format|
       format.turbo_stream

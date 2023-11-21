@@ -30,15 +30,15 @@ class Deck < ApplicationRecord
   # Requires update. 
   # This method sums the correct_count of the decks deck_flashcards. 
   # Should be a hook / callback
-  def correct_count_sum(user, category)
-    category == 'all' ? self.total_correct_count : self.total_correct_count
-  end 
+  # def correct_count_sum(user, category)
+  #   category == 'all' ? self.total_correct_count : self.deck_flashcards.where(category: category).sum(:correct_count)
+  # end 
 
-  def incorrect_count_sum(user, category)
-    category == 'all' ? self.total_incorrect_count : self.total_incorrect_count
-  end 
+  # def incorrect_count_sum(user, category)
+  #   category == 'all' ? self.total_incorrect_count : self.deck_flashcards.where(category: category).sum(:incorrect_count)
+  # end 
 
-  def accuracy(correct_count, incorrect_count)
+  def accuracy
     self.average_accuracy
   end
 
