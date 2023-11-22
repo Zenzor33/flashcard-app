@@ -1,9 +1,10 @@
 Version 2:
 
 refactor06: 
-- refactor decks#show. skinny controller, fat model. 
+- refactor decks#show. skinny controller, fat model. x
 - refactor deck.update_statistics x
-- reduce length of names of variables and methods. 
+- reduce length of names of variables and methods. x 
+- Experiment with hooks
 
 current refactor: 
 - refactor controllers

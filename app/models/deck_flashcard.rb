@@ -30,6 +30,10 @@ class DeckFlashcard < ApplicationRecord
 
   before_save :update_total_count, :update_accuracy
 
+  def self.flashcard 
+    Flashcard.find_by(self.flashcard_id)
+  end 
+
   def self.average_accuracy
     total_attempts = self.total_correct_count + self.total_incorrect_count
     return 0.0 if total_attempts.zero? 
