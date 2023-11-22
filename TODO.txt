@@ -2,7 +2,7 @@ Version 2:
 
 refactor06: 
 - refactor decks#show. skinny controller, fat model. 
-- refactor deck.update_statistics
+- refactor deck.update_statistics x
 - reduce length of names of variables and methods. 
 
 current refactor: 
