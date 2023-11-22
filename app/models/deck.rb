@@ -27,16 +27,6 @@ class Deck < ApplicationRecord
     category == 'all' ? self.deck_flashcards : self.deck_flashcards.where(category: category)
   end 
 
-  def get_category_accuracy(category, correct_count, incorrect_count)
-    if self.deck_flashcards.where(category:category).exists?
-      total_count = correct_count + incorrect_count 
-      accuracy = correct_count.to_f / total_count.to_f
-      accuracy.nan? ? 0 : accuracy.to_f
-    else  
-      0.0
-    end
-  end 
-
   def add_flashcard_to_deck(flashcard)
     self.deck_flashcards.create(flashcard_id: flashcard.id)
     self.update_statistics

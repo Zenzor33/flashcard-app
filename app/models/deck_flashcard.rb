@@ -31,8 +31,11 @@ class DeckFlashcard < ApplicationRecord
   before_save :update_total_count, :update_accuracy
 
   def self.average_accuracy
-    accuracy = self.total_correct_count.to_f / (self.total_correct_count + self.total_incorrect_count)
-    accuracy.zero? ? 0.0 : accuracy
+    total_attempts = self.total_correct_count + self.total_incorrect_count
+    return 0.0 if total_attempts.zero? 
+    
+    accuracy = self.total_correct_count.to_f / total_attempts
+    accuracy.nan? ? 0.0 : accuracy
   end 
 
   def self.total_correct_count
