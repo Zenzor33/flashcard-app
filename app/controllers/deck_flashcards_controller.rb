@@ -50,7 +50,7 @@ class DeckFlashcardsController < ApplicationController
 
   def set_deck_flashcard 
     # Displays statistics and information in the study page (deck_flashcards#show) & decks stats_body (decks#show)
-    @deck_flashcard = @deck_flashcards.find_by(id: params[:id]) || @deck_flashcards.find_by(id: params[:format])
+    @deck_flashcard = @deck_flashcards.find_by(id: params[:id]) 
   end 
 
   def set_next_deck_flashcard
