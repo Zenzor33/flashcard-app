@@ -2,7 +2,6 @@ class DeckFlashcardsController < ApplicationController
   before_action :set_deck, :set_deck_flashcards, :set_deck_flashcard, :set_next_deck_flashcard, :set_previous_deck_flashcard 
 
   def show
-    # binding.pry
   end
 
   def next_flashcard
@@ -16,7 +15,6 @@ class DeckFlashcardsController < ApplicationController
   def mark_correct
     @deck_flashcard.correct_count += 1
     @deck_flashcard.save
-    @deck.update_statistics
 
     respond_to do |format|
       format.turbo_stream
@@ -27,7 +25,6 @@ class DeckFlashcardsController < ApplicationController
   def mark_incorrect
     @deck_flashcard.incorrect_count += 1
     @deck_flashcard.save
-    @deck.update_statistics
 
     respond_to do |format|
       format.turbo_stream

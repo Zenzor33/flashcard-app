@@ -29,14 +29,11 @@ class Deck < ApplicationRecord
 
   def add_flashcard(flashcard)
     self.deck_flashcards.create(flashcard_id: flashcard.id)
-    self.update_statistics
-    save
   end 
 
   def remove_flashcard(flashcard)
     deck_flashcard = self.deck_flashcards.find_by(flashcard: flashcard)
     deck_flashcard.destroy
-    self.update_statistics
   end 
 
   def update_statistics

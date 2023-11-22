@@ -29,6 +29,8 @@ class DeckFlashcard < ApplicationRecord
   belongs_to :flashcard
 
   before_save :update_total_count, :update_accuracy
+  after_save :update_deck_statistics
+  after_destroy :update_deck_statistics
 
   def self.flashcard 
     Flashcard.find_by(self.flashcard_id)
@@ -51,6 +53,11 @@ class DeckFlashcard < ApplicationRecord
   end
 
   private
+
+  def update_deck_statistics
+    deck = Deck.find_by(id: self.deck_id)
+    deck.update_statistics
+  end 
 
   def update_accuracy
     total = correct_count + incorrect_count

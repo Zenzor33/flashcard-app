@@ -1,5 +1,14 @@
 Version 2:
 
+Features  
+UI:
+- Flip animiation on Flashcard 
+- Flash[:alert] styling  
+Backend:
+- Experiment with hooks 
+- Automated assignment of deck_flashcard category 
+- Handling !current_user (malicious URL's)
+
 refactor06: 
 - refactor decks#show. skinny controller, fat model. x
 - refactor deck.update_statistics x
