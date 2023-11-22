@@ -1,5 +1,8 @@
 class DecksController < ApplicationController
 
+  before_action :set_deck, except: :check_deck_flashcards
+  before_action :set_flashcard, only: [:add_flashcard, :remove_flashcard]
+
   def check_deck_flashcards
     if current_user.deck.deck_flashcards.empty?
       redirect_to root_path, alert: "Please add flashcards to your deck to start studying."
@@ -9,7 +12,6 @@ class DecksController < ApplicationController
   end 
 
   def show 
-    @deck = current_user.deck
     @category = params[:category] || 'all'
     @categorized_deck_flashcards = @deck.get_deck_flashcards_by_category(@category)
 
@@ -20,12 +22,7 @@ class DecksController < ApplicationController
   end
 
   def add_flashcard 
-    #Add flashcard to current_user.deck.deck_flashcards
-    @deck = current_user.deck
-    flashcard = Flashcard.find(params[:flashcard_id].to_i)
-    @deck.add_flashcard_to_deck(flashcard)
-
-    @flashcard = Flashcard.find(params[:flashcard_id])
+    @deck.add_flashcard(@flashcard)
 
     respond_to do |format|
       format.turbo_stream {render :create}
@@ -33,16 +30,23 @@ class DecksController < ApplicationController
     end
   end 
 
-  def remove_flashcard
-    @deck = current_user.deck 
-    flashcard = Flashcard.find(params[:flashcard_id].to_i)
-    @deck.remove_flashcard_from_deck(flashcard)
+  def remove_flashcard 
+    @deck.remove_flashcard(@flashcard)
     
-    @flashcard = Flashcard.find(params[:flashcard_id])
-
     respond_to do |format|
       format.turbo_stream {render :create}
       format.html
     end
   end
+
+  private 
+
+  def set_deck 
+    @deck = current_user.deck
+  end 
+
+  def set_flashcard 
+    @flashcard = Flashcard.find(params[:flashcard_id].to_i)
+  end
+
 end

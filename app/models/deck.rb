@@ -27,13 +27,13 @@ class Deck < ApplicationRecord
     category == 'all' ? self.deck_flashcards : self.deck_flashcards.where(category: category)
   end 
 
-  def add_flashcard_to_deck(flashcard)
+  def add_flashcard(flashcard)
     self.deck_flashcards.create(flashcard_id: flashcard.id)
     self.update_statistics
     save
   end 
 
-  def remove_flashcard_from_deck(flashcard)
+  def remove_flashcard(flashcard)
     deck_flashcard = self.deck_flashcards.find_by(flashcard: flashcard)
     deck_flashcard.destroy
     self.update_statistics
