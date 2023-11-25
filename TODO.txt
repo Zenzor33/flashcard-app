@@ -5,9 +5,13 @@ UI:
 - Flip animiation on Flashcard 
 - Flash[:alert] styling  
 Backend:
-- Experiment with hooks 
 - Automated assignment of deck_flashcard category 
+-- use spaceship operator
 - Handling !current_user (malicious URL's)
+- Transition from positional arguments to keyword arguments?
+
+Completed:
+- Experiment with hooks 
 
 refactor06: 
 - refactor decks#show. skinny controller, fat model. x
