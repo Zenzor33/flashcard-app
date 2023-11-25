@@ -32,6 +32,8 @@ class DeckFlashcard < ApplicationRecord
   after_save :update_deck_statistics
   after_destroy :update_deck_statistics
 
+  scope :by_category, -> (category) {category == 'all' ? all : where(category: category)}
+
   def self.flashcard 
     Flashcard.find_by(self.flashcard_id)
   end 

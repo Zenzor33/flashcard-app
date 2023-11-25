@@ -14,7 +14,7 @@ class DecksController < ApplicationController
 
   def show 
     @category = params[:category] || 'all'
-    @categorized_deck_flashcards = @deck.get_deck_flashcards_by_category(@category)
+    @categorized_deck_flashcards = @deck.deck_flashcards.by_category(@category)
 
     respond_to do |format|
       format.turbo_stream

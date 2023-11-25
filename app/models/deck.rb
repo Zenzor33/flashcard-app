@@ -23,10 +23,6 @@ class Deck < ApplicationRecord
   belongs_to :user
   has_many :deck_flashcards
 
-  def get_deck_flashcards_by_category(category)
-    category == 'all' ? self.deck_flashcards : self.deck_flashcards.where(category: category)
-  end 
-
   def add_flashcard(flashcard)
     self.deck_flashcards.create(flashcard_id: flashcard.id)
   end 
