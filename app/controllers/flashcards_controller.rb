@@ -1,6 +1,6 @@
 class FlashcardsController < ApplicationController
 
-  before_action :set_flashcard
+  before_action :set_flashcard, except: :index
   # before_action :set_flashcard_statistic, except: [:index]
 
 

@@ -9,6 +9,7 @@ Backend:
 -- use spaceship operator
 - Handling !current_user (malicious URL's)
 - Transition from positional arguments to keyword arguments?
+--   before_action :set_flashcard, except: :index in flashcards_controller
 
 Completed:
 - Experiment with hooks 
