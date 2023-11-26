@@ -3,11 +3,15 @@ require "test_helper"
 class FlashcardsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
-  test "should get flashcards_url" do
+  setup do 
     #Create a user
     user = User.create!(email: 'test99999@example.com', password: 'password', password_confirmation: 'password')
     #Sign in the user
     sign_in user 
+  end 
+
+  test "should get flashcards_url" do
+
     #Make a request to the flashcards controller
     get flashcards_url
 
@@ -16,10 +20,6 @@ class FlashcardsControllerTest < ActionDispatch::IntegrationTest
 
   #Should show flashcard page for @flashcard
   test "should show flashcard" do 
-    #Create a user
-    user = User.create!(email: 'test99999@example.com', password: 'password', password_confirmation: 'password')
-    #Sign in the user
-    sign_in user 
     #Make a request to flashcards#show
     @flashcard = Flashcard.create!(front: "Hello World",back: "Ola Mundo")
     get flashcard_path(@flashcard)
@@ -28,10 +28,6 @@ class FlashcardsControllerTest < ActionDispatch::IntegrationTest
   end 
 
   test "should redirect if flashcard not found" do 
-        #Create a user
-        user = User.create!(email: 'test99999@example.com', password: 'password', password_confirmation: 'password')
-        #Sign in the user
-        sign_in user 
         #Make a request to flashcards#show
         get flashcard_url(id: -1)
 
