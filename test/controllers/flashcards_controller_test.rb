@@ -27,11 +27,11 @@ class FlashcardsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end 
 
-  test "should redirect if flashcard not found" do 
-        #Make a request to flashcards#show
-        get flashcard_url(id: -1)
+  test "should redirect to rooth_path and display alert message if flashcard not found" do 
+    #Make a request to flashcards#show
+    get flashcard_url(id: -1)
 
-        assert_redirected_to root_path
-        assert_equal 'Flashcard not found', flash[:alert]
+    assert_redirected_to root_path
+    assert_equal 'Flashcard not found', flash[:alert]
   end 
 end
