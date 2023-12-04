@@ -54,9 +54,4 @@ RSpec.describe User, type: :model do
     )
     expect(user.deck).to be_present
   end 
-
-  # describe 'associations' do
-  #   user = User.create!(email: "test1@example.com", password: "secret")
-  #   it { should have_one(:deck) }
-  # end
 end
