@@ -16,19 +16,8 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-
-  has_one :deck, dependent: :destroy
-  after_create :assign_default_deck 
-
-  private
-
-  def assign_default_deck
-    build_deck.save
-  end 
+FactoryBot.define do
+  factory :user do
+    
+  end
 end

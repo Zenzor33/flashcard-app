@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_20_105258) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_02_131157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_20_105258) do
     t.integer "total_attempts", default: 0, null: false
     t.float "average_accuracy", default: 0.0, null: false
     t.index ["user_id"], name: "index_decks_on_user_id"
+  end
+
+  create_table "dummies", force: :cascade do |t|
+    t.string "name"
+    t.integer "age"
+    t.datetime "born_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", null: false
+    t.index ["email"], name: "index_dummies_on_email", unique: true
   end
 
   create_table "flashcard_statistics", force: :cascade do |t|
