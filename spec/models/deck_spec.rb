@@ -13,11 +13,11 @@ RSpec.describe Deck, type: :model do
   # validations
   context "user_id" do 
     # validates :user_id, presence: true, numericality: { only_integer: true }
-    it 'is invalid when user_id is nil' do 
-      deck = Deck.new(user_id: nil)
-      expect(deck).to_not be_valid 
-      expect(deck.errors[:user_id]).to include("is not a number")
-    end 
+    # it 'is invalid when user_id is nil' do 
+    #   deck = Deck.new(user_id: nil)
+    #   expect(deck).to_not be_valid 
+    #   expect(deck.errors[:user_id]).to include("is not a number")
+    # end 
 
     it 'is invalid when user_id is not an integer' do 
       deck = Deck.new(user_id: 1.0)

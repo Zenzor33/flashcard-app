@@ -23,12 +23,23 @@ class Deck < ApplicationRecord
   belongs_to :user
   has_many :deck_flashcards
 
-  #Validate presence of and type of user
-  validates :user_id, presence: true, numericality: { only_integer: true }
-  validates :total_correct_count, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :total_incorrect_count, presence: true, numericality: { only_integer: true , greater_than_or_equal_to: 0}
-  validates :total_attempts, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :average_accuracy, presence: true, numericality: { only_float: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 1.0}
+  # NOTE: You don't need this. ActiveRecord enforces relationships for you automatically.
+  # validates :user_id, presence: true, numericality: { only_integer: true }
+  validates :total_correct_count,
+            :total_incorrect_count, 
+            :total_attempts,
+            presence: true, 
+            numericality: { 
+              only_integer: true, 
+              greater_than_or_equal_to: 0 
+            }
+  validates :average_accuracy, 
+            presence: true, 
+            numericality: { 
+              only_float: true, 
+              greater_than_or_equal_to: 0, 
+              less_than_or_equal_to: 1.0
+            }
 
 
   def add_flashcard(flashcard)
