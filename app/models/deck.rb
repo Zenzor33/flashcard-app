@@ -50,7 +50,7 @@ class Deck < ApplicationRecord
     deck_flashcard = self.deck_flashcards.find_by(flashcard: flashcard)
     deck_flashcard.destroy
   end 
-
+  
   def update_statistics
     if self.deck_flashcards.exists?
       update_counts
@@ -73,6 +73,17 @@ class Deck < ApplicationRecord
     self.average_accuracy = average_accuracy.nan? ? 0 : average_accuracy
     save
   end  
+
+  #Improvement - analyze later
+  # def update_average_accuracy
+  #   denominator = (total_correct_count + total_incorrect_count ).to_f
+
+  #   if denominator.zero?
+  #     update(average_accuracy: 0)
+  #   else
+  #     update(average_accuracy: total_correct_count / denominator)
+  #   end
+  # end  
 
   def reset_statistics
     self.total_correct_count = 0

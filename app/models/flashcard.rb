@@ -10,13 +10,23 @@
 #
 class Flashcard < ApplicationRecord
   has_many :deck_flashcards
-  
-  def self.search(params={})
+
+  scope :search, -> (params = {}) {
     if params[:front]
       search_term = params[:front].downcase
       where("lower(front) LIKE ?", "%#{search_term}%")
     else
       all
     end
-  end
+  }
+  
+  # def self.search(params={})
+  #   if params[:front]
+  #     search_term = params[:front].downcase
+  #     where("lower(front) LIKE ?", "%#{search_term}%")
+  #   else
+  #     all
+  #   end
+  # end
+
 end
