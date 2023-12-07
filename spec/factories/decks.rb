@@ -21,7 +21,7 @@
 #
 FactoryBot.define do
   factory :deck do
-    association :user 
+    association :user # Sets a belongs_to assocation ??
     total_correct_count { 0 }
     total_incorrect_count { 0 } 
     total_attempts { 0 }
