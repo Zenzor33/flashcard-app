@@ -73,6 +73,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'launchy', '~> 2.4', '>= 2.4.3'
 end
 
 gem "tailwindcss-rails", "~> 2.0"

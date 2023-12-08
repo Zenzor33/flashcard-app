@@ -10,6 +10,7 @@
 #
 FactoryBot.define do
   factory :flashcard do
-    
+    sequence(:front) { |n| "Front+#{n}"}
+    sequence(:back) { |n| "Back+#{n}" }
   end
 end
