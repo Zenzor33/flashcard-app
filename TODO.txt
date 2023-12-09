@@ -1,8 +1,13 @@
 Version 2:
 
+Questions: 
+- check_deck_flashcards in decks_controller (used in _navbar partial)
+- _navbar is a mess
+
 Overview of app 
 - User signs up 
 - User is automatically assigned a Deck 
+- The study page can only be accessed after when the user has flashcards in their deck. 
 - 
 
 Features  

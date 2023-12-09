@@ -37,23 +37,15 @@
               <% deck_path = user_deck_path(current_user, current_user.deck, category: 'all') %>
 
               <%= link_to "Home", home_path, class: navbar_link_class(home_path), aria_current: get_navbar_aria(home_path) %>
-
               <%= link_to "Study", study_path, class: navbar_link_class(study_path), aria_current: get_navbar_aria(study_path)  %>
-
               <%= link_to deck_path, class: navbar_link_class(deck_path), id: "navbar-my-cards", aria_current: get_navbar_aria(deck_path) do%>
                 My Cards <span id='deck-cards-counter' class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20"><%= current_user.deck.deck_flashcards.size %></span>
               <% end %>
-
               <%= link_to "Contact", contact_path, class: navbar_link_class(contact_path), aria_current: get_navbar_aria(contact_path) %>
-
-
             <% else %>
               <%= link_to "Home", flashcards_path, class: navbar_link_class(flashcards_path), aria_current: 'page' %>
-
               <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Study</a>
-
               <a href="<%= new_user_session_path %>" id="navbar-my-cards" class="<%= navbar_link_class(flashcards_path) %>">My Cards  <span class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">0</span></a>
-
               <a href="<%= contact_path %>" class="<%= current_or_default(contact_path) %>  text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
             <% end %>
           </div>
