@@ -7,8 +7,10 @@ class DecksController < ApplicationController
     if current_user.deck.deck_flashcards.empty?
       redirect_to root_path, alert: "Please add flashcards to your deck to start studying."
     else  
-      #Redirects to study page
-      redirect_to user_deck_study_deck_flashcard_path(current_user, current_user.deck, @first_deck_flashcard_id)
+      # Redirects to study page
+      # This needs to be refactored
+      # Business logic to determine the order of flashcards belongs in a model
+      redirect_to user_deck_study_deck_flashcard_path(current_user, current_user.deck, current_user.deck.deck_flashcards.first.id)
     end 
   end 
 
