@@ -30,47 +30,38 @@ RSpec.describe DeckFlashcard, type: :model do
   describe ".by_category" do 
 
     before(:each) do 
-      
-      @user = User.create!(email: "test@example.com", password: "secret")
-      
-      @flashcard1 = Flashcard.create!(front: "Hello", back: "Oi")
-      @flashcard2 = Flashcard.create!(front: "Goodbye", back: "Tchau")
-      @flashcard3 = Flashcard.create!(front: "Good Morning", back: "Bom Dia")
+      @user = FactoryBot.create(:user)
+
+      FactoryBot.create_list(:flashcard, 3)
+      @flashcard1 = Flashcard.first 
+      @flashcard2 = Flashcard.second 
+      @flashcard3 = Flashcard.third
+
+      @deckflashcard1 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard1.id)
+      @deckflashcard2 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard2.id)
+      @deckflashcard3 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard3.id)
     end 
 
-    context "when category is all" do 
+    context "all" do 
       it "returns all deck flashcards" do 
-        deckflashcard1 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard1.id)
-        deckflashcard2 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard2.id)
-        deckflashcard3 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard3.id)
-
         result = DeckFlashcard.by_category('all')
-      
         expect(result).to match_array(DeckFlashcard.all)
       end
     end
 
-    context "when category is specified" do 
-      it "returns only deck flashcards that belong to the specified category" do 
-        deckflashcard1 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard1.id)
-        deckflashcard2 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard2.id)
-        deckflashcard3 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard3.id, category: "mastered") 
-        
+    context "is specified" do 
+      it "returns only deck_flashcards that belong to the specified category" do 
+        @deckflashcard3.update(category: "mastered") #Note that before(:each) ensures that a database rollback prevents this transaction from effecting subsequent tests. 
         result = DeckFlashcard.by_category('new')
       
-        expect(result).to include(deckflashcard1, deckflashcard2)
-        expect(result).to_not include(deckflashcard3)
+        expect(result).to include(@deckflashcard1, @deckflashcard2)
+        expect(result).to_not include(@deckflashcard3)
       end 
     end
 
-    context "when category is empty" do 
+    context "is empty" do 
       it "returns an empty collection" do 
-        deckflashcard1 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard1.id)
-        deckflashcard2 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard2.id)
-        deckflashcard3 = @user.deck.deck_flashcards.create!(flashcard_id: @flashcard3.id, category: "mastered") 
-        
-        result = DeckFlashcard.by_category('learning')
-      
+        result = DeckFlashcard.by_category('mastered')
         expect(result).to be_empty
       end 
     end 

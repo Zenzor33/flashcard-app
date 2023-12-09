@@ -10,12 +10,6 @@ RSpec.describe "Flashcards", type: :request do
 
   describe "GET /index" do
 
-    # before do
-    #   @user = FactoryBot.create(:user)
-    #   @flashcard = FactoryBot.create(:flashcard)
-    #   sign_in @user
-    # end 
-
     it "returns HTTP success" do 
       get flashcards_path
       expect(response).to have_http_status(:success)
@@ -23,12 +17,6 @@ RSpec.describe "Flashcards", type: :request do
   end
 
   describe "GET /show" do 
-
-    # before do
-    #   @user = FactoryBot.create(:user)
-    #   @flashcard = FactoryBot.create(:flashcard)
-    #   sign_in @user
-    # end 
 
     context "With valid Flashcard ID" do 
       it "returns HTTP success" do 
