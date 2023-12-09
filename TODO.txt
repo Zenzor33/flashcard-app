@@ -1,5 +1,10 @@
 Version 2:
 
+Overview of app 
+- User signs up 
+- User is automatically assigned a Deck 
+- 
+
 Features  
 UI:
 - Flip animiation on Flashcard 
