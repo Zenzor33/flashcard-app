@@ -18,9 +18,10 @@ RSpec.describe Flashcard, type: :model do
 
   context "search" do 
     it "returns matching flashcard if search term exists" do 
-      params = { :front => "Go" }
+      params = { :front => "He" }
       flashcards = Flashcard.search(params)
-      expect(flashcards).to include(@flashcard2)
+      expect(flashcards).to include(@flashcard1)
+      expect(flashcards).to_not include(@flashcard2)
     end
 
     it "returns all flashcards if params[:front] does not exist" do 
