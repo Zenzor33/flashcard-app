@@ -29,21 +29,15 @@ require 'rails_helper'
 RSpec.describe DeckFlashcard, type: :model do
   describe ".by_category" do 
 
-    let (:user) { FactoryBot.create(:user) }
-
-    before(:each) do 
-      # @user = FactoryBot.create(:user)
-
-      FactoryBot.create_list(:flashcard, 3)
-      @flashcard1 = Flashcard.first 
-      @flashcard2 = Flashcard.second 
-      @flashcard3 = Flashcard.third
-
-      flashcards = Flashcard.all 
+    let(:user) { FactoryBot.create(:user) }
+    let!(:flashcards) { FactoryBot.create_list(:flashcard, 3) }
+    let!(:deck_flashcards) {
       flashcards.each do |flashcard|
         user.deck.deck_flashcards.create!(flashcard_id: flashcard.id)
       end 
+    }
 
+    before(:each) do 
       @deckflashcard1 = DeckFlashcard.first
       @deckflashcard2 = DeckFlashcard.second
       @deckflashcard3 = DeckFlashcard.third
