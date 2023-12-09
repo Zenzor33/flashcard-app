@@ -2,13 +2,10 @@ require 'rails_helper'
 
 RSpec.feature "Flashcards", type: :feature do
 
-  let (:user ){ FactoryBot.create(:user) } #lazy loads user
-
-  before do 
-    FactoryBot.create_list(:flashcard, 3)
-    sign_in user
-  end 
-
+  let(:user){ FactoryBot.create(:user) }
+  let!(:flashcards) { FactoryBot.create_list(:flashcard, 3) }
+  before { sign_in user} 
+    
   scenario "New user signs in and adds a flashcard to their deck" do 
     flashcard = Flashcard.first
     visit flashcards_path
