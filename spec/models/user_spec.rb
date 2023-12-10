@@ -27,27 +27,29 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
-    it "is invalid without an email" do 
-      user.email = nil
-      user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
-    end
+    it { should validate_presence_of(:email) }
+    
+    # it "is invalid without a password" do 
+    #   user.password = nil
+    #   user.valid?
+    #   expect(user.errors[:password]).to include("can't be blank")
+    # end
 
-    it "is invalid without a password" do 
-      user.password = nil
-      user.valid?
-      expect(user.errors[:password]).to include("can't be blank")
-    end
+    it { should validate_presence_of(:password) }
 
-    it "is invalid with a duplicate email address" do 
-      existing_user = FactoryBot.create(:user)
-      user.email = existing_user.email
-      expect(user).to_not be_valid
-      expect(user.errors[:email]).to include("has already been taken")
-    end
+
+    # it "is invalid with a duplicate email address" do 
+    #   existing_user = FactoryBot.create(:user)
+    #   user.email = existing_user.email
+    #   expect(user).to_not be_valid
+    #   expect(user.errors[:email]).to include("has already been taken")
+    # end
+
+    it { should validate_uniqueness_of(:email).case_insensitive }
+
   end
 
-  describe 'associations' do 
+  describe 'callbacks' do 
     it "it creates default deck for new users" do 
       user = FactoryBot.create(:user)
       expect(user.deck).to be_present

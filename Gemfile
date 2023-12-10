@@ -74,6 +74,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem 'launchy', '~> 2.4', '>= 2.4.3'
+  gem 'shoulda-matchers', '~> 5.0'
 end
 
 gem "tailwindcss-rails", "~> 2.0"
@@ -82,5 +83,4 @@ gem "devise", "~> 4.9"
 
 gem "annotate", "~> 3.2", :group => :development
 gem 'simple_form'
-gem 'pry-rails', :group => :development
 gem 'devise-tailwinded', '~> 0.1.5'

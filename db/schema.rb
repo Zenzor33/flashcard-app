@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_02_131157) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_10_151936) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,8 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_02_131157) do
   end
 
   create_table "flashcards", force: :cascade do |t|
-    t.string "front"
-    t.string "back"
+    t.string "front", null: false
+    t.string "back", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,8 +3,8 @@
 # Table name: flashcards
 #
 #  id         :bigint           not null, primary key
-#  back       :string
-#  front      :string
+#  back       :string           not null
+#  front      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

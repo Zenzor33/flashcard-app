@@ -34,7 +34,7 @@
             <% if current_user %>
               <% home_path = flashcards_path %>
               <% study_path = check_deck_flashcards_user_decks_path(current_user) %>
-              <% deck_path = user_deck_path(current_user, current_user.deck, category: 'all') %>
+              <% deck_path = user_deck_path(current_user, current_user.deck, category: 'all') %> 
 
               <%= link_to "Home", home_path, class: navbar_link_class(home_path), aria_current: get_navbar_aria(home_path) %>
               <%= link_to "Study", study_path, class: navbar_link_class(study_path), aria_current: get_navbar_aria(study_path)  %>
