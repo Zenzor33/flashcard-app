@@ -38,7 +38,7 @@ class Deck < ApplicationRecord
             numericality: { 
               only_float: true, 
               greater_than_or_equal_to: 0, 
-              less_than_or_equal_to: 1.0
+              less_than_or_equal_to: 1
             }
 
 

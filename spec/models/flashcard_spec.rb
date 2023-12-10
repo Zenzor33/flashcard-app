@@ -12,20 +12,18 @@ require 'rails_helper'
 
 RSpec.describe Flashcard, type: :model do
   
-  before do 
-    @flashcard1 = Flashcard.create!(front: "Hello", back: "Oi")
-    @flashcard2 = Flashcard.create!(front: "Goodbye", back: "Tchau")
-  end 
+  let!(:flashcard1) {Flashcard.create!(front: "Hello", back: "Oi")}
+  let!(:flashcard2) {Flashcard.create!(front: "Goodbye", back: "Tchau")}
 
-  it { should validate_presence_of(:front)}
+  it { should validate_presence_of(:front) }
   it { should validate_presence_of(:back) }
 
   context "search" do 
     it "returns matching flashcard if search term exists" do 
       params = { :front => "He" }
       flashcards = Flashcard.search(params)
-      expect(flashcards).to include(@flashcard1)
-      expect(flashcards).to_not include(@flashcard2)
+      expect(flashcards).to include(flashcard1)
+      expect(flashcards).to_not include(flashcard2)
     end
 
     it "returns all flashcards if params[:front] does not exist" do 
