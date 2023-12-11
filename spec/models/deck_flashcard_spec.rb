@@ -3,10 +3,10 @@
 # Table name: deck_flashcards
 #
 #  id              :bigint           not null, primary key
-#  accuracy        :float            default(0.0)
-#  category        :string           default("new")
-#  correct_count   :integer          default(0)
-#  incorrect_count :integer          default(0)
+#  accuracy        :float            default(0.0), not null
+#  category        :string           default("new"), not null
+#  correct_count   :integer          default(0), not null
+#  incorrect_count :integer          default(0), not null
 #  total_count     :integer          default(0), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -27,6 +27,24 @@
 require 'rails_helper'
 
 RSpec.describe DeckFlashcard, type: :model do
+
+  describe 'associations' do 
+    it { should belong_to(:deck) }
+    it { should belong_to(:flashcard) }
+  end 
+
+  describe 'validations' do 
+    [:accuracy, :category, :correct_count, :incorrect_count, :total_count].each {
+      |attribute| it {should validate_presence_of(attribute)}
+    }
+    [:correct_count, :incorrect_count, :total_count].each {
+      |attribute| it {should validate_numericality_of(attribute).only_integer.is_greater_than_or_equal_to(0)}
+    }
+    it do 
+      should validate_numericality_of(:accuracy).is_greater_than_or_equal_to(0).is_less_than_or_equal_to(100)
+    end
+  end
+
   describe ".by_category" do 
 
     let(:user) { FactoryBot.create(:user) }
