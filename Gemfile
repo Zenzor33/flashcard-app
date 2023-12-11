@@ -84,3 +84,5 @@ gem "devise", "~> 4.9"
 gem "annotate", "~> 3.2", :group => :development
 gem 'simple_form'
 gem 'devise-tailwinded', '~> 0.1.5'
+
+gem "pundit", "~> 2.3"
