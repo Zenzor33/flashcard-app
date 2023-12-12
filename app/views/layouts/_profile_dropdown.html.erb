@@ -22,9 +22,10 @@
     <a href="<%= new_user_registration_path %>" class="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">
     <%= current_user ? User.find(current_user.id).email : "Sign Up" %>
     </a>
-    <a href="#" class="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+
     
     <% if current_user %>
+        <a href="<%= user_path(current_user.id)%>" class="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
       <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700", role: "menuitem", tabindex: "-1" %>
     <% else %>
       <a href="<%= new_user_session_path %>" class="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Sign in</a>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users
+  get 'users/:id/account', to: 'users#account'
   resources :flashcards
 
   resources :user do 

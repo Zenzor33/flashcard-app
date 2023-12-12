@@ -14,8 +14,9 @@
   <body>
     <main>
       <%= render 'layouts/navbar' %>
-            <p class="notice"><%= notice %></p>
+       <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
+       <p class="error"><%= flash[:error] %></p> 
       <div class="mt-8">
       <%= yield %>
       </div>
