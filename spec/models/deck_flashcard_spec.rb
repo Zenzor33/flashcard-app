@@ -61,9 +61,9 @@ RSpec.describe DeckFlashcard, type: :model do
       @deckflashcard3 = DeckFlashcard.third
     end 
 
-    context "all" do 
+    context "nil" do 
       it "returns all deck flashcards" do 
-        result = DeckFlashcard.by_category('all')
+        result = DeckFlashcard.by_category(nil)
         expect(result).to match_array(DeckFlashcard.all)
       end
     end

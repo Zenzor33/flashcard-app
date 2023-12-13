@@ -20,6 +20,7 @@ The problem:
 - _stats_header:   <%= link_to 'All Cards', user_deck_path(current_user.id, @deck, category: 'all'), class: user_deck_classes('all'), data: {turbo_stream: true} %> <!-- add remote: true ?-->
 
 - The NavBar should not require a parameter because the default display should be category: "all"
+- If params[:category] is nil, the scope query should return DeckFlashcard.all
 
 Questions: 
 - check_deck_flashcards in decks_controller (used in _navbar partial)
