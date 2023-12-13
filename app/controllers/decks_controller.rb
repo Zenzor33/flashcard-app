@@ -30,7 +30,6 @@ class DecksController < ApplicationController
     authorize @deck
     @deck.add_flashcard(@flashcard)
     
-
     respond_to do |format|
       format.turbo_stream {render :create}
       format.html

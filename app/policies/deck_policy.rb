@@ -10,14 +10,19 @@ class DeckPolicy < ApplicationPolicy
   end
 
   def show? 
-    record.user == user
+    user_owns_record?
   end 
 
   def add_flashcard?
-    record.user == user 
+    # record.user != user 
+    user_owns_record? 
   end 
 
   def remove_flashcard?
-    record.user == user
+    user_owns_record?
+  end
+
+  def user_owns_record?
+    record.user == user 
   end
 end

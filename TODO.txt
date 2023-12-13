@@ -3,6 +3,7 @@ Version 2:
 Questions: 
 - check_deck_flashcards in decks_controller (used in _navbar partial)
 - _navbar is a mess
+- How to display error messages for Pundit unauthorized access in turbo streams (used in _flashcard.html.erb)
 
 new TODO: 
 - Convert specs to shoulda matchers x
