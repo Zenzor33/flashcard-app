@@ -5,6 +5,20 @@ Questions:
 - _navbar is a mess
 - How to display error messages for Pundit unauthorized access in turbo streams (used in _flashcard.html.erb)
 
+Rethink the /study route 
+- Problem: I can not explain why the Studies controller exists. 
+
+resource :study, controller: 'studies' do
+          resources :deck_flashcards, only: [:show, :update] do 
+            member do
+              post :mark_correct
+              post :mark_incorrect
+            end
+          end
+        end
+
+The study page should be replaced by deck_flashcards because all it effectively does is display a the deck's flashcards. 
+
 new TODO: 
 - Convert specs to shoulda matchers x
 - convert debounace to loadash 

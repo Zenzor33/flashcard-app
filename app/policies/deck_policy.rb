@@ -23,6 +23,6 @@ class DeckPolicy < ApplicationPolicy
   end
 
   def user_owns_record?
-    record.user == user 
+    record.user != user 
   end
 end
