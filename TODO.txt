@@ -1,10 +1,15 @@
 Version 2:
 
 new TODO: 
-- Convert specs to shoulda matchers
+- Convert specs to shoulda matchers x
 - convert debounace to loadash 
 - learn Pundits 
+- decks policy ask about scope 
+- Handling flash errors in turbo streams/frames
 
+- Get rid of the 'all' query
+-- remove null:false from deck_flashcard category?
+-- remove 'all' from decks_controller, deck_flashcard, 
 
 Questions: 
 - check_deck_flashcards in decks_controller (used in _navbar partial)

@@ -15,8 +15,11 @@ class DecksController < ApplicationController
   end 
 
   def show 
+    authorize @deck
     @category = params[:category] || 'all'
+    # @category = params[:category]
     @categorized_deck_flashcards = @deck.deck_flashcards.by_category(@category)
+    
 
     respond_to do |format|
       format.turbo_stream
@@ -25,7 +28,9 @@ class DecksController < ApplicationController
   end
 
   def add_flashcard 
+    authorize @deck
     @deck.add_flashcard(@flashcard)
+    
 
     respond_to do |format|
       format.turbo_stream {render :create}
@@ -34,8 +39,10 @@ class DecksController < ApplicationController
   end 
 
   def remove_flashcard 
+    authorize @deck
     @deck.remove_flashcard(@flashcard)
     
+
     respond_to do |format|
       format.turbo_stream {render :create}
       format.html
