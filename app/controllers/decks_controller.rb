@@ -16,8 +16,8 @@ class DecksController < ApplicationController
 
   def show 
     authorize @deck
-    @category = params[:category] || 'all'
-    # @category = params[:category]
+    # @category = params[:category] || 'all'
+    @category = params[:category]
     @categorized_deck_flashcards = @deck.deck_flashcards.by_category(@category)
     
 

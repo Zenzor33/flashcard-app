@@ -11,6 +11,16 @@ new TODO:
 -- remove null:false from deck_flashcard category?
 -- remove 'all' from decks_controller, deck_flashcard, 
 
+The problem: 
+- The DeckFlashcard category "all" is being passed through the app as a query parameter instead of it being calculated by internal logic.
+
+- The NavBar links to Deck#show ("deck" in UI) with the query parameter "category: all"
+- Deck#show assigns the result of deck.deck_flashcards.by_category(@category) scope to @categorized_deck_flashcards   
+- scope :by_category, -> (category) {category == 'all' ? all : where(category: category)} #Fix 'all'
+- _stats_header:   <%= link_to 'All Cards', user_deck_path(current_user.id, @deck, category: 'all'), class: user_deck_classes('all'), data: {turbo_stream: true} %> <!-- add remote: true ?-->
+
+- The NavBar should not require a parameter because the default display should be category: "all"
+
 Questions: 
 - check_deck_flashcards in decks_controller (used in _navbar partial)
 - _navbar is a mess
