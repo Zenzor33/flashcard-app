@@ -23,14 +23,13 @@ Rails.application.routes.draw do
         get 'check_deck_flashcards'
       end 
       
-        resource :study, controller: 'studies' do
-          resources :deck_flashcards, only: [:show, :update] do 
-            member do
-              post :mark_correct
-              post :mark_incorrect
-            end
-          end
+
+      resources :deck_flashcards, only: [:show, :update] do 
+        member do
+          post :mark_correct
+          post :mark_incorrect
         end
+      end
     end
   end
 

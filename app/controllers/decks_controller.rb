@@ -10,7 +10,7 @@ class DecksController < ApplicationController
       # Redirects to study page
       # This needs to be refactored
       # Business logic to determine the order of flashcards belongs in a model
-      redirect_to user_deck_study_deck_flashcard_path(current_user, current_user.deck, current_user.deck.deck_flashcards.first.id)
+      redirect_to user_deck_deck_flashcard_path(current_user, current_user.deck, current_user.deck.deck_flashcards.first.id)
     end 
   end 
 

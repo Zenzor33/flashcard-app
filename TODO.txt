@@ -19,6 +19,9 @@ resource :study, controller: 'studies' do
 
 The study page should be replaced by deck_flashcards because all it effectively does is display a the deck's flashcards. 
 
+Process: 
+- Ensure routes and actions for mark_correct, mark_incorrect remain stable 
+
 new TODO: 
 - Convert specs to shoulda matchers x
 - convert debounace to loadash 
