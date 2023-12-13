@@ -2,17 +2,22 @@ class DeckFlashcardsController < ApplicationController
   before_action :set_deck, :set_deck_flashcards, :set_deck_flashcard, :set_next_deck_flashcard, :set_previous_deck_flashcard 
 
   def show
+    # binding.pry
+    authorize @deck_flashcard
   end
 
   def next_flashcard
+    authorize @deck_flashcard
     render :show
   end 
 
   def previous_flashcard
+    authorize @deck_flashcard
     render :show
   end 
 
   def mark_correct
+    authorize @deck_flashcard
     @deck_flashcard.correct_count += 1
     @deck_flashcard.save
 
@@ -23,6 +28,7 @@ class DeckFlashcardsController < ApplicationController
   end 
 
   def mark_incorrect
+    authorize @deck_flashcard
     @deck_flashcard.incorrect_count += 1
     @deck_flashcard.save
 
