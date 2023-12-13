@@ -2,10 +2,6 @@
 #
 
 Rails.application.routes.draw do
-  get 'studies/show'
-  get 'studies/update'
-  # resources :decks
-
   devise_for :users
 
   resources :users
