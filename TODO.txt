@@ -1,5 +1,9 @@
 Version 2:
 
+Questions: 
+- check_deck_flashcards in decks_controller (used in _navbar partial)
+- _navbar is a mess
+
 new TODO: 
 - Convert specs to shoulda matchers x
 - convert debounace to loadash 
@@ -7,10 +11,7 @@ new TODO:
 - decks policy ask about scope 
 - Handling flash errors in turbo streams/frames
 
-- Get rid of the 'all' query
--- remove null:false from deck_flashcard category?
--- remove 'all' from decks_controller, deck_flashcard, 
-
+- Get rid of the 'all' query x 
 The problem: 
 - The DeckFlashcard category "all" is being passed through the app as a query parameter instead of it being calculated by internal logic.
 
@@ -22,9 +23,7 @@ The problem:
 - The NavBar should not require a parameter because the default display should be category: "all"
 - If params[:category] is nil, the scope query should return DeckFlashcard.all
 
-Questions: 
-- check_deck_flashcards in decks_controller (used in _navbar partial)
-- _navbar is a mess
+
 
 Overview of app 
 - User signs up 
