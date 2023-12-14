@@ -25,9 +25,9 @@ Process:
 new TODO: 
 - Convert specs to shoulda matchers x
 - convert debounace to loadash 
-- learn Pundits 
-- decks policy ask about scope 
-- Handling flash errors in turbo streams/frames
+- learn Pundits x
+- decks policy ask about scope  x
+- Handling flash errors in turbo streams/frames x
 
 - Get rid of the 'all' query x 
 The problem: 

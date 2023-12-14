@@ -14,7 +14,6 @@ class DeckPolicy < ApplicationPolicy
   end 
 
   def add_flashcard?
-    # record.user != user 
     user_owns_record? 
   end 
 
@@ -23,7 +22,6 @@ class DeckPolicy < ApplicationPolicy
   end
 
   def user_owns_record?
-    # binding.pry
     record.user == user 
   end
 end
