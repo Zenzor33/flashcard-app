@@ -5,6 +5,19 @@ Questions:
 - _navbar is a mess
 - How to display error messages for Pundit unauthorized access in turbo streams (used in _flashcard.html.erb)
 
+feature branch: 
+1: Auto-assign category to DeckFlashcard based on statistics. 
+
+
+Categories: 
+Mastered:     attempts > 5 && accuracy >= 95%
+Progressing:  attempts > 5 && accuracy > 65%
+Learning:     attempts <= 5 || attempts > 5 && accuracy <= 65%
+New:          attempts == 0
+
+
+
+
 Rethink the /study route 
 - Problem: I can not explain why the Studies controller exists. 
 

@@ -43,16 +43,18 @@ class DeckFlashcard < ApplicationRecord
   }
   validates :category, presence: true
 
-  before_save :update_total_count, :update_accuracy
+  before_save :update_total_count, :update_accuracy, :update_category #combine into method update_deck_flashcard_statistics ?
   after_save :update_deck_statistics
   after_destroy :update_deck_statistics
 
   scope :by_category, -> (category) {category.nil? ? all : where(category: category)}
 
   def self.flashcard 
+    # Change to self.get_flashcard ?
     Flashcard.find_by(self.flashcard_id)
   end 
 
+  # Used for scoped collections eg @categorized_deck_flashcards
   def self.average_accuracy
     total_attempts = self.total_correct_count + self.total_incorrect_count
     return 0.0 if total_attempts.zero? 
@@ -84,4 +86,22 @@ class DeckFlashcard < ApplicationRecord
   def update_total_count
     self.total_count = correct_count.to_i + incorrect_count.to_i
   end 
+
+  def update_category
+  # Triggers via callback
+  attempts = self.correct_count + self.incorrect_count
+  accuracy = self.accuracy
+    case 
+    when attempts > 5 && accuracy >= 90
+      self.category = "mastered"
+    when attempts > 5 && accuracy > 65
+      self.category = "progressing" 
+    when attempts <= 5 || attempts > 5 && accuracy <= 65
+      self.category = "learning"
+    when attempts == 0
+      self.category = "new" 
+    else  
+      puts "This should not happen in update_category"
+    end
+  end
 end
