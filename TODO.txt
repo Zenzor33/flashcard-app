@@ -6,8 +6,9 @@ Questions:
 - How to display error messages for Pundit unauthorized access in turbo streams (used in _flashcard.html.erb)
 
 feature branch: 
-1: Auto-assign category to DeckFlashcard based on statistics. 
+1: Auto-assign category to DeckFlashcard based on statistics x 
 2. Install interactors gem and remove callbacks from app
+3. Change total_count to total_attempts in DeckFlashcard
 
 Categories: 
 Mastered:     attempts > 5 && accuracy >= 95%

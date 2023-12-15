@@ -82,7 +82,13 @@ RSpec.describe DeckFlashcard, type: :model do
         expect(result).to eq(flashcard)
       end
     end 
-    context "average_accuracy"
+
+    context "average_accuracy" do 
+      it "should return 0 if attempts are zero"
+      it "should return 0 if attempts are nil"
+      it "should correctly calculate accuracy"
+    end 
+
     context "total_correct_count"
     context "total_incorrect_count"
   end 
