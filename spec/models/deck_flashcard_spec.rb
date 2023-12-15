@@ -46,19 +46,8 @@ RSpec.describe DeckFlashcard, type: :model do
   end
 
   describe ".by_category" do 
-
-    # let(:user) { FactoryBot.create(:user) }
-    # let!(:flashcards) { FactoryBot.create_list(:flashcard, 3) }
-    # let!(:deck_flashcards) {
-    #   flashcards.each do |flashcard|
-    #     user.deck.deck_flashcards.create!(flashcard_id: flashcard.id)
-    #   end 
-    # }
-
-    let!(:new_flashcards) { FactoryBot.create_list(:deck_flashcard, 2, category: "learning")}
-    # let!(:mastered_flashcards) { FactoryBot.create_list(:deck_flashcard, 1, category: "mastered")}
-    let!(:mastered_flashcards) { FactoryBot.create_list(:deck_flashcard, 1, :mastered) } #Callbacks are fucking this!
-
+    let!(:new_flashcards) { FactoryBot.create_list(:deck_flashcard, 2)}
+    let!(:mastered_flashcards) { FactoryBot.create_list(:deck_flashcard, 1, :mastered) }
 
     context "nil" do 
       it "returns all deck flashcards" do 
@@ -69,17 +58,15 @@ RSpec.describe DeckFlashcard, type: :model do
 
     context "is specified" do 
       it "returns only deck_flashcards that belong to the specified category" do 
-        binding.pry
-        by_cat_new = DeckFlashcard.by_category("new")
-        by_cat_mastered = DeckFlashcard.by_category("mastered")
-        expect(by_cat_new).to match_array(new_flashcards)
-        expect(by_cat_mastered).to match_array(mastered_flashcards)
+        # binding.pry
+        expect(DeckFlashcard.by_category("new")).to match_array(new_flashcards)
+        expect(DeckFlashcard.by_category("mastered")).to match_array(mastered_flashcards)
       end 
     end
 
     context "is empty" do 
       it "returns an empty collection" do 
-        result = DeckFlashcard.by_category('mastered')
+        result = DeckFlashcard.by_category('learning')
         expect(result).to be_empty
       end 
     end 

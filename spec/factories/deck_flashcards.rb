@@ -28,14 +28,28 @@ FactoryBot.define do
   factory :deck_flashcard do
     association :deck 
     association :flashcard 
-    category { "new" }
-    total_count { 0 }
     incorrect_count { 0 }
     correct_count { 0 }
+    total_count { 0 }
     accuracy { 0.0 }
+    category { "new" }
+
+    trait :learning do 
+      incorrect_count { 0 }
+      correct_count { 1 }
+      # category { "learning "}
+    end 
+
+    trait :progressing do 
+      incorrect_count { 3 }
+      correct_count { 8 }
+      # category { "progressing" }
+    end 
 
     trait :mastered do
-      category { "mastered" }
+      incorrect_count { 0 }
+      correct_count { 100 }
+      # category { "mastered" }
     end
   end
 end

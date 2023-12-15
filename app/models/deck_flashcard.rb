@@ -78,6 +78,9 @@ class DeckFlashcard < ApplicationRecord
     deck.update_statistics
   end 
 
+  def update_deck_flashcard_statistics
+  end 
+
   def update_accuracy
     total = correct_count + incorrect_count
     self.accuracy = total.zero? ? 0.0 : (correct_count.to_f / total * 100)
