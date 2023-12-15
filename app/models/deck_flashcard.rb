@@ -85,8 +85,7 @@ class DeckFlashcard < ApplicationRecord
   end 
 
   def update_accuracy
-    total = correct_count + incorrect_count
-    self.accuracy = total.zero? ? 0.0 : (correct_count.to_f / total * 100)
+    self.accuracy = attempts.zero? ? 0.0 : (correct_count.to_f / attempts * 100)
   end
 
   def update_attempts
@@ -94,8 +93,6 @@ class DeckFlashcard < ApplicationRecord
   end 
 
   def update_category
-  attempts = self.correct_count + self.incorrect_count
-  accuracy = self.accuracy
     case 
     when attempts > 5 && accuracy >= 90
       self.category = "mastered"
