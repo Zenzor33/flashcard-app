@@ -4,10 +4,10 @@
 #
 #  id              :bigint           not null, primary key
 #  accuracy        :float            default(0.0), not null
+#  attempts        :integer          default(0), not null
 #  category        :string           default("new"), not null
 #  correct_count   :integer          default(0), not null
 #  incorrect_count :integer          default(0), not null
-#  total_count     :integer          default(0), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  deck_id         :bigint           not null
@@ -34,10 +34,10 @@ RSpec.describe DeckFlashcard, type: :model do
   end 
 
   describe 'validations' do 
-    [:accuracy, :category, :correct_count, :incorrect_count, :total_count].each {
+    [:accuracy, :category, :correct_count, :incorrect_count, :attempts].each {
       |attribute| it {should validate_presence_of(attribute)}
     }
-    [:correct_count, :incorrect_count, :total_count].each {
+    [:correct_count, :incorrect_count, :attempts].each {
       |attribute| it {should validate_numericality_of(attribute).only_integer.is_greater_than_or_equal_to(0)}
     }
     it do 

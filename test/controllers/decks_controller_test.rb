@@ -66,7 +66,7 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
       incorrect_count: 0,
       accuracy: 0.0,
       category: "new",
-      total_count: 0
+      attempts: 0
     )
   end
 

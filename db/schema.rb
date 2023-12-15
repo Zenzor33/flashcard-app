@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_11_131830) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_15_105745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_11_131830) do
     t.integer "incorrect_count", default: 0, null: false
     t.float "accuracy", default: 0.0, null: false
     t.string "category", default: "new", null: false
-    t.integer "total_count", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
     t.index ["deck_id", "flashcard_id"], name: "index_deck_flashcards_on_deck_id_and_flashcard_id", unique: true
     t.index ["deck_id"], name: "index_deck_flashcards_on_deck_id"
     t.index ["flashcard_id"], name: "index_deck_flashcards_on_flashcard_id"

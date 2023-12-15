@@ -4,10 +4,10 @@
 #
 #  id              :bigint           not null, primary key
 #  accuracy        :float            default(0.0), not null
+#  attempts        :integer          default(0), not null
 #  category        :string           default("new"), not null
 #  correct_count   :integer          default(0), not null
 #  incorrect_count :integer          default(0), not null
-#  total_count     :integer          default(0), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  deck_id         :bigint           not null
@@ -28,7 +28,7 @@ class DeckFlashcard < ApplicationRecord
   belongs_to :deck
   belongs_to :flashcard
 
-  validates :correct_count, :incorrect_count, :total_count, 
+  validates :correct_count, :incorrect_count, :attempts, 
     presence: true, 
     numericality: { 
       only_integer: true, 
@@ -79,7 +79,7 @@ class DeckFlashcard < ApplicationRecord
   end 
 
   def update_deck_flashcard_statistics
-    update_total_count
+    update_attempts
     update_accuracy
     update_category
   end 
@@ -89,8 +89,8 @@ class DeckFlashcard < ApplicationRecord
     self.accuracy = total.zero? ? 0.0 : (correct_count.to_f / total * 100)
   end
 
-  def update_total_count
-    self.total_count = correct_count.to_i + incorrect_count.to_i
+  def update_attempts
+    self.attempts = correct_count.to_i + incorrect_count.to_i
   end 
 
   def update_category
