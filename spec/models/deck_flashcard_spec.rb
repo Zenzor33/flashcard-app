@@ -71,4 +71,20 @@ RSpec.describe DeckFlashcard, type: :model do
       end 
     end 
   end
+
+  describe "class method" do 
+    context "flashcard" do 
+      let!(:deck_flashcard) { FactoryBot.create(:deck_flashcard) }
+      it "should return flashcard" do
+        # binding.pry
+        flashcard = deck_flashcard.flashcard  
+        result = deck_flashcard.flashcard
+        expect(result).to eq(flashcard)
+      end
+    end 
+    context "average_accuracy"
+    context "total_correct_count"
+    context "total_incorrect_count"
+  end 
+
 end

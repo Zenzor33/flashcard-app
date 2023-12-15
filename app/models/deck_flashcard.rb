@@ -43,7 +43,7 @@ class DeckFlashcard < ApplicationRecord
   }
   validates :category, presence: true
 
-  before_save :update_total_count, :update_accuracy, :update_category #combine into method update_deck_flashcard_statistics ?
+  before_save :update_deck_flashcard_statistics
   after_save :update_deck_statistics
   after_destroy :update_deck_statistics
 
@@ -79,6 +79,9 @@ class DeckFlashcard < ApplicationRecord
   end 
 
   def update_deck_flashcard_statistics
+    update_total_count
+    update_accuracy
+    update_category
   end 
 
   def update_accuracy
@@ -91,7 +94,6 @@ class DeckFlashcard < ApplicationRecord
   end 
 
   def update_category
-  # Triggers via callback
   attempts = self.correct_count + self.incorrect_count
   accuracy = self.accuracy
     case 
