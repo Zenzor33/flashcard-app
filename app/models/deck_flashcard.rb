@@ -60,7 +60,7 @@ class DeckFlashcard < ApplicationRecord
     return 0.0 if total_attempts.zero? 
     
     accuracy = self.total_correct_count.to_f / total_attempts
-    accuracy.nan? ? 0.0 : accuracy
+    accuracy
   end 
 
   def self.total_correct_count

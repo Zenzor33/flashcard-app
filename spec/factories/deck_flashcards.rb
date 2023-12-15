@@ -47,8 +47,8 @@ FactoryBot.define do
     end 
 
     trait :mastered do
-      incorrect_count { 0 }
-      correct_count { 100 }
+      incorrect_count { 1 }
+      correct_count { 9 }
       # category { "mastered" }
     end
   end

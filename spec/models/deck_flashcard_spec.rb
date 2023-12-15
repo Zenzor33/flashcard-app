@@ -73,7 +73,7 @@ RSpec.describe DeckFlashcard, type: :model do
   end
 
   describe "class method" do 
-    context "flashcard" do 
+    describe "flashcard" do 
       let!(:deck_flashcard) { FactoryBot.create(:deck_flashcard) }
       it "should return flashcard" do
         # binding.pry
@@ -83,10 +83,25 @@ RSpec.describe DeckFlashcard, type: :model do
       end
     end 
 
-    context "average_accuracy" do 
-      it "should return 0 if attempts are zero"
-      it "should return 0 if attempts are nil"
-      it "should correctly calculate accuracy"
+    describe "average_accuracy" do 
+      context "is zero" do 
+        let!(:deck_flashcard) { FactoryBot.create(:deck_flashcard) }
+        it "should return 0" do 
+          result = DeckFlashcard.average_accuracy
+          expect(result).to eq(0)
+        end 
+      end 
+      context "is greater than zero" do 
+        let!(:deckflashcard1) { FactoryBot.create(:deck_flashcard, correct_count: 0, incorrect_count: 10) } #average_accuracy: 0 
+        let!(:deckflashcard2) { FactoryBot.create(:deck_flashcard, correct_count: 10, incorrect_count: 10) } #average_accuracy: 50
+        let!(:deckflashcard3) { FactoryBot.create(:deck_flashcard, correct_count: 20, incorrect_count: 0) } #average_accuracy: 100
+        # total_correct_count: 30
+        # total_incorrect_count: 20
+        # accuracy: 0.6
+        it "should correctly calculate accuracy" do 
+          expect(DeckFlashcard.average_accuracy).to eq(0.6)
+        end 
+      end 
     end 
 
     context "total_correct_count"
