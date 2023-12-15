@@ -96,7 +96,7 @@ class DeckFlashcard < ApplicationRecord
       self.category = "mastered"
     when attempts > 5 && accuracy > 65
       self.category = "progressing" 
-    when attempts <= 5 || attempts > 5 && accuracy <= 65
+    when attempts > 0 && attempts <= 5 || attempts > 5 && accuracy <= 65
       self.category = "learning"
     when attempts == 0
       self.category = "new" 

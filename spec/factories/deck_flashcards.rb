@@ -26,6 +26,16 @@
 #
 FactoryBot.define do
   factory :deck_flashcard do
-    
+    association :deck 
+    association :flashcard 
+    category { "new" }
+    total_count { 0 }
+    incorrect_count { 0 }
+    correct_count { 0 }
+    accuracy { 0.0 }
+
+    trait :mastered do
+      category { "mastered" }
+    end
   end
 end

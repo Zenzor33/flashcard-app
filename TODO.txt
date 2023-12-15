@@ -7,7 +7,7 @@ Questions:
 
 feature branch: 
 1: Auto-assign category to DeckFlashcard based on statistics. 
-
+2. Install interactors gem and remove callbacks from app
 
 Categories: 
 Mastered:     attempts > 5 && accuracy >= 95%

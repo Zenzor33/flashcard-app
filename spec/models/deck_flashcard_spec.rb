@@ -47,19 +47,18 @@ RSpec.describe DeckFlashcard, type: :model do
 
   describe ".by_category" do 
 
-    let(:user) { FactoryBot.create(:user) }
-    let!(:flashcards) { FactoryBot.create_list(:flashcard, 3) }
-    let!(:deck_flashcards) {
-      flashcards.each do |flashcard|
-        user.deck.deck_flashcards.create!(flashcard_id: flashcard.id)
-      end 
-    }
+    # let(:user) { FactoryBot.create(:user) }
+    # let!(:flashcards) { FactoryBot.create_list(:flashcard, 3) }
+    # let!(:deck_flashcards) {
+    #   flashcards.each do |flashcard|
+    #     user.deck.deck_flashcards.create!(flashcard_id: flashcard.id)
+    #   end 
+    # }
 
-    before(:each) do 
-      @deckflashcard1 = DeckFlashcard.first
-      @deckflashcard2 = DeckFlashcard.second
-      @deckflashcard3 = DeckFlashcard.third
-    end 
+    let!(:new_flashcards) { FactoryBot.create_list(:deck_flashcard, 2, category: "learning")}
+    # let!(:mastered_flashcards) { FactoryBot.create_list(:deck_flashcard, 1, category: "mastered")}
+    let!(:mastered_flashcards) { FactoryBot.create_list(:deck_flashcard, 1, :mastered) } #Callbacks are fucking this!
+
 
     context "nil" do 
       it "returns all deck flashcards" do 
@@ -70,11 +69,11 @@ RSpec.describe DeckFlashcard, type: :model do
 
     context "is specified" do 
       it "returns only deck_flashcards that belong to the specified category" do 
-        @deckflashcard3.update(category: "mastered") #Note that before(:each) ensures that a database rollback prevents this transaction from effecting subsequent tests. 
-        result = DeckFlashcard.by_category('new')
-      
-        expect(result).to include(@deckflashcard1, @deckflashcard2)
-        expect(result).to_not include(@deckflashcard3)
+        binding.pry
+        by_cat_new = DeckFlashcard.by_category("new")
+        by_cat_mastered = DeckFlashcard.by_category("mastered")
+        expect(by_cat_new).to match_array(new_flashcards)
+        expect(by_cat_mastered).to match_array(mastered_flashcards)
       end 
     end
 
