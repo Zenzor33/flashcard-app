@@ -2,7 +2,6 @@ class DeckFlashcardsController < ApplicationController
   before_action :set_deck, :set_deck_flashcards, :set_deck_flashcard, :set_next_deck_flashcard, :set_previous_deck_flashcard 
 
   def show
-    # binding.pry
     authorize @deck_flashcard
   end
 
