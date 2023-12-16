@@ -6,11 +6,24 @@ Questions:
 - How to display error messages for Pundit unauthorized access in turbo streams (used in _flashcard.html.erb)
 
 feature branch: 
-1: Auto-assign category to DeckFlashcard based on statistics x 
 2. Install interactors gem and remove callbacks from app
-3. Change total_count to total_attempts in DeckFlashcard x
 4. Move the increment and decrement actions out of deck_flashcards_controller 
-5. Deploy & update 
+
+App will be for Top 100 Portuguese phrases to learn: 
+- The phrases are in the csv file 
+- The CSV file contains in column 1 the "front" of the flashcard in english and in column 2 the back in portuguese. 
+- I need to write something to convert each row of the CSV file into a flashcard entry
+- I can create a ruby hash with the key:value of front:back 
+- for each k,v, Flashcard.create!(front: k, back: v) 
+- Create a rake task to push this to Heroku? 
+- Use Roo gem to parse CSV files 
+
+
+Flashcard data to retrieve: 
+- list of 100 most common spoken words used in brazilian portuguese 
+- word list contains: pt word, en word, PoS, phonetic, freq rank, 
+- verbs must be extracted and separated by regular and irregular
+
 
 Categories: 
 Mastered:     attempts > 5 && accuracy >= 95%
