@@ -9,6 +9,8 @@ feature branch:
 1: Auto-assign category to DeckFlashcard based on statistics x 
 2. Install interactors gem and remove callbacks from app
 3. Change total_count to total_attempts in DeckFlashcard x
+4. Move the increment and decrement actions out of deck_flashcards_controller 
+5. Deploy & update 
 
 Categories: 
 Mastered:     attempts > 5 && accuracy >= 95%

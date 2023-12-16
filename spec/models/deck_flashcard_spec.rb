@@ -53,14 +53,12 @@ RSpec.describe DeckFlashcard, type: :model do
 
       context "nil" do 
         it "returns all deck flashcards" do 
-          result = DeckFlashcard.by_category(nil)
-          expect(result).to match_array(DeckFlashcard.all)
+          expect(DeckFlashcard.by_category(nil)).to match_array(DeckFlashcard.all)
         end
       end
 
       context "is specified" do 
         it "returns only deck_flashcards that belong to the specified category" do 
-          # binding.pry
           expect(DeckFlashcard.by_category("new")).to match_array(new_flashcards)
           expect(DeckFlashcard.by_category("mastered")).to match_array(mastered_flashcards)
         end 
@@ -68,46 +66,60 @@ RSpec.describe DeckFlashcard, type: :model do
 
       context "is empty" do 
         it "returns an empty collection" do 
-          result = DeckFlashcard.by_category('learning')
-          expect(result).to be_empty
+          expect(DeckFlashcard.by_category('learning')).to be_empty
         end 
       end 
     end
   end
 
-  #class methods
-  describe ".average_accuracy" do 
-    context "when no flashcards have been attempted" do 
+  # Shared context for creating flashcards with different counts
+  shared_context 'flashcards with counts' do
+    let!(:deckflashcard1) { FactoryBot.create(:deck_flashcard, correct_count: 0, incorrect_count: 10) }
+    let!(:deckflashcard2) { FactoryBot.create(:deck_flashcard, correct_count: 10, incorrect_count: 10) }
+    let!(:deckflashcard3) { FactoryBot.create(:deck_flashcard, correct_count: 20, incorrect_count: 0) }
+  end
+
+  # Class methods
+  describe ".average_accuracy" do
+    context "when no flashcards have been attempted" do
       let!(:deck_flashcard) { FactoryBot.create(:deck_flashcard) }
-      it "should return 0" do 
-        result = DeckFlashcard.average_accuracy
-        expect(result).to eq(0)
-      end 
-    end 
 
-    context "when flashcards have been attempted" do 
-      let!(:deckflashcard1) { FactoryBot.create(:deck_flashcard, correct_count: 0, incorrect_count: 10) } 
-      let!(:deckflashcard2) { FactoryBot.create(:deck_flashcard, correct_count: 10, incorrect_count: 10) } 
-      let!(:deckflashcard3) { FactoryBot.create(:deck_flashcard, correct_count: 20, incorrect_count: 0) }
-      # total_correct_count: 30
-      # total_incorrect_count: 20
-      # accuracy: 0.6
+      it "returns 0" do
+        expect(DeckFlashcard.average_accuracy).to eq(0)
+      end
+    end
 
-      it "should calculate the correct average accuracy" do 
+    context "when flashcards have been attempted" do
+      include_context 'flashcards with counts'
+
+      it "calculates the correct average accuracy" do
         expect(DeckFlashcard.average_accuracy).to eq(0.6)
-      end 
-    end 
-  end 
+      end
+    end
+  end
 
-    # context "total_correct_count"
-    # context "total_incorrect_count"
+  describe ".total_correct_count" do
+    include_context 'flashcards with counts'
+
+    it "calculates the correct total correct_count" do
+      expect(DeckFlashcard.total_correct_count).to eq(30)
+    end
+  end
+
+  describe ".total_incorrect_count" do
+    include_context 'flashcards with counts'
+
+    it "calculates the correct total incorrect_count" do
+      expect(DeckFlashcard.total_incorrect_count).to eq(20)
+    end
+  end
 
   #Instance methods 
+
   describe "#flashcard" do 
     let!(:deck_flashcard) { FactoryBot.create(:deck_flashcard) }
     it "returns associated flashcard" do
       expect(deck_flashcard.flashcard).to eq(Flashcard.find(deck_flashcard.flashcard_id))
     end
   end 
-
 end
