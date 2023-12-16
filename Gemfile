@@ -86,3 +86,4 @@ gem 'simple_form'
 gem 'devise-tailwinded', '~> 0.1.5'
 
 gem "pundit", "~> 2.3"
+gem 'roo', '~> 2.4'
