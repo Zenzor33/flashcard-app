@@ -4,6 +4,8 @@ Questions:
 - check_deck_flashcards in decks_controller (used in _navbar partial)
 - _navbar is a mess
 - How to display error messages for Pundit unauthorized access in turbo streams (used in _flashcard.html.erb)
+- How to prevent turbo frames from updating before validations execute (eg decrement numericality to negative)
+- How to test renders for failed validations (deck_flashcards incorrect count is negative, for example)
 
 feature branch: 
 2. Install interactors gem and remove callbacks from app

@@ -17,21 +17,27 @@ class DeckFlashcardsController < ApplicationController
 
   def mark_correct
     authorize @deck_flashcard
-    @deck_flashcard.increment!(:correct_count)
+    @deck_flashcard.increment(:correct_count)
 
-    respond_to do |format|
-      format.turbo_stream
-      format.html 
+    if @deck_flashcard.valid?
+      @deck_flashcard.save
+      respond_to do |format|
+        format.turbo_stream
+        format.html 
+      end
     end
   end 
 
   def mark_incorrect
     authorize @deck_flashcard
-    @deck_flashcard.decrement!(:incorrect_count)
+    @deck_flashcard.increment(:incorrect_count)
 
-    respond_to do |format|
-      format.turbo_stream
-      format.html 
+    if @deck_flashcard.valid?
+      @deck_flashcard.save
+      respond_to do |format|
+        format.turbo_stream
+        format.html 
+      end
     end
   end 
 
