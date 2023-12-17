@@ -14,6 +14,11 @@ feature branch:
 6. Prune flashcards that show on flashcards page 
 7. Database accepting negative values in deckflashcard 
 
+Current work: 
+- Add a select button to each flashcard 
+- Create a select all button on the flashcard page 
+- Create an "Add Selection to Deck" button on the flashcard page
+
 App will be for Top 100 Portuguese phrases to learn: 
 - The phrases are in the csv file 
 - The CSV file contains in column 1 the "front" of the flashcard in english and in column 2 the back in portuguese. 
