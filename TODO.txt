@@ -4,11 +4,13 @@ Questions:
 - check_deck_flashcards in decks_controller (used in _navbar partial)
 - _navbar is a mess
 - How to display error messages for Pundit unauthorized access in turbo streams (used in _flashcard.html.erb)
-- Include roo in prod env?
 
 feature branch: 
 2. Install interactors gem and remove callbacks from app
 4. Move the increment and decrement actions out of deck_flashcards_controller 
+5. Add selections to index page with "add selected" and "add all" to deck options. 
+6. Prune flashcards that show on flashcards page 
+7. Database accepting negative values in deckflashcard 
 
 App will be for Top 100 Portuguese phrases to learn: 
 - The phrases are in the csv file 

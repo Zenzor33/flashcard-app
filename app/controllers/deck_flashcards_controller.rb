@@ -17,8 +17,7 @@ class DeckFlashcardsController < ApplicationController
 
   def mark_correct
     authorize @deck_flashcard
-    @deck_flashcard.correct_count += 1
-    @deck_flashcard.save
+    @deck_flashcard.increment!(:correct_count)
 
     respond_to do |format|
       format.turbo_stream
@@ -28,8 +27,7 @@ class DeckFlashcardsController < ApplicationController
 
   def mark_incorrect
     authorize @deck_flashcard
-    @deck_flashcard.incorrect_count += 1
-    @deck_flashcard.save
+    @deck_flashcard.decrement!(:incorrect_count)
 
     respond_to do |format|
       format.turbo_stream
