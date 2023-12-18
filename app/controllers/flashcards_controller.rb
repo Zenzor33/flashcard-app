@@ -13,7 +13,7 @@ class FlashcardsController < ApplicationController
   end
 
   def grid
-    @flashcards = Flashcard.all
+    @flashcards = Flashcard.search(params)
     respond_to do |format|
       format.html { render partial: 'flashcards/grid_view', locals: { flashcards: @flashcards } }
       format.js   # if you have grid.js.erb
@@ -21,7 +21,7 @@ class FlashcardsController < ApplicationController
   end
   
   def list
-    @flashcards = Flashcard.all
+    @flashcards = Flashcard.search(params)
     respond_to do |format|
       format.html { render partial: 'flashcards/list_view', locals: { flashcards: @flashcards } }
       format.js   # if you have list.js.erb
