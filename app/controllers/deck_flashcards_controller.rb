@@ -30,16 +30,13 @@ class DeckFlashcardsController < ApplicationController
 
   def mark_incorrect
     authorize @deck_flashcard
-    @deck_flashcard.decrement(:incorrect_count)
+    @deck_flashcard.increment(:incorrect_count)
 
-    if @deck_flashcard.valid?
-      @deck_flashcard.save
+    if @deck_flashcard.save
       respond_to do |format|
         format.turbo_stream
         format.html 
       end
-    else  
-      binding.pry
     end
   end 
 
