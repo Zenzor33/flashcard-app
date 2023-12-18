@@ -2,18 +2,18 @@ Version 2:
 
 Questions: 
 - check_deck_flashcards in decks_controller (used in _navbar partial)
-- _navbar is a mess
+- _navbar is a mess-
+- The checkbox select-all on index page might mess with the UI. I prefer a request?
 - How to display error messages for Pundit unauthorized access in turbo streams (used in _flashcard.html.erb)
 - How to prevent turbo frames from updating before validations execute (eg decrement numericality to negative)
 - How to test renders for failed validations (deck_flashcards incorrect count is negative, for example)
 
 feature branch: 
 2. Install interactors gem and remove callbacks from app
-4. Move the increment and decrement actions out of deck_flashcards_controller 
 5. Add selections to index page with "add selected" and "add all" to deck options. 
 6. Prune flashcards that show on flashcards page 
 7. Database accepting negative values in deckflashcard 
-8. IMPLEMENT LIST VIEW to avoid pagination issues
+8. IMPLEMENT LIST VIEW -- priority 
 
 Current work: 
 - Add a select button to each flashcard 
