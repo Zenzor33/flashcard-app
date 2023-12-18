@@ -7,22 +7,24 @@
   <div id="search_results" class="flex-col">
 
   <!-- Checkbox -->
-    <input type="checkbox" class="" id="checkbox_<%= flashcard.id %>" name="selected_flashcards[]" data-checkbox-target="checkbox">
-    <label for="checkbox_<%= flashcard.id %>" class="absolute top-0 right-0 mt-4 mr-4"></label>
+  <input type="checkbox" class="" id="checkbox_<%= flashcard.id %>" name="selected_flashcards[]" data-checkbox-target="checkbox">
+  <label for="checkbox_<%= flashcard.id %>" class="absolute top-0 right-0 mt-4 mr-4"></label>
 
-    <a
-      data-turbo-frame = "_top"
-      class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+  <a
+    data-turbo-frame = "_top"
+    class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+  >
+    <h5
+      class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
     >
-      <h5
-        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-      >
-      <%= flashcard.front %>
-      </h5>
-      <p class="font-normal text-gray-700 dark:text-gray-400">
-        <%= flashcard.back %>
-      </p>
-    </a>
+    <%= flashcard.front %>
+    </h5>
+    <p class="font-normal text-gray-700 dark:text-gray-400">
+      <%= flashcard.back %>
+    </p>
+  </a>
+  <!-- -->
+
 
   <% if current_user %>
     <% if current_user.deck.deck_flashcards.exists?(flashcard_id: flashcard.id) %>

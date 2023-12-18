@@ -13,6 +13,7 @@ feature branch:
 5. Add selections to index page with "add selected" and "add all" to deck options. 
 6. Prune flashcards that show on flashcards page 
 7. Database accepting negative values in deckflashcard 
+8. IMPLEMENT LIST VIEW to avoid pagination issues
 
 Current work: 
 - Add a select button to each flashcard 
