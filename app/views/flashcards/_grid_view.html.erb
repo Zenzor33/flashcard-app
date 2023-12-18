@@ -59,45 +59,7 @@
 <div class="flex flex-wrap gap-2 mt-8 justify-center">
 <% @flashcards.each do |flashcard| %>
 
-  <%= turbo_frame_tag dom_id(flashcard) do%>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <p class="error"><%= flash[:error] %></p> 
-
-    <div id="search_results" class="flex-col">
-
-    <!-- Checkbox -->
-    <input type="checkbox" class="" id="checkbox_<%= flashcard.id %>" name="selected_flashcards[]" data-checkbox-target="checkbox">
-    <label for="checkbox_<%= flashcard.id %>" class="absolute top-0 right-0 mt-4 mr-4"></label>
-
-    <a
-      data-turbo-frame = "_top"
-      class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-    >
-      <h5
-        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-      >
-      <%= flashcard.front %>
-      </h5>
-      <p class="font-normal text-gray-700 dark:text-gray-400">
-        <%= flashcard.back %>
-      </p>
-    </a>
-    <!-- -->
-
-
-    <% if current_user %>
-      <% if current_user.deck.deck_flashcards.exists?(flashcard_id: flashcard.id) %>
-        <%= button_to 'Remove from Deck', remove_flashcard_user_deck_path(current_user.id, current_user.deck, flashcard_id: flashcard.id), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :delete %>
-      <% else %>
-        <%= button_to 'Add to Deck', add_flashcard_user_deck_path(current_user.id, current_user.deck, flashcard_id: flashcard.id), class: "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", method: :post %>
-      <% end %>
-    <% end %>
-
-    <%= link_to "Flashcard Details", flashcard_path(flashcard), data: {turbo_frame: "_top"} %>
-    </div>
-  <% end %>
+  <%= render flashcard %>
 <% end %>
 <% end %>
 
