@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 
   resources :users
   get 'users/:id/account', to: 'users#account'
-  resources :flashcards
+  resources :flashcards do 
+    collection do 
+      get 'grid'
+      get 'list'
+    end 
+  end 
 
   resources :user do 
     resources :decks do 

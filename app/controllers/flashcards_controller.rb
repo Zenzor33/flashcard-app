@@ -1,6 +1,6 @@
 class FlashcardsController < ApplicationController
   
-  before_action :set_flashcard, except: :index
+  before_action :set_flashcard, except: [:index, :grid, :list]
   # before_action :set_flashcard_statistic, except: [:index]
 
 
@@ -10,6 +10,22 @@ class FlashcardsController < ApplicationController
   
 
   def show
+  end
+
+  def grid
+    @flashcards = Flashcard.all
+    respond_to do |format|
+      format.html { render partial: 'flashcards/grid_view', locals: { flashcards: @flashcards } }
+      format.js   # if you have grid.js.erb
+    end
+  end
+  
+  def list
+    @flashcards = Flashcard.all
+    respond_to do |format|
+      format.html { render partial: 'flashcards/list_view', locals: { flashcards: @flashcards } }
+      format.js   # if you have list.js.erb
+    end
   end
 
   private
