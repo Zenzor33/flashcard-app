@@ -1,48 +1,10 @@
 <%= turbo_frame_tag 'results'  do %>
-
-<!-- Grid view & List view -->
   <%= render "tableicons" %>
-
-    <%= simple_form_for("", url: grid_flashcards_path, method: :get, 
-        html: { 
-          "data-turbo-frame": "results", 
-          "data-turbo-action": "advance", 
-          "data-controller": "form", 
-          "data-action": "input->form#submit" }
-        ) do |f| %>
-      <div class="flex justify-center gap-2">
-        <div>
-          <%= f.input :front, label: false, input_html: { placeholder: 'Name...', value: params[:front] } %>
-        </div>
-        <div>
-          <%= f.input :sort_by, label: false, as: :select, collection: [['Highest Accuracy', 'highest_accuracy'], ['Lowest Accuracy', 'lowest_accuracy'], ['Name', 'name']], prompt: "Sort By", selected: params[:sort_by] %>
-        </div>
-        <div class="flex align-center">
-          <%= f.button :submit, "Search" %>
-        </div>
-      </div>
-    <% end %>
-
-  <div data-controller="checkbox" data-turbo_frame="results">
-    <legend class="sr-only">Select All</legend>
-    <div class="space-y-5">
-      <div class="relative flex justify-center items-start gap-2">
-        <div class="flex h-6 items-center">
-          <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" data-checkbox-target="selectAll" data-action="click->checkbox#toggle">
-        </div>
-        <div class="ml-3 text-sm leading-6">
-          <label for="comments" class="font-medium text-gray-900">Select All</label>
-        </div>
-        <div>
-        <%= render "dropdown"%>
-        </div>
-      </div>
-    </div>
-    <div class="flex flex-wrap gap-2 mt-8 justify-center">
-
-    <% @flashcards.each do |flashcard| %>
+  <%= render "search", form_url: grid_flashcards_path %> <!-- Note the checkbox wraps from here -->
+  <div class="flex flex-wrap gap-2 mt-8 justify-center">
+  <% @flashcards.each do |flashcard| %>
       <%= render flashcard %>
-    <% end %>
+  <% end %>
+  </div>
 <% end %>
 
-</div>
