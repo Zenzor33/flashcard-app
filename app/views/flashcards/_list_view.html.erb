@@ -1,26 +1,6 @@
 <%= turbo_frame_tag 'results' do %>
 
-<!-- Grid view & List view -->
-  <div class="bg-gray-200 text-sm text-gray-500 leading-none border-2 border-gray-200 rounded-full inline-flex">
-  <%# <button class="inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-blue-400 rounded-l-full px-4 py-2 active" id="grid"> %>
-  <%= link_to grid_flashcards_path, id: 'grid', class: 'inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-blue-400 rounded-l-full px-4 py-2 ', data: {turbo_frame: 'results'} do %>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fill-current w-4 h-4 mr-2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-    <span>Grid</span>
-  <% end %>
-  <%# <button class="inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-blue-400 rounded-r-full px-4 py-2" id="list"> %>
-  <%= link_to list_flashcards_path, id: 'list', class: 'inline-flex items-center transition-colors duration-300 ease-in focus:outline-none hover:text-blue-400 focus:text-blue-400 rounded-r-full px-4 py-2 active',  data: {turbo_frame: 'results'}  do %>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fill-current w-4 h-4 mr-2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-    <span>List</span>
-  <% end %>
-</div>
-
-
-
-<style>
-  /*@apply bg-white text-blue-400 rounded-full;*/
-  .active {background: white; border-radius: 9999px; color: #63b3ed;}
-</style>
-<!--End of Grid view & List view -->
+  <%= render "tableicons" %>
 
 
   <%= simple_form_for("", url: list_flashcards_path, method: :get, 
@@ -43,69 +23,66 @@
     </div>
   <% end %>
 
-<div data-controller="checkbox" data-turbo_frame="results">
-  <legend class="sr-only">Select All</legend>
-  <div class="space-y-5">
-    <div class="relative flex justify-center items-start">
-      <div class="flex h-6 items-center">
-        <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" data-checkbox-target="selectAll" data-action="click->checkbox#toggle">
-      </div>
-      <div class="ml-3 text-sm leading-6">
-        <label for="comments" class="font-medium text-gray-900">Select All</label>
+  <div data-controller="checkbox" data-turbo_frame="results">
+    <legend class="sr-only">Select All</legend>
+    <div class="space-y-5">
+      <div class="relative flex justify-center items-start">
+        <div class="flex h-6 items-center">
+          <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" data-checkbox-target="selectAll" data-action="click->checkbox#toggle">
+        </div>
+        <div class="ml-3 text-sm leading-6">
+          <label for="comments" class="font-medium text-gray-900">Select All</label>
+        </div>
       </div>
     </div>
-  </div>
-
-
-<div class="px-4 sm:px-6 lg:px-8">
-  <div class="mt-1 flow-root">
-    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-        <div class="table min-w-full divide-y divide-gray-300">
-          <!-- Mimic THEAD -->
-          <div class="table-header-group">
+        <div class="px-4 sm:px-6 lg:px-8">
+          <div class="mt-1 flow-root">
+            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+              <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                <div class="table min-w-full divide-y divide-gray-300">
+                  <!-- Mimic THEAD -->
+                  <div class="table-header-group">
+                    <div class="table-row">
+                      <!-- Mimic TH -->
+                      <div class="table-cell py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Select</div>
+                      <div class="table-cell py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Front</div>
+                      <div class="table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Back</div>
+                      <div class="table-cell relative py-3.5 pl-3 pr-4 sm:pr-0">
+                        <span class="sr-only">Edit</span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Mimic TBODY -->
+                  <div class="table-row-group divide-y divide-gray-200">
+          <% @flashcards.each do |flashcard| %>
+            <!-- Mimic TR -->
             <div class="table-row">
-              <!-- Mimic TH -->
-              <div class="table-cell py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Select</div>
-              <div class="table-cell py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Front</div>
-              <div class="table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Back</div>
-              <div class="table-cell relative py-3.5 pl-3 pr-4 sm:pr-0">
-                <span class="sr-only">Edit</span>
+              <!-- Select Column with Checkbox -->
+              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm">
+                <%= check_box_tag "selected_flashcards[]", flashcard.id, false, data: { checkbox_target: "checkbox" } %>
+
               </div>
+
+              <!-- Mimic TD for 'front' -->
+              <div class="table-cell whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= flashcard.front %></div>
+
+              <!-- Mimic TD for 'back' -->
+              <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= flashcard.back %></div>
+
+              <!-- Other columns... -->
+              <div class="table-cell relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
+              </div>
+              
             </div>
+            <!-- Repeat for more "rows" -->
+            <!-- ...More people... -->
+          <% end %>
+        </div>
           </div>
-          <!-- Mimic TBODY -->
-          <div class="table-row-group divide-y divide-gray-200">
-  <% @flashcards.each do |flashcard| %>
-    <!-- Mimic TR -->
-    <div class="table-row">
-      <!-- Select Column with Checkbox -->
-      <div class="table-cell whitespace-nowrap px-3 py-4 text-sm">
-        <%= check_box_tag "selected_flashcards[]", flashcard.id, false, data: { checkbox_target: "checkbox" } %>
-
-      </div>
-
-      <!-- Mimic TD for 'front' -->
-      <div class="table-cell whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= flashcard.front %></div>
-
-      <!-- Mimic TD for 'back' -->
-      <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= flashcard.back %></div>
-
-      <!-- Other columns... -->
-      <div class="table-cell relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit<span class="sr-only">, Lindsay Walton</span></a>
-      </div>
-      
-    </div>
-    <!-- Repeat for more "rows" -->
-    <!-- ...More people... -->
-  <% end %>
-</div>
-
         </div>
       </div>
     </div>
   </div>
-</div>
 <% end %>
 </div>
