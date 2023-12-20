@@ -1,9 +1,9 @@
 <%= simple_form_for("", url: form_url, method: :get, 
     html: { 
-      "data-turbo-action": "advance", 
       "data-controller": "form", 
       "data-action": "input->form#submit" }
     ) do |f| %>
+    <!-- removed turbo advance because bugs. Add later" -->
   <div class="flex justify-center gap-2">
     <div>
       <%= f.input :front, label: false, input_html: { placeholder: 'Name...', value: params[:front] } %>

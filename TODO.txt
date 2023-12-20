@@ -4,6 +4,7 @@ Questions:
 - check_deck_flashcards in decks_controller (used in _navbar partial)
 - _navbar is a mess-
 - Turbo frame "results" and "default" for flashcards. 
+- Turbo advcance with search breaks shit 
 - The checkbox select-all on index page might mess with the UI. I prefer a request?
 - How to display error messages for Pundit unauthorized access in turbo streams (used in _flashcard.html.erb)
 - How to prevent turbo frames from updating before validations execute (eg decrement numericality to negative)
