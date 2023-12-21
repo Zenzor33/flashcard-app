@@ -1,3 +1,8 @@
+<!-- This refreshes the flashcard turboframe, at present only serves to update the state of the add and remove buttons for each flashcard. -->
+<%= turbo_stream.replace(dom_id(@flashcard)) do%>
+  <%= render partial: "flashcards/flashcard", locals: {flashcard: @flashcard} %>
+<%end%>
+
 <%= turbo_stream.update('deck-cards-counter') do%>
   <%= current_user.deck.deck_flashcards.size %>
 <% end %>
