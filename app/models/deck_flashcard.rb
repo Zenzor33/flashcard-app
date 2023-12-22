@@ -46,6 +46,8 @@ class DeckFlashcard < ApplicationRecord
   before_save :update_deck_flashcard_statistics
   after_save :update_deck_statistics
   after_destroy :update_deck_statistics
+  after_create_commit { broadcast_deck_flashcards }
+  after_destroy_commit { broadcast_deck_flashcards }
 
   scope :by_category, -> (category) {category.nil? ? all : where(category: category)}
 
@@ -72,6 +74,13 @@ class DeckFlashcard < ApplicationRecord
   end
 
   private
+
+  def broadcast_deck_flashcards
+    broadcast_update_to "deck_flashcards",
+    partial: "layouts/counter",
+    locals: { deck_flashcards: deck.deck_flashcards },
+    target: "deck-cards-counter"
+  end 
 
   def update_deck_statistics
     deck = Deck.find_by(id: self.deck_id)
