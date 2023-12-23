@@ -76,9 +76,15 @@ class DeckFlashcard < ApplicationRecord
   private
 
   def broadcast_deck_flashcards
-    broadcast_update_to "deck_flashcards",
+    @deck = self.deck
+    # Initiate a broadcast to a Turbo Stream identified by the name "deck_flashcards"
+    broadcast_update_to [@deck, "deck_flashcards"],
+    # Specifies the partial view that will be rendered and sent as part of the broadcast.
     partial: "layouts/counter",
-    locals: { deck_flashcards: deck.deck_flashcards },
+    #  local variables to the partial.
+    # the collection of deck flashcards (deck.deck_flashcards) associated with the deck of the current 
+    locals: { deck: @deck},
+    #  specifies the DOM element i
     target: "deck-cards-counter"
   end 
 

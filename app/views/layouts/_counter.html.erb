@@ -1,7 +1,7 @@
-<!-- layouts/_counter.html.erb -->
-<%= turbo_stream_from "deck_flashcards" %>
-<% if defined?(deck_flashcards) %>
-  <%= deck_flashcards.size %>
+<% if defined?(deck) %>
+  <%= turbo_stream_from [deck, "deck_flashcards"] %>
+  <%= deck.deck_flashcards.size %>
 <% else %>
-  <%= current_user.deck.deck_flashcards.size %>
+  <!-- Handle cases where 'deck' isn't available -->
+  N/A
 <% end %>

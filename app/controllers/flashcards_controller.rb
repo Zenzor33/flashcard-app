@@ -6,6 +6,7 @@ class FlashcardsController < ApplicationController
 
   def index  
     @flashcards = Flashcard.search(params)
+    @deck = current_user.deck
   end
   
 

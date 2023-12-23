@@ -39,7 +39,7 @@
               <%= link_to "Home", home_path, class: navbar_link_class(home_path), aria_current: get_navbar_aria(home_path) %>
               <%= link_to "Study", study_path, class: navbar_link_class(study_path), aria_current: get_navbar_aria(study_path)  %>
               <%= link_to deck_path, class: navbar_link_class(deck_path), id: "navbar-my-cards", aria_current: get_navbar_aria(deck_path) do%>
-                My Cards <span id='deck-cards-counter' class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20"><%= render "layouts/counter" %></span>
+                My Cards <span id='deck-cards-counter' class="inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20"><%= render "layouts/counter", deck: deck %></span>
               <% end %>
               <%= link_to "Contact", contact_path, class: navbar_link_class(contact_path), aria_current: get_navbar_aria(contact_path) %>
             <% else %>
