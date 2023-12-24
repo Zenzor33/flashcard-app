@@ -18,7 +18,6 @@ class DecksController < ApplicationController
     authorize @deck
     @category = params[:category]
     @categorized_deck_flashcards = @deck.deck_flashcards.by_category(@category)
-    
 
     respond_to do |format|
       format.turbo_stream
