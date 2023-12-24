@@ -17,6 +17,10 @@ feature branch:
 7. Database accepting negative values in deckflashcard 
 8. IMPLEMENT LIST VIEW -- priority 
 
+Bug list: 
+- After sign in, "Signed in successfully" flash notice appears in body and in each flashcard
+- The notice doesnt disappear from the body 
+
 Current work: 
 - Add a select button to each flashcard 
 - Create a select all button on the flashcard page 

@@ -29,6 +29,8 @@ class DecksController < ApplicationController
   def add_flashcard 
     authorize @deck
     @deck.add_flashcard(@flashcard)
+
+    flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" added to Deck"
     
     respond_to do |format|
       format.turbo_stream {render :create}
@@ -40,6 +42,7 @@ class DecksController < ApplicationController
     authorize @deck
     @deck.remove_flashcard(@flashcard)
     
+    flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" removed from Deck"
 
     respond_to do |format|
       format.turbo_stream {render :create}
