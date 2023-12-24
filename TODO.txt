@@ -15,7 +15,7 @@ feature branch:
 5. Add selections to index page with "add selected" and "add all" to deck options. 
 6. Prune flashcards that show on flashcards page 
 7. Database accepting negative values in deckflashcard 
-8. IMPLEMENT LIST VIEW -- priority 
+Create the study controller to handle the studying things 
 
 Bug list: 
 - After sign in, "Signed in successfully" flash notice appears in body and in each flashcard
