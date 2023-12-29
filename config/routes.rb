@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :users
   get 'users/:id/account', to: 'users#account'
   resources :flashcards do 
+    member do 
+      post 'add'
+      delete 'remove'
+    end 
     collection do 
       get 'grid'
       get 'list'

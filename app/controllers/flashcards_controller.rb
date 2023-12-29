@@ -29,6 +29,30 @@ class FlashcardsController < ApplicationController
     end
   end
 
+  def add 
+    @deck = current_user.deck 
+    @deck.add_flashcard(@flashcard)
+
+    flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" added to Deck"
+    
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
+  end 
+
+  def remove 
+    @deck = current_user.deck 
+    @deck.remove_flashcard(@flashcard)
+
+    flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" added to Deck"
+    
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
+  end 
+
   private
 
   def set_flashcard
