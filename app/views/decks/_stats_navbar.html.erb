@@ -1,0 +1,9 @@
+<div class="px-4 py-5 sm:px-6 flex justify-center gap-3">
+  <!-- Content goes here -->
+  <!-- We use less vertical padding on card headers on desktop than on body sections -->
+  <%= link_to 'All Cards', user_deck_path(current_user.id, @deck), class: user_deck_classes %> <!-- add remote: true ?-->
+  <%= link_to 'New Cards', user_deck_path(current_user.id, @deck, category: 'new'), class: user_deck_classes('new') %> <!-- add remote: true ?-->
+  <%= link_to 'Learning', user_deck_path(current_user.id, @deck, category: 'learning'), class: user_deck_classes('learning') %> <!-- add remote: true ?-->
+  <%= link_to 'Progressing', user_deck_path(current_user.id, @deck, category: 'progressing'), class: user_deck_classes('progressing') %> <!-- add remote: true ?-->
+  <%= link_to 'Mastered', user_deck_path(current_user.id, @deck, category: 'mastered'), class: user_deck_classes('mastered') %> <!-- add remote: true ?-->    
+</div>

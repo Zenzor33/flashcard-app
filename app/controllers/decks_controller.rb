@@ -45,6 +45,10 @@ class DecksController < ApplicationController
     
     flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" removed from Deck"
 
+    @deck = current_user.deck
+    @category = params[:category]
+    @categorized_deck_flashcards = @deck.deck_flashcards.by_category(@category)
+    
     respond_to do |format|
       format.turbo_stream
       format.html

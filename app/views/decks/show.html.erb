@@ -1,6 +1,7 @@
 <%= turbo_frame_tag "deck" do %>
 <div class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
   <!-- Category navbar & Flashcard Statistics by Category -->
+  <%= render "decks/stats_navbar" %>
   <%= render 'decks/stats_header' %>
 
   <div class="overflow-hidden rounded-lg bg-white shadow">

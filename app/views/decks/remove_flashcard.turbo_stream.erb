@@ -1,3 +1,8 @@
 <%= turbo_stream.replace "flash", partial: "layouts/flash" %>
 
+<%= turbo_stream.replace "stats_header", partial: "decks/stats_header", locals: {
+  deck: @deck,
+  categorized_deck_flashcards: @categorized_deck_flashcards
+} %>
+
 <%= turbo_stream.remove dom_id(@deck_flashcard) %>
