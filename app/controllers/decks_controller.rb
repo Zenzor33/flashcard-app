@@ -39,9 +39,15 @@ class DecksController < ApplicationController
 
   def remove_flashcard 
     authorize @deck
+    # Find the DeckFlashcard object
     @deck_flashcard = DeckFlashcard.find(params[:deck_flashcard_id])
+    # Save the deck_flashcard.id to a variable to remove from the dom
+    @deck_flashcard_id = @deck_flashcard.id 
+    # Destroy the DeckFlashcard object
+    @deck_flashcard.destroy
+     #Used for turbo_stream dom(id)
     # binding.pry
-    @deck.remove_flashcard(@flashcard)
+    # @deck.remove_flashcard(@flashcard)
     
     flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" removed from Deck"
 
