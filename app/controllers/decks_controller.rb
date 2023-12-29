@@ -32,7 +32,7 @@ class DecksController < ApplicationController
     flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" added to Deck"
     
     respond_to do |format|
-      format.turbo_stream {render :create}
+      format.turbo_stream
       format.html
     end
   end 
@@ -44,7 +44,7 @@ class DecksController < ApplicationController
     flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" removed from Deck"
 
     respond_to do |format|
-      format.turbo_stream {render :create}
+      format.turbo_stream
       format.html
     end
   end
