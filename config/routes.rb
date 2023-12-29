@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :flashcards do 
     member do 
       post 'add'
+      post 'add_list'
       delete 'remove'
+      delete 'remove_list'
     end 
     collection do 
       get 'grid'
