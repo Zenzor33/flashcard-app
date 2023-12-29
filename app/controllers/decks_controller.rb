@@ -39,6 +39,8 @@ class DecksController < ApplicationController
 
   def remove_flashcard 
     authorize @deck
+    @deck_flashcard = DeckFlashcard.find(params[:deck_flashcard_id])
+    # binding.pry
     @deck.remove_flashcard(@flashcard)
     
     flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" removed from Deck"
