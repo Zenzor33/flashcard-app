@@ -19,7 +19,8 @@
           </div>
           <div class="table-row-group divide-y divide-gray-200">
             <% @categorized_deck_flashcards.each do |deck_flashcard| %>
-              <div class="table-row">
+
+              <div class="table-row" id=<%= dom_id(deck_flashcard) %>>
                 <div class="table-cell whitespace-nowrap px-3 py-4 text-sm">
                   <%= check_box_tag "selected_flashcards[]", deck_flashcard.id %>
                 </div>
@@ -34,7 +35,7 @@
                   
                 </div>
               </div>
-            <% end %>
+              <%end%>
           </div>
         </div>
       </div>
