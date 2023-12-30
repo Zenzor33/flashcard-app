@@ -1,6 +1,6 @@
 class FlashcardsController < ApplicationController
   
-  before_action :set_flashcard, except: [:index, :grid, :list]
+  before_action :set_flashcard, except: [:index, :grid, :list, :bulk_update]
   # before_action :set_flashcard_statistic, except: [:index]
 
 
@@ -76,6 +76,10 @@ class FlashcardsController < ApplicationController
       format.html
     end
   end 
+
+  def bulk_update 
+    fail 
+  end
 
   private
 

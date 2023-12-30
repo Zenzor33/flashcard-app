@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       delete 'remove_list'
     end 
     collection do 
+      post "bulk_update"
       get 'grid'
       get 'list'
     end 
