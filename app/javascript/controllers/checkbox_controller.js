@@ -1,13 +1,14 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="checkbox"
 export default class extends Controller {
-  static targets = ["selectAll", "checkbox"];
+  static targets = ["checkbox"];
 
-  toggle() {
-    // console.log(this.checkboxTargets);
+  selectAll(event) {
+    console.log("hh");
+    console.log(this.checkboxTargets);
+    const isChecked = event.target.checked;
     this.checkboxTargets.forEach((checkbox) => {
-      checkbox.checked = this.selectAllTarget.checked;
+      checkbox.checked = isChecked;
     });
   }
 }

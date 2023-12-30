@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       delete 'remove_list'
     end 
     collection do 
+      post "add_selection"
       get 'grid'
       get 'list'
     end 

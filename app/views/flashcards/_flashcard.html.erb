@@ -1,10 +1,10 @@
 <%= turbo_frame_tag dom_id(flashcard) do%>
 
-    <div id="search_results" class="flex-col">
+  <div id="search_results" class="flex-col">
 
     <!-- Checkbox -->
-    <input type="checkbox" class="" id="checkbox_<%= flashcard.id %>" name="selected_flashcards[]" data-checkbox-target="checkbox">
-    <label for="checkbox_<%= flashcard.id %>" class="absolute top-0 right-0 mt-4 mr-4"></label>
+<input type="checkbox" class="" id="checkbox_<%= flashcard.id %>" name="selected_flashcards[]" value="<%= flashcard.id %>" data-checkbox-target="checkbox">
+<label for="checkbox_<%= flashcard.id %>" class="absolute top-0 right-0 mt-4 mr-4"></label>
 
     <a
       data-turbo-frame = "_top"
@@ -31,5 +31,6 @@
     <% end %>
 
     <%= link_to "Flashcard Details", flashcard_path(flashcard), data: {turbo_frame: "_top"} %>
-    </div>
-  <% end %>
+  </div>
+<% end %>
+

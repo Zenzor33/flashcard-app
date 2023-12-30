@@ -1,6 +1,6 @@
 class FlashcardsController < ApplicationController
   
-  before_action :set_flashcard, except: [:index, :grid, :list]
+  before_action :set_flashcard, except: [:index, :grid, :list, :add_selection]
   # before_action :set_flashcard_statistic, except: [:index]
 
 
@@ -11,6 +11,7 @@ class FlashcardsController < ApplicationController
   
 
   def show
+
   end
 
   def grid
@@ -75,6 +76,10 @@ class FlashcardsController < ApplicationController
       format.turbo_stream
       format.html
     end
+  end 
+
+  def add_selection 
+    fail
   end 
 
   private
