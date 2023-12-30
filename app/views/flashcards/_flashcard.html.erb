@@ -3,7 +3,7 @@
     <div id="search_results" class="flex-col">
 
     <!-- Checkbox -->
-    <input type="checkbox" class="" id="checkbox_<%= flashcard.id %>" name="selected_flashcards[]" data-checkbox-target="checkbox">
+    <input type="checkbox" class="" id="checkbox_<%= flashcard.id %>" name="selected_flashcards[]" value="<%= flashcard.id %>" data-checkbox-select-all-target="child" data-action="change->checkbox-select-all#toggleParent">
     <label for="checkbox_<%= flashcard.id %>" class="absolute top-0 right-0 mt-4 mr-4"></label>
 
     <a
