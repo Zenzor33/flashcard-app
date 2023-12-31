@@ -33,12 +33,9 @@
     </div>
   </div>
   <div class="flex flex-wrap gap-2 mt-8 justify-center">
-  <%= form_with url: bulk_update_flashcards_path, method: :post, id: :bulk_actions_form do |f| %>
-
     <% @flashcards.each do |flashcard| %>
         <%= render flashcard %>
     <% end %>
-    <%= f.submit %>
-  <% end %>
   </div>
+<%= button_tag "Submit", type: 'button', data: { action: "checkbox-select-all#create" } %>
 </div>

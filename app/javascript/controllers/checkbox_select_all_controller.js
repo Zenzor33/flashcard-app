@@ -27,4 +27,15 @@ export default class extends Controller {
       this.parentTarget.checked = true;
     }
   }
+
+  create(event) {
+    event.preventDefault();
+    console.log(
+      this.childTargets.forEach((child) => {
+        if (child.checked) {
+          console.log(child.id);
+        }
+      })
+    );
+  }
 }
