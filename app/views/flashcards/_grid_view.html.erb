@@ -1,10 +1,6 @@
 <%= turbo_frame_tag 'results'  do %>
   <%= render "tableicons" %>
   <%= render "search", form_url: grid_flashcards_path %> <!-- Note the checkbox wraps from here -->
-  <div class="flex flex-wrap gap-2 mt-8 justify-center">
-  <% @flashcards.each do |flashcard| %>
-      <%= render flashcard %>
-  <% end %>
-  </div>
+
 <% end %>
 
