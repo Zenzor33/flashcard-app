@@ -17,12 +17,12 @@
   </div>
 <% end %>
 
-<div data-controller="checkbox-select-all">
+<div data-controller="cbox-all">
   <legend class="sr-only">Select All</legend>
   <div class="space-y-5">
     <div class="relative flex justify-center items-start gap-2">
       <div class="flex h-6 items-center">
-        <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" data-checkbox-select-all-target="checkboxAll">
+        <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" data-cbox-all-target="checkboxAll">
       </div>
       
       <div class="ml-3 text-sm leading-6">
@@ -38,5 +38,6 @@
       <%= render flashcard %>
     <% end %>
   </div>
+  <%= link_to "Remove All", "#", data: {action: "click->cbox-all#destroy"}%>
 </div>
 

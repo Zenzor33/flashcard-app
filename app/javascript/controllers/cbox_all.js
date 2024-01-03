@@ -1,4 +1,4 @@
-import { CheckboxSelectAll } from "stimulus-checkbox-select-all";
+import CheckboxSelectAll from "stimulus-checkbox-select-all";
 
 export default class extends CheckboxSelectAll {
   connect() {
@@ -10,5 +10,11 @@ export default class extends CheckboxSelectAll {
 
     // Get all unchecked checkboxes
     this.unchecked;
+  }
+
+  destroy(event) {
+    event.preventDefault();
+    console.log("destroy triggered");
+    console.log(this.checked);
   }
 }
