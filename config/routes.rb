@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     collection do 
       get 'grid'
       get 'list'
+      post "bulk"
     end 
   end 
 
