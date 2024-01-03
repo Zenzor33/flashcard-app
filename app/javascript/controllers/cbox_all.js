@@ -1,4 +1,5 @@
 import CheckboxSelectAll from "stimulus-checkbox-select-all";
+import { destroy } from "@rails/request.js";
 
 export default class extends CheckboxSelectAll {
   connect() {
@@ -16,5 +17,11 @@ export default class extends CheckboxSelectAll {
     event.preventDefault();
     console.log("destroy triggered");
     console.log(this.checked);
+
+    Rails.ajax({
+      url: "#",
+      type: "DELETE",
+      data: "data",
+    });
   }
 }
