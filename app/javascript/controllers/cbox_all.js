@@ -1,5 +1,4 @@
 import CheckboxSelectAll from "stimulus-checkbox-select-all";
-import { destroy } from "@rails/request.js";
 
 export default class extends CheckboxSelectAll {
   connect() {

@@ -33,11 +33,36 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-wrap gap-2 mt-8 justify-center">
-    <% @flashcards.each do |flashcard| %>
-      <%= render flashcard %>
-    <% end %>
+
+<!-- #div from checkbox -->
+    <!-- list view -->
+    <div class="px-4 sm:px-6 lg:px-8">
+      <div class="mt-1 flow-root">
+        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+            <div class="table min-w-full divide-y divide-gray-300">
+              <div class="table-header-group">
+                <div class="table-row">
+                  <div class="table-cell py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Select</div>
+                  <div class="table-cell py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Front</div>
+                  <div class="table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Back</div>
+                  <div class="table-cell relative py-3.5 pl-3 pr-4 sm:pr-0">
+                    <span class="sr-only">Edit</span>
+                  </div>
+                </div>
+              </div>
+              <div class="table-row-group divide-y divide-gray-200">
+              <% @flashcards.each do |flashcard| %>
+                <%= render "line_item", flashcard: flashcard  %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <%= link_to "Remove All", "#", data: {action: "click->cbox-all#destroy"}%>
+
+
+
 </div>
 
