@@ -80,9 +80,10 @@ class FlashcardsController < ApplicationController
   def bulk 
     operation = params[:operation]
     selected_flashcard_ids = params[:selected_flashcards]
-    @deck = current_user.deck 
-    # @deck.add_flashcards(flashcards)
-    @deck.update_flashcards(selected_flashcard_ids, operation)
+    unless selected_flashcard_ids.nil?
+      @deck = current_user.deck 
+      @deck.update_flashcards(selected_flashcard_ids, operation)
+    end
 
     @flashcards = Flashcard.all
 
