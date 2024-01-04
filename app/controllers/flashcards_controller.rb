@@ -79,10 +79,17 @@ class FlashcardsController < ApplicationController
 
   def bulk 
     operation = params[:operation]
-    flashcards = params[:selected_flashcards]
+    selected_flashcard_ids = params[:selected_flashcards]
     @deck = current_user.deck 
     # @deck.add_flashcards(flashcards)
-    @deck.update_flashcards(flashcards, operation)
+    @deck.update_flashcards(selected_flashcard_ids, operation)
+
+    @flashcards = Flashcard.all
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html
+    end
   end
 
   private

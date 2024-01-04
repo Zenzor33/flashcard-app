@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "flash", partial: "layouts/flash" %>
+
+<%= turbo_stream.replace "results", partial: "flashcards/list_view", locals: {flashcards: Flashcard.all} %>
