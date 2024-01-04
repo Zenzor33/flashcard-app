@@ -53,29 +53,29 @@ class FlashcardsController < ApplicationController
     end
   end 
 
-  def add_list
-    @deck = current_user.deck 
-    @deck.add_flashcard(@flashcard)
+  # def add_list
+  #   @deck = current_user.deck 
+  #   @deck.add_flashcard(@flashcard)
 
-    flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" added to Deck"
+  #   flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" added to Deck"
     
-    respond_to do |format|
-      format.turbo_stream
-      format.html
-    end 
-  end 
+  #   respond_to do |format|
+  #     format.turbo_stream
+  #     format.html
+  #   end 
+  # end 
 
-  def remove_list 
-    @deck = current_user.deck 
-    @deck.remove_flashcard(@flashcard)
+  # def remove_list 
+  #   @deck = current_user.deck 
+  #   @deck.remove_flashcard(@flashcard)
 
-    flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" removed from Deck"
+  #   flash.now[:notice] = "Flashcard \"#{@flashcard.front}\" removed from Deck"
     
-    respond_to do |format|
-      format.turbo_stream
-      format.html
-    end
-  end 
+  #   respond_to do |format|
+  #     format.turbo_stream
+  #     format.html
+  #   end
+  # end 
 
   def bulk 
     operation = params[:operation]
