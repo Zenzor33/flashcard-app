@@ -1,5 +1,13 @@
 Version 2:
 
+Bulk operations refactor: 
+- Disregard the grid view for now as it adds an unnecessary layer of complexity 
+-- Render the list view by default 
+-- Remove the link to the grid view
+-- Highlight the list view icon on the root page 
+-- Delete the list_view indivdual action turbo_streams? Check the controller for residual code. 
+
+
 Questions: 
 - check_deck_flashcards in decks_controller (used in _navbar partial)
 - _navbar is a mess-
