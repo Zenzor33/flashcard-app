@@ -1,4 +1,10 @@
 <%= turbo_stream.replace "flash", partial: "layouts/flash" %>
 
-<%= turbo_stream.replace "results", partial: "flashcards/list_view", locals: {flashcards: Flashcard.all} %>
 
+<% @flashcards.each do |flashcard| %>
+  <% if dom_id(flashcard).nil? %>
+    <%= turbo_stream.append dom_id(flashcard), partial: "flashcards/line_item", locals: {flashcard: flashcard}%>
+  <% else %>
+    <%= turbo_stream.replace dom_id(flashcard), partial: "flashcards/line_item", locals: {flashcard: flashcard} %>
+  <% end %>
+<% end %>
