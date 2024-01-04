@@ -50,6 +50,33 @@ class Deck < ApplicationRecord
     deck_flashcard = self.deck_flashcards.find_by(flashcard: flashcard)
     deck_flashcard.destroy
   end 
+
+  def add_flashcards(flashcards)
+    flashcards.each do |flashcard| 
+      flashcardid = flashcard.to_i
+      if self.deck_flashcards.find_by(flashcard_id: flashcardid).nil?
+        self.add_flashcard(Flashcard.find(flashcardid))
+      end
+    end 
+  end 
+
+  def update_flashcards(flashcards, operation)
+    if operation == "Add selection"
+      flashcards.each do |flashcard| 
+        flashcardid = flashcard.to_i
+        if self.deck_flashcards.find_by(flashcard_id: flashcardid).nil?
+          self.add_flashcard(Flashcard.find(flashcardid))
+        end
+      end 
+    elsif operation == "Remove selection"
+      flashcards.each do |flashcard| 
+        flashcardid = flashcard.to_i
+        unless self.deck_flashcards.find_by(flashcard_id: flashcardid).nil?
+          self.remove_flashcard(Flashcard.find(flashcardid))
+        end
+      end 
+    end 
+  end 
   
   def update_statistics
     if self.deck_flashcards.exists?

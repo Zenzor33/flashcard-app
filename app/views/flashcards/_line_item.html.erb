@@ -6,9 +6,9 @@
   <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= flashcard.back %></div>
   <div class="table-cell relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
   <% if current_user.deck.deck_flashcards.exists?(flashcard_id: flashcard.id)%>
-    <%= button_to "Remove", remove_list_flashcard_path(flashcard.id), class: "rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", aria: {label: "remove"}, data: {confirm: "Are you sure?"},  method: :delete %>
+    Added to Deck
   <% else %>
-    <%= button_to "Add", add_list_flashcard_path(flashcard.id), class: "rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600", aria: {label: "remove"}, data: {confirm: "Are you sure?"},  method: :post %>
+    Removed from deck
   <% end %>
   </div>
 </div>

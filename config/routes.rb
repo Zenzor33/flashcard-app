@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       post 'add'
       post 'add_list'
       delete 'remove'
-      delete 'remove_list'
+      get 'remove_list'
     end 
     collection do 
       get 'grid'

@@ -16,11 +16,5 @@ export default class extends CheckboxSelectAll {
     event.preventDefault();
     console.log("destroy triggered");
     console.log(this.checked);
-
-    Rails.ajax({
-      url: "#",
-      type: "DELETE",
-      data: "data",
-    });
   }
 }

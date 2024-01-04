@@ -78,7 +78,11 @@ class FlashcardsController < ApplicationController
   end 
 
   def bulk 
-    fail 
+    operation = params[:operation]
+    flashcards = params[:selected_flashcards]
+    @deck = current_user.deck 
+    # @deck.add_flashcards(flashcards)
+    @deck.update_flashcards(flashcards, operation)
   end
 
   private
