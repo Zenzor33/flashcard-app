@@ -6,8 +6,8 @@ Bulk operations refactor:
 -- Remove the link to the grid view x
 -- Highlight the list view icon on the root page  x
 -- Delete the list_view indivdual action turbo_streams? Check the controller for residual code x 
--- BUG: view icons dont highlight after form submission on flashcards index
--- BUG: when submit button is clicked without any checkboxes selected
+-- BUG: view icons dont highlight after form submission on flashcards index x
+-- BUG: when submit button is clicked without any checkboxes selected 
 
 
 Questions: 
