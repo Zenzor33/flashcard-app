@@ -11,7 +11,7 @@ Bulk operations refactor:
 
 Flashcards page
 -- Remove bold font, change "front" => "English", "back" => "Portuguese"
--- Change status to "In Deck" and "Not in Deck"
+-- Change status to "In Deck" and "Not in Deck" x
 -- Add paginate gem
 
 
