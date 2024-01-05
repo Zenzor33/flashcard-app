@@ -7,7 +7,12 @@ Bulk operations refactor:
 -- Highlight the list view icon on the root page  x
 -- Delete the list_view indivdual action turbo_streams? Check the controller for residual code x 
 -- BUG: view icons dont highlight after form submission on flashcards index x
--- BUG: when submit button is clicked without any checkboxes selected 
+-- BUG: when submit button is clicked without any checkboxes selected  x 
+
+Flashcards page
+-- Remove bold font, change "front" => "English", "back" => "Portuguese"
+-- Change status to "In Deck" and "Not in Deck"
+-- Add paginate gem
 
 
 Questions: 
