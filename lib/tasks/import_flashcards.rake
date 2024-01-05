@@ -8,7 +8,7 @@ namespace :flashcards do
       english = row['English']
       portuguese = row['Portuguese']
       puts english + ": " + portuguese
-      #Flashcard.create!(front: english, back: portuguese)
+      Flashcard.create!(front: english, back: portuguese)
     end 
   end 
 end 
