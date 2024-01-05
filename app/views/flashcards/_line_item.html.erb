@@ -2,7 +2,7 @@
   <div class="table-cell whitespace-nowrap px-3 py-4 text-sm">
     <%= check_box_tag "selected_flashcards[]", flashcard.id, false, data: { cbox_all_target: "checkbox" } %>
   </div>
-  <div class="table-cell whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= flashcard.front %></div>
+  <div class="table-cell whitespace-nowrap py-4 pl-4 pr-3 text-sm text-gray-500 sm:pl-0"><%= flashcard.front %></div>
   <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= flashcard.back %></div>
   <div class="table-cell relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
   <% if current_user.deck.deck_flashcards.exists?(flashcard_id: flashcard.id)%>
