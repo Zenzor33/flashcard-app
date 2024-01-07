@@ -17,6 +17,10 @@ Flashcards page
 -- Display x number of flashcards? (temporarily set default in initializer) x 
 -- Admin panel to edit and delete flashcards. 
 
+Deleting flashcards 
+-- What happens when admin user deletes a flashcard?
+-- There will be deckflashcards present in other users decks that will no longer link to a valid flashcard. 
+
 
 Questions: 
 - check_deck_flashcards in decks_controller (used in _navbar partial)
