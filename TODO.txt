@@ -1,5 +1,7 @@
 Version 2:
 
+- Remove select boxes from My Deck
+
 Bulk operations refactor: 
 - Disregard the grid view for now as it adds an unnecessary layer of complexity 
 -- Render the list view by default  x
@@ -8,7 +10,7 @@ Bulk operations refactor:
 -- Delete the list_view indivdual action turbo_streams? Check the controller for residual code x 
 -- BUG: view icons dont highlight after form submission on flashcards index x
 -- BUG: when submit button is clicked without any checkboxes selected  x 
--- BUG: add flashcard to deck does not increase counter
+-- BUG: add flashcard to deck does not increase counter x
 
 Flashcards page
 -- Remove bold font, change "front" => "English", "back" => "Portuguese" x
@@ -16,7 +18,7 @@ Flashcards page
 -- Add paginate gem x 
 
 -- Display x number of flashcards? (temporarily set default in initializer) x 
--- Admin panel to edit and delete flashcards. 
+-- Admin panel to edit and delete flashcards. x 
 
 Deleting flashcards 
 -- What happens when admin user deletes a flashcard?

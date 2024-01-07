@@ -5,7 +5,6 @@
         <div class="table min-w-full divide-y divide-gray-300">
           <div class="table-header-group">
             <div class="table-row">
-              <div class="table-cell py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Select</div>
               <div class="table-cell py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">Front</div>
               <div class="table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Back</div>
               <div class="table-cell px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Correct</div>
@@ -21,9 +20,6 @@
             <% @categorized_deck_flashcards.each do |deck_flashcard| %>
 
               <div class="table-row" id=<%= dom_id(deck_flashcard) %>>
-                <div class="table-cell whitespace-nowrap px-3 py-4 text-sm">
-                  <%= check_box_tag "selected_flashcards[]", deck_flashcard.id %>
-                </div>
                 <div class="table-cell whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0"><%= deck_flashcard.flashcard.front %></div>
                 <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= deck_flashcard.flashcard.back %></div>
                 <div class="table-cell whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= deck_flashcard.correct_count %></div>
