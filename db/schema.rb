@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_15_105745) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_07_130700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,20 +50,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_105745) do
     t.index ["email"], name: "index_dummies_on_email", unique: true
   end
 
-  create_table "flashcard_statistics", force: :cascade do |t|
-    t.integer "correct_count", default: 0
-    t.integer "incorrect_count", default: 0
-    t.bigint "user_id", null: false
-    t.bigint "flashcard_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "category", default: "new"
-    t.float "accuracy", default: 0.0
-    t.integer "total_count", default: 0, null: false
-    t.index ["flashcard_id"], name: "index_flashcard_statistics_on_flashcard_id"
-    t.index ["user_id"], name: "index_flashcard_statistics_on_user_id"
-  end
-
   create_table "flashcards", force: :cascade do |t|
     t.string "front", null: false
     t.string "back", null: false
@@ -87,6 +73,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_15_105745) do
   add_foreign_key "deck_flashcards", "decks"
   add_foreign_key "deck_flashcards", "flashcards"
   add_foreign_key "decks", "users"
-  add_foreign_key "flashcard_statistics", "flashcards"
-  add_foreign_key "flashcard_statistics", "users"
 end
