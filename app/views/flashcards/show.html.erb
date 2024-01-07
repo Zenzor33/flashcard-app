@@ -8,7 +8,7 @@
   <div>Admin:</div>
   <div>Edit</div>
   <Div>
-<%= button_to "Destroy", flashcard_path(@flashcard), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= button_to "Destroy", flashcard_path(@flashcard), method: :delete, data: { turbo_confirm: "Are you sure?"}, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
 
   </Div>
 </div>
