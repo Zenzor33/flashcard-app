@@ -13,6 +13,20 @@ class FlashcardsController < ApplicationController
   def show
   end
 
+  def edit 
+    
+  end
+
+  def update 
+    if @flashcard.update(flashcard_params) 
+      flash[:success] = "Flashcard sucessfully updated"
+      redirect_to @flashcard 
+    else  
+      flash[:error] = "Something went wrong"
+      redirect_to edit_flashcard_path 
+    end
+  end
+
   def grid
     @flashcards = Flashcard.search(params)
     respond_to do |format|
@@ -110,4 +124,8 @@ class FlashcardsController < ApplicationController
     @flashcard = Flashcard.find_by(id: params[:id])
     redirect_to root_path, alert: "Flashcard not found" if @flashcard.nil?
   end 
+
+  def flashcard_params
+    params.require(:flashcard).permit(:front, :back)
+  end
 end

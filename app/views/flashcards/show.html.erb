@@ -6,7 +6,9 @@
 <br>
 <div class="flex flex-col">
   <div>Admin:</div>
-  <div>Edit</div>
+  <div>
+   <%= link_to "Edit", edit_flashcard_path(@flashcard),class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+  </div>
   <Div>
 <%= button_to "Destroy", flashcard_path(@flashcard), method: :delete, data: { turbo_confirm: "Are you sure?"}, class: "font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
 

@@ -8,6 +8,7 @@ Bulk operations refactor:
 -- Delete the list_view indivdual action turbo_streams? Check the controller for residual code x 
 -- BUG: view icons dont highlight after form submission on flashcards index x
 -- BUG: when submit button is clicked without any checkboxes selected  x 
+-- BUG: add flashcard to deck does not increase counter
 
 Flashcards page
 -- Remove bold font, change "front" => "English", "back" => "Portuguese" x
