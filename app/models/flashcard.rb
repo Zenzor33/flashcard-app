@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Flashcard < ApplicationRecord
-  has_many :deck_flashcards
+  has_many :deck_flashcards, dependent: :destroy
 
   validates :front, presence: true 
   validates :back, presence: true

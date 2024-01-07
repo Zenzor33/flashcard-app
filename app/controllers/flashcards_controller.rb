@@ -93,6 +93,16 @@ class FlashcardsController < ApplicationController
     end
   end
 
+  def destroy 
+    if @flashcard.destroy 
+      flash[:success] = "Flashcard was successfully deleted"
+      redirect_to flashcards_path
+    else  
+      flash[:error] = "There was a problem deleting the flashcard"
+      redirect_to @flashcard 
+    end
+  end 
+
   private
 
   def set_flashcard

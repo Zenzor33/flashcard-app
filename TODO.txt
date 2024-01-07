@@ -19,7 +19,14 @@ Flashcards page
 
 Deleting flashcards 
 -- What happens when admin user deletes a flashcard?
--- There will be deckflashcards present in other users decks that will no longer link to a valid flashcard. 
+-- There will be deckflashcards present in other users decks that will no longer link to a valid flashcard.
+-- QUestion: How to handle situations in which an admin deletes a Flashcard that is a foreign key in a users DeckFlashcards?
+
+The destroy action in the Flashcards controller will: 
+- Delete the flashcard record 
+- This should automatically delete all DeckFlashcards with its flashcard_id foreign key. 
+
+The reason for this design choice is simple. The app in its current form is designed for self-use. If I am deleting a flashcard, I probably want it removed from my deck anyway. 
 
 
 Questions: 

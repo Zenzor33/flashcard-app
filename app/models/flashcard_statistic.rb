@@ -23,31 +23,31 @@
 #  fk_rails_...  (flashcard_id => flashcards.id)
 #  fk_rails_...  (user_id => users.id)
 #
-class FlashcardStatistic < ApplicationRecord
-  belongs_to :user 
-  belongs_to :flashcard  
+# class FlashcardStatistic < ApplicationRecord
+#   belongs_to :user 
+#   belongs_to :flashcard  
 
-  before_save :update_total_count, :update_accuracy
+#   before_save :update_total_count, :update_accuracy
 
-  def accuracy 
-    total = correct_count + incorrect_count
-    (correct_count.to_f / total)
-  end 
+#   def accuracy 
+#     total = correct_count + incorrect_count
+#     (correct_count.to_f / total)
+#   end 
 
-  private
+#   private
 
-  def update_accuracy
-    total = correct_count + incorrect_count
-    self.accuracy = total.zero? ? 0.0 : (correct_count.to_f / total * 100)
-  end
+#   def update_accuracy
+#     total = correct_count + incorrect_count
+#     self.accuracy = total.zero? ? 0.0 : (correct_count.to_f / total * 100)
+#   end
 
-  def update_total_count
-    self.total_count = correct_count.to_i + incorrect_count.to_i
-  end 
+#   def update_total_count
+#     self.total_count = correct_count.to_i + incorrect_count.to_i
+#   end 
 
-  def update_category 
+#   def update_category 
     
-  end 
+#   end 
 
 
-end
+# end
