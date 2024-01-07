@@ -21,8 +21,9 @@ class FlashcardsController < ApplicationController
     end
   end
   
+  #WHat is this used for?
   def list
-    @flashcards = Flashcard.search(params)
+    @pagy, @flashcards = pagy(Flashcard.search(params))
     respond_to do |format|
       format.html { render partial: 'flashcards/list_view', locals: { flashcards: @flashcards } }
       format.js   # if you have list.js.erb
