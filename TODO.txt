@@ -14,7 +14,7 @@ Flashcards page
 -- Change status to "In Deck" and "Not in Deck" x
 -- Add paginate gem x 
 
--- Display x number of flashcards?  
+-- Display x number of flashcards? (temporarily set default in initializer) x 
 -- Admin panel to edit and delete flashcards. 
 
 
