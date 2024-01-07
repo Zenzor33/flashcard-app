@@ -4,22 +4,7 @@
   <%= render "decks/stats_navbar" %>
   <%= render 'decks/stats_header' %>
 
-  <div class="overflow-hidden rounded-lg bg-white shadow">
-  <%= simple_form_for("", url: "", method: :get
-      ) do |f| %>
-    <div class="flex justify-center gap-2">
-      <div>
-        <%= f.input :front, label: false, input_html: { placeholder: 'Front...', value: params[:front] } %>
-      </div>
-      <div>
-        <%= f.input :back, label: false, input_html: { placeholder: 'Back...', value: params[:back] } %>
-      </div>
-      <div class="flex align-center">
-        <%= f.button :submit, "Create" %>
-      </div>
-    </div>
-    <% end %>
-  </div>
+
 
 
   <!-- Statistics displayed for each Flashcard -->
