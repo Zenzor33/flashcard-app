@@ -5,7 +5,7 @@ class FlashcardsController < ApplicationController
 
 
   def index  
-    @pagy, @flashcards = pagy(Flashcard.search(params))
+    @pagy, @flashcards = pagy(Flashcard.search(params).sorted_by(params[:sort]))
     @deck = current_user.deck
   end
   

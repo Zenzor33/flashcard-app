@@ -22,4 +22,17 @@ class Flashcard < ApplicationRecord
       all
     end
   }
+
+  scope :sorted_by, -> (sort_order) {
+    case sort_order 
+    when "front_asc"
+      order(front: :asc)
+    when "front_desc"
+      order(front: :desc)
+    when "back_asc"
+      order(back: :asc)
+    when "back_desc"
+      order(back: :desc)
+    end
+  }
 end
