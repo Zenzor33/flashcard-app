@@ -1,6 +1,10 @@
 Version 2:
 
-- Remove select boxes from My Deck
+- Study page: 
+-- Remove "Phonetics here" from flashcard 
+-- When user clicks the flashcard, it reveals the back side 
+
+- Remove select boxes from My Deck x
 
 Bulk operations refactor: 
 - Disregard the grid view for now as it adds an unnecessary layer of complexity 
