@@ -62,8 +62,10 @@
                     <% if params[:sort] == "back_asc" %>
                       <svg class="h-4 w-4 text-black"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="16" y1="9" x2="12" y2="5" />  <line x1="8" y1="9" x2="12" y2="5" /></svg>
                       <%= link_to "Portuguese", flashcards_path(sort: 'back_desc')%>
-                    <% else %>
+                    <% elsif params[:sort] == "back_desc" %>
                       <svg class="h-4 w-4 text-black"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="16" y1="15" x2="12" y2="19" />  <line x1="8" y1="15" x2="12" y2="19" /></svg>
+                      <%= link_to "Portuguese", flashcards_path(sort: 'back_asc')%>
+                    <% else %>
                       <%= link_to "Portuguese", flashcards_path(sort: 'back_asc')%>
                     <% end %>
                   </div>
